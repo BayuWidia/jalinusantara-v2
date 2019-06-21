@@ -21,11 +21,14 @@ class GaleriController extends Controller
 
     public function index()
     {
-      $getDataEvents = Events::leftJoin('master_kategori','events.id_kategori','=','master_kategori.id')
-          ->select(['events.*','master_kategori.nama_kategori'])
-                    ->orderBy('nama_kategori', 'ASC')
-                    ->orderBy('judul_event', 'ASC')->get();
-          $getGaleri = MasterGaleri::all();
+          $getDataEvents = Events::leftJoin('master_kategori','events.id_kategori','=','master_kategori.id')
+              ->select(['events.*','master_kategori.nama_kategori'])
+                      ->orderBy('nama_kategori', 'ASC')
+                      ->orderBy('judul_event', 'ASC')->get();
+          $getGaleri = MasterGaleri::leftJoin('events','master_galeri.id_events','=','events.id')
+              ->select(['master_galeri.*','events.judul_event'])
+                      ->orderBy('judul_event', 'ASC')->get();
+
           return view('backend.galeri.kelolagaleri', compact('getGaleri','getDataEvents'));
     }
 

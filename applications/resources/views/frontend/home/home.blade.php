@@ -60,7 +60,7 @@
             <!-- About Thumb -->
             <div class="col-12 col-md-6">
                 <div class="about-thumb mb-80 wow fadeInUp" data-wow-delay="300ms">
-                    <img src="{{asset('themeuser/img/jalinnusantara.png')}}" alt="">
+                    <img src="{{asset('themeuser/img/core-img/home2.png')}}" alt="">
                 </div>
             </div>
         </div>

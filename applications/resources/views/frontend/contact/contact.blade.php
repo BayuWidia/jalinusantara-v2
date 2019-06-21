@@ -2,7 +2,7 @@
 
 @section('banner')
 <!-- Breadcrumb Area Start -->
-<section class="breadcrumb-area bg-img jarallax" style="background-image: url({{url('images/slider')}}/{{$getSlider[0]->url_slider}});">
+<section class="breadcrumb-area bg-img bg-gradient-overlay jarallax" style="background-image: url({{url('themeuser/img/video-bg.jpg')}});">
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12">
@@ -31,7 +31,7 @@
             <!-- Contact Us Thumb -->
             <div class="col-12 col-lg-6">
                 <div class="contact-us-thumb mb-100">
-                    <img src="{{asset('themeuser/img/jalinnusantara.png')}}" alt="">
+                    <img src="{{asset('themeuser/img/core-img/contact.png')}}" alt="">
                 </div>
             </div>
 
@@ -121,7 +121,7 @@
                             <div class="contact--info-icon">
                                 <img src="{{asset('themeuser/img/core-img/icon-5.png')}}" alt="">
                             </div>
-                            <h5>Jl. GADING KIRANA TIMUR. Blok H13. No. 31 <br>JAKARTA 14240. INDONESIA</h5>
+                            <h7>Jl. GADING KIRANA TIMUR. Blok H13. No. 31 <br>JAKARTA 14240. INDONESIA</h7>
                         </div>
                     </div>
 
@@ -132,7 +132,7 @@
                             <div class="contact--info-icon">
                                 <img src="{{asset('themeuser/img/core-img/icon-6.png')}}" alt="">
                             </div>
-                            <h5>+62 21 451 7337 (office)<br>+62 812 8778 7266</h5>
+                            <h7>+62 21 451 7337 (office)<br>+62 812 8778 7266</h7>
                         </div>
                     </div>
 
@@ -143,8 +143,7 @@
                             <div class="contact--info-icon">
                                 <img src="{{asset('themeuser/img/core-img/icon-7.png')}}" alt="">
                             </div>
-                            <h5>office@jalinnusantara.com<br>sandi@jalinnusantara.com</h5>
-                            <h5></h5>
+                            <h7>office@jalinnusantara.com<br>sandi@jalinnusantara.com</h7>
                         </div>
                     </div>
 
@@ -155,7 +154,7 @@
                             <div class="contact--info-icon">
                                 <img src="{{asset('themeuser/img/core-img/icon-8.png')}}" alt="">
                             </div>
-                            <h5>www.jalinnusantara.com</h5>
+                            <h7>www.jalinnusantara.com</h7>
                         </div>
                     </div>
 

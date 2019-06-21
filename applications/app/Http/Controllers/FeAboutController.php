@@ -18,11 +18,10 @@ class FeAboutController extends Controller
 
     public function index($id)
     {
-          $getSlider = MasterSlider::all();
           $getInformasi = Informasi::join('master_kategori', 'informasi.id_kategori', '=', 'master_kategori.id')
                           ->select(DB::raw('distinct(master_kategori.nama_kategori)'), 'informasi.*')
                           ->where('informasi.id','=',$id)->get();
-          return view('frontend.about.about', compact('getInformasi','getSlider'));
+          return view('frontend.about.about', compact('getInformasi'));
     }
 
 }

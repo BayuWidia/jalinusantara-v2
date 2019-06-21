@@ -185,6 +185,19 @@
                                 </div>
                             </div>
                             <div class="form-group mandatory">
+                                <div class="form-line">
+                                    <label>Shirt Sizes</label>
+                                    @if ($errors->has('shirtSizes'))
+                                      <small style="color:red">* {{$errors->first('shirtSizes')}}</small>
+                                    @endif
+                                    @if(isset($editEvents))
+                                      <input type="text" class="form-control" value="{{$editEvents->shirtSizes}}" placeholder="Ketikkan Shirt Sizes..." name="shirtSizes" id="shirtSizes"/>
+                                    @else
+                                      <input type="text" class="form-control" value="{{$viewEvents->shirtSizes}}" placeholder="Ketikkan Shirt Sizes..." name="shirtSizes" id="shirtSizes" disabled/>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group mandatory">
                                 <label>Tanggal</label>
                                 @if ($errors->has('tglAwal'))
                                   <small style="color:red">* {{$errors->first('tglAwal')}}</small>

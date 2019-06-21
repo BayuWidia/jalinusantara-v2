@@ -19,8 +19,7 @@ class FeContactController extends Controller
     public function index()
     {
           // Mapper::map(-6.143693, 106.902062); 40.6700, -73.9400
-          $getSlider = MasterSlider::all();
-          return view('frontend.contact.contact', compact('getSlider'));
+          return view('frontend.contact.contact');
     }
 
 }

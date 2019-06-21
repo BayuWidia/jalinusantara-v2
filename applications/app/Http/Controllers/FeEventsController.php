@@ -31,7 +31,6 @@ class FeEventsController extends Controller
 
     public function index($id)
     {
-      $getSlider = MasterSlider::all();
       $getKategori = MasterKategori::select('*')->where('id','=',$id)->get();
       $getEvents = Events::join('master_kategori', 'events.id_kategori', '=', 'master_kategori.id')
                       ->leftJoin('master_users','events.created_by','=','master_users.id')
@@ -42,12 +41,11 @@ class FeEventsController extends Controller
                       ->orderBy('created_at', 'DESC')
                       ->get();
 
-      return view('frontend.events.events', compact('getEvents','getSlider','getKategori'));
+      return view('frontend.events.events', compact('getEvents','getKategori'));
     }
 
     public function indexById($id, $idKategori)
     {
-      $getSlider = MasterSlider::all();
       $getEvents = Events::join('master_kategori', 'events.id_kategori', '=', 'master_kategori.id')
                       ->leftJoin('master_users','events.created_by','=','master_users.id')
                       ->select('events.*', 'master_kategori.nama_kategori','master_users.name',
@@ -61,13 +59,11 @@ class FeEventsController extends Controller
                           ->where('flag_approve', '=', 1)
                           // ->paginate(20);
                           ->get();
-       return view('frontend.events.eventsById', compact('getEvents','getSlider','getRegistrasiEvents'));
+       return view('frontend.events.eventsById', compact('getEvents','getRegistrasiEvents'));
     }
 
     public function eventToday()
     {
-
-        $getSlider = MasterSlider::all();
         $dt = Carbon::now();
         $dt1 = Carbon::now()->addDays(1);
         $dt2 = Carbon::now()->addDays(2);
@@ -89,16 +85,15 @@ class FeEventsController extends Controller
                      ->where('flag_publish', '1')
                      ->orderBy('created_at', 'DESC')
                      ->get();
-        return view('frontend.events.eventsToday', compact('getSlider','getDataEventsToday'
+        return view('frontend.events.eventsToday', compact('getDataEventsToday'
                                                   ,'getDataEventsTomorrow','getDataEventsEtc'));
     }
 
     public function indexPendaftaran($id)
     {
       // dd(date("Y-m-d"));
-      $getSlider = MasterSlider::all();
       $getEvents = Events::where('events.id','=',$id)->get();
-      return view('frontend.events.pendaftaran', compact('getEvents','getSlider'));
+      return view('frontend.events.pendaftaran', compact('getEvents'));
     }
 
     public function storePendaftaran(Request $request)

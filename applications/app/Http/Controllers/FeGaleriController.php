@@ -19,26 +19,24 @@ class FeGaleriController extends Controller
 
     public function showVideo()
     {
-        $getSlider = MasterSlider::all();
         $getVideo = MasterVideo::leftJoin('events','master_video.id_events','=','events.id')
                                             ->select('master_video.*','events.judul_event')
                                             ->where('master_video.flag_video', 1)
                                             ->orderby('master_video.id_events','ASC')
                                             ->get();
 
-        return view('frontend.galeri.video', compact('getSlider','getVideo'));
+        return view('frontend.galeri.video', compact('getVideo'));
     }
 
     public function showPhoto()
     {
-        $getSlider = MasterSlider::all();
         $getPhoto = MasterGaleri::leftJoin('events','master_galeri.id_events','=','events.id')
                                 ->select('master_galeri.*','events.judul_event')
                                 ->where('master_galeri.flag_gambar', 1)
                                 ->orderby('master_galeri.id_events','ASC')
                                 ->get();
 // dd($getPhoto);
-        return view('frontend.galeri.photo', compact('getSlider','getPhoto'));
+        return view('frontend.galeri.photo', compact('getPhoto'));
     }
 
 }

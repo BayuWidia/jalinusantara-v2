@@ -21,7 +21,6 @@ class FeArticleController extends Controller
 
     public function index($id)
     {
-      $getSlider = MasterSlider::all();
       $getKategori = MasterKategori::select('*')->where('id','=',$id)->get();
       $getArticle = Informasi::join('master_kategori', 'informasi.id_kategori', '=', 'master_kategori.id')
                       ->leftJoin('master_users','informasi.created_by','=','master_users.id')
@@ -33,7 +32,7 @@ class FeArticleController extends Controller
                       // dd($getInformasi[0]->nama_kategori);
 
 
-      return view('frontend.article.article', compact('getArticle','getSlider','getKategori'));
+      return view('frontend.article.article', compact('getArticle','getKategori'));
     }
 
     public function indexById($id, $idKategori)
@@ -42,7 +41,6 @@ class FeArticleController extends Controller
       $set = Informasi::find($id);
       $set->view_counter = $set->view_counter + 1;
       $set->save();
-      $getSlider = MasterSlider::all();
       $getArticle = Informasi::join('master_kategori', 'informasi.id_kategori', '=', 'master_kategori.id')
                       ->leftJoin('master_users','informasi.created_by','=','master_users.id')
                       ->select('informasi.*', 'master_kategori.nama_kategori','master_users.name',
@@ -96,7 +94,7 @@ class FeArticleController extends Controller
                    ->orderby(DB::raw('rand()'))
                    ->get();
 // dd($getDataPesan);
-      return view('frontend.article.articleById', compact('getArticle','getSlider','getSponsor',
+      return view('frontend.article.articleById', compact('getArticle','getSponsor',
                                                           'getJumlahKategori','getArticleTerkait','getArticlePopuler',
                                                           'getComment','getCountComment','getDataPesan'));
     }

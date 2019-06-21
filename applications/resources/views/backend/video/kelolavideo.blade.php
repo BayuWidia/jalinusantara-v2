@@ -46,6 +46,7 @@
                             <thead>
                                 <tr>
                                     <th style="text-align:center">No</th>
+                                    <th style="text-align:center">Event</th>
                                     <th style="text-align:center">Judul Video</th>
                                     <th style="text-align:center;width:40%">Url Video</th>
                                     <th style="text-align:center">Status</th>
@@ -59,6 +60,7 @@
                               @foreach($getVideo as $key)
                                 <tr>
                                   <td>{{$i++}}</td>
+                                  <td>{{$key->judul_event}}</td>
                                   <td>{{$key->judul}}</td>
                                   <td>
                                     <div class="embed-responsive embed-responsive-16by9">

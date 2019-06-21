@@ -14,7 +14,7 @@ use PDF;
 use App\Models\User;
 use App\Models\Events;
 use App\Models\Informasi;
-
+use Hash;
 
 class UserController extends Controller
 {
@@ -205,7 +205,7 @@ class UserController extends Controller
         return redirect()->route('user.index')->withErrors($validator)->withInput();
       }
 
-      $set = User::find($request->$id_pass);
+      $set = User::find($request->id_pass);
       $set->password = Hash::make($request->passwordPass);
       $set->updated_by = Auth::user()->id;
       $set->save();

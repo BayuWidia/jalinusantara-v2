@@ -126,6 +126,15 @@
                                 </div>
                             </div>
                             <div class="form-group mandatory">
+                                <div class="form-line">
+                                    <label>Shirt Sizes</label>
+                                    @if ($errors->has('shirtSizes'))
+                                      <small style="color:red">* {{$errors->first('shirtSizes')}}</small>
+                                    @endif
+                                    <input type="text" class="form-control" value="{{ old('shirtSizes') }}" placeholder="Ketikkan Shirt Sizes..." name="shirtSizes" id="shirtSizes"/>
+                                </div>
+                            </div>
+                            <div class="form-group mandatory">
                                 <label>Tanggal</label>
                                 @if ($errors->has('tglAwal'))
                                   <small style="color:red">* {{$errors->first('tglAwal')}}</small>

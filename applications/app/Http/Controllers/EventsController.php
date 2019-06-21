@@ -170,6 +170,7 @@ class EventsController extends Controller
            'lokasi.required' => 'Tidak boleh kosong.',
            'alamat.required' => 'Tidak boleh kosong.',
            'entranceFee.required' => 'Tidak boleh kosong.',
+           'shirtSizes.required' => 'Tidak boleh kosong.',
            'payment.required' => 'Tidak boleh kosong.',
            'kategoriId.not_in' => 'Pilih salah satu.',
          ];
@@ -186,6 +187,7 @@ class EventsController extends Controller
                  'alamat' => 'required',
                  'entranceFee' => 'required',
                  'payment' => 'required',
+                 'shirtSizes' => 'required',
                  'kategoriId' => 'required|not_in:-- Pilih --',
                  'urlFoto' => 'required|image|mimes:jpeg,jpg,png|max:40000',
                  'urlScrut' => 'required',
@@ -233,6 +235,7 @@ class EventsController extends Controller
            $set->jumlah_peserta = $request->jmlPeserta;
            $set->lokasi = $request->lokasi;
            $set->alamat = $request->alamat;
+           $set->shirt_sizes = $request->shirtSizes;
            $set->entrance_fee = $request->entranceFee;
            $set->payment = $request->payment;
            $set->isi_event = $request->isiKonten;
@@ -336,6 +339,7 @@ class EventsController extends Controller
            'jmlPeserta.required' => 'Tidak boleh kosong.',
            'lokasi.required' => 'Tidak boleh kosong.',
            'alamat.required' => 'Tidak boleh kosong.',
+           'shirtSizes.required' => 'Tidak boleh kosong.',
            'entranceFee.required' => 'Tidak boleh kosong.',
            'payment.required' => 'Tidak boleh kosong.',
            'kategoriId.not_in' => 'Pilih salah satu.',
@@ -351,6 +355,7 @@ class EventsController extends Controller
                  'jmlPeserta' => 'required',
                  'lokasi' => 'required',
                  'alamat' => 'required',
+                 'shirtSizes' => 'required',
                  'entranceFee' => 'required',
                  'payment' => 'required',
                  'kategoriId' => 'required|not_in:-- Pilih --',
@@ -397,6 +402,7 @@ class EventsController extends Controller
          }
 
          $set->maps = $request->maps;
+         $set->shirt_sizes = $request->shirtSizes;
          $set->fasilitator = $request->fasilitator;
          $set->jumlah_peserta = $request->jmlPeserta;
          $set->lokasi = $request->lokasi;

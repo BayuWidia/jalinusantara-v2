@@ -9,6 +9,7 @@ use Image;
 use Validator;
 use DB;
 use App\Models\MasterSponsor;
+use App\Models\Events;
 use App\Http\Requests;
 
 
@@ -23,8 +24,15 @@ class SponsorController extends Controller
     public function index()
     {
         //
-        $getSponsor = MasterSponsor::all();
-        return view('backend.sponsor.kelolasponsor', compact('getSponsor'));
+        $getDataEvents = Events::leftJoin('master_kategori','events.id_kategori','=','master_kategori.id')
+            ->select(['events.*','master_kategori.nama_kategori'])
+                      ->orderBy('nama_kategori', 'ASC')
+                      ->orderBy('judul_event', 'ASC')->get();
+
+        $getSponsor = MasterSponsor::leftJoin('events','master_sponsor.id_events','=','events.id')
+            ->select(['master_sponsor.*','events.judul_event'])
+                    ->orderBy('judul_event', 'ASC')->get();
+        return view('backend.sponsor.kelolasponsor', compact('getSponsor','getDataEvents'));
     }
 
 
@@ -32,50 +40,54 @@ class SponsorController extends Controller
     {
       // dd($request->all());
           $messages = [
-            'namaSponsor.required' => 'Tidak boleh kosong.',
-            'linkSponsor.required' => 'Tidak boleh kosong.',
-            'urlSponsor.required' => 'Tidak boleh kosong.',
-            'urlSponsor.required' => 'Periksa kembali file image anda.',
-            'urlSponsor.image' => 'File upload harus image.',
-            'urlSponsor.mimes' => 'Ekstensi file tidak valid.',
-            'urlSponsor.max' => 'Ukuran file terlalu besar.',
-            'keteranganSponsor.required' => 'Tidak boleh kosong.',
-            'rekomendasi.required' => 'Tidak boleh kosong.',
+            'idEvents.required' => 'Tidak boleh kosong.',
+            'namaSponsor.*.required' => 'Tidak boleh kosong.',
+            'linkSponsor.*.required' => 'Tidak boleh kosong.',
+            'urlSponsor.*.required' => 'Tidak boleh kosong.',
+            'urlSponsor.*.required' => 'Periksa kembali file image anda.',
+            'urlSponsor.*.image' => 'File upload harus image.',
+            'urlSponsor.*.mimes' => 'Ekstensi file tidak valid.',
+            'urlSponsor.*.max' => 'Ukuran file terlalu besar.',
+            'keteranganSponsor.*.required' => 'Tidak boleh kosong.',
+            'rekomendasi.*.required' => 'Tidak boleh kosong.',
             'activated.required' => 'Tidak boleh kosong.',
           ];
 
           $validator = Validator::make($request->all(), [
-                  'namaSponsor' => 'required',
-                  'linkSponsor' => 'required',
-                  'keteranganSponsor' => 'required',
-                  'rekomendasi' => 'required',
+                  'idEvents' => 'required',
+                  'namaSponsor.*' => 'required',
+                  'linkSponsor.*' => 'required',
+                  'keteranganSponsor.*' => 'required',
+                  'rekomendasi.*' => 'required',
                   'activated' => 'required',
-                  'urlSponsor' => 'required|image|mimes:jpeg,jpg,png|max:20000',
+                  'urlSponsor.*' => 'required|image|mimes:jpeg,jpg,png|max:20000',
               ], $messages);
 
           if ($validator->fails()) {
               return redirect()->route('sponsor.index')->withErrors($validator)->withInput();
           }
 
-          $file = $request->file('urlSponsor');
-          if($file!="") {
-              $photoName = Auth::user()->email.'_'.time(). '.' . $file->getClientOriginalExtension();
-              Image::make($file)->save('images/sponsor/asli/'. $photoName);
-              Image::make($file)->fit(188,126)->save('images/sponsor/'. $photoName);
+          DB::transaction(function() use($request) {
+              $dataItems = $request->data_item;
+                foreach($dataItems as $dataItem){
+                  $file = $dataItem['urlSponsor'];
+                  $photoName = Auth::user()->email.'_'.rand(). '.' . $file->getClientOriginalExtension();
+                  Image::make($file)->save('images/sponsor/asli/'. $photoName);
+                  Image::make($file)->fit(188,126)->save('images/sponsor/'. $photoName);
 
-              $set = new MasterSponsor;
-              $set->nama_sponsor = $request->namaSponsor;
-              $set->link_sponsor = $request->linkSponsor;
-              $set->url_sponsor = $photoName;
-              $set->keterangan_sponsor = $request->keteranganSponsor;
-              $set->rekomendasi = $request->rekomendasi;
-              $set->flag_sponsor = 1;
-              $set->activated = $request->activated;
-              $set->created_by = Auth::user()->id;
-              $set->save();
-          } else {
-            return redirect()->route('sponsor.index')->with('messagefail', 'Gambar sponsor harus di upload.');
-          }
+                  $set = new MasterSponsor;
+                  $set->id_events = $request->eventsId;
+                  $set->nama_sponsor = $dataItem['namaSponsor'];
+                  $set->link_sponsor = $dataItem['linkSponsor'];
+                  $set->url_sponsor = $photoName;
+                  $set->keterangan_sponsor = $dataItem['keteranganSponsor'];
+                  $set->rekomendasi = $dataItem['rekomendasi'];
+                  $set->flag_sponsor = 1;
+                  $set->activated = $request->activated;
+                  $set->created_by = Auth::user()->id;
+                  $set->save();
+                }
+          });
 
           \LogActivities::insLogActivities('log insert successfully.');
 
@@ -109,6 +121,7 @@ class SponsorController extends Controller
         // dd($request->all());
         $messages = [
           'id.required' => 'Tidak boleh kosong.',
+          'eventsIdEdit.required' => 'Tidak boleh kosong.',
           'namaSponsorEdit.required' => 'Tidak boleh kosong.',
           'linkSponsorEdit.required' => 'Tidak boleh kosong.',
           'keteranganSponsorEdit.required' => 'Tidak boleh kosong.',
@@ -117,6 +130,7 @@ class SponsorController extends Controller
 
         $validator = Validator::make($request->all(), [
                 'id' => 'required',
+                'eventsIdEdit' => 'required',
                 'namaSponsorEdit' => 'required',
                 'linkSponsorEdit' => 'required',
                 'keteranganSponsorEdit' => 'required',
@@ -129,6 +143,7 @@ class SponsorController extends Controller
         }
 
         $set = MasterSponsor::find($request->id);
+        $set->id_events = $request->eventsIdEdit;
         $set->nama_sponsor = $request->namaSponsorEdit;
         $set->link_sponsor = $request->linkSponsorEdit;
         $file = $request->file('urlSponsor');

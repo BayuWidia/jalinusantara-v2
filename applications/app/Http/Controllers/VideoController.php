@@ -27,7 +27,9 @@ class VideoController extends Controller
                       ->orderBy('nama_kategori', 'ASC')
                       ->orderBy('judul_event', 'ASC')->get();
 
-        $getVideo = MasterVideo::all();
+        $getVideo = MasterVideo::leftJoin('events','master_video.id_events','=','events.id')
+            ->select(['master_video.*','events.judul_event'])
+                    ->orderBy('judul_event', 'ASC')->get();
         return view('backend.video.kelolavideo', compact('getVideo','getDataEvents'));
     }
 

@@ -46,6 +46,7 @@
                             <thead>
                                 <tr>
                                     <th style="text-align:center">No</th>
+                                    <th style="text-align:center">Event</th>
                                     <th style="text-align:center">Judul</th>
                                     <th style="text-align:center">Keterangan</th>
                                     <th style="text-align:center">Foto</th>
@@ -59,6 +60,7 @@
                               @foreach($getGaleri as $key)
                                 <tr>
                                   <td>{{$i++}}</td>
+                                  <td>{{$key->judul_event}}</td>
                                   <td>{{$key->judul}}</td>
                                   <td>{{$key->keterangan_gambar}}</td>
                                   <td>
@@ -175,24 +177,24 @@
                                         <textarea rows="4" class="form-control no-resize" placeholder="Ketikkan Keterangan Foto..." name="keteranganGaleri" id="keteranganGaleri">{{ old('keteranganGaleri') }}</textarea>
                                     </div>
                                 </div>
-                                  <table class="table" id="itemList">
-                                    <thead>
-                                        <tr>
-                                            <th width="3%">#</th>
-                                            <th>Unggah Foto</th>
-                                            <th width="3%">
-                                              <button type ="button" name="addItem" id="addItem" class="btn btn-success btn-sm">
-                                                Tambah</button></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                                <table class="table" id="itemList">
+                                  <thead>
+                                      <tr>
+                                          <th width="3%">#</th>
+                                          <th>Unggah Foto</th>
+                                          <th width="3%">
+                                            <button type ="button" name="addItem" id="addItem" class="btn btn-success btn-sm">
+                                              Tambah</button></th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
 
-                                    </tbody>
-                                  </table>
-                                  <div>
-                                    <span class="text-muted"><i>* Max Size: 2MB.</i></span><br>
-                                    <span class="text-muted"><i>* Rekomendasi ukuran terbaik: 457 x 250 px.</i></span>
-                                  </div>
+                                  </tbody>
+                                </table>
+                                <div>
+                                  <span class="text-muted"><i>* Max Size: 2MB.</i></span><br>
+                                  <span class="text-muted"><i>* Rekomendasi ukuran terbaik: 457 x 250 px.</i></span>
+                                </div>
                                 <br>
                                 <div class="form-group mandatory">
                                     <div class="form-line">

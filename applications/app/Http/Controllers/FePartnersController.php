@@ -18,7 +18,6 @@ class FePartnersController extends Controller
 {
     public function showPartners()
     {
-        $getSlider = MasterSlider::all();
         $getPartners = MasterPartners::select('*')
                                 ->where('flag_partners', 1)
                                 ->get();
@@ -33,7 +32,7 @@ class FePartnersController extends Controller
                       ->orderby(DB::raw('rand()'))
                       ->get();
 
-        return view('frontend.partners.partners', compact('getSlider','getPartners','getSertifikatPortrait','getSertifikatLandscape'));
+        return view('frontend.partners.partners', compact('getPartners','getSertifikatPortrait','getSertifikatLandscape'));
     }
 
 }

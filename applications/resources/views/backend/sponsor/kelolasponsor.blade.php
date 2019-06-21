@@ -46,6 +46,7 @@
                             <thead>
                                 <tr>
                                     <th style="text-align:center">No</th>
+                                    <th style="text-align:center">Event</th>
                                     <th style="text-align:center">Nama</th>
                                     <th style="text-align:center">Link</th>
                                     <th style="text-align:center">Keterangan</th>
@@ -60,6 +61,7 @@
                               @foreach($getSponsor as $key)
                                 <tr>
                                   <td>{{$i++}}</td>
+                                  <td>{{$key->judul_event}}</td>
                                   <td>{{$key->nama_sponsor}}</td>
                                   <td>
                                     @php
@@ -134,7 +136,7 @@
 
     <!-- Modal Insert-->
     <div class="modal fade" id="modalinsert" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content bounceInRight">
                   <div class="modal-header">
                       <h4 class="modal-title">Tambah Konten Sponsor</h4>
@@ -145,6 +147,43 @@
                         <div class="row clearfix">
                             <div class="col-sm-12">
                                 <div class="form-group mandatory">
+                                    <div class="form-line">
+                                        <label>Events</label>
+                                        @if ($errors->has('eventsId'))
+                                          <small style="color:red">* {{$errors->first('eventsId')}}</small>
+                                        @endif
+                                        <select name="eventsId" class="form-control" style="width: 100%;">
+                                          <option value="">-- Pilih --</option>
+                                          @foreach($getDataEvents as $key)
+                                            <option value="{{ $key->id }}" {{ old('eventsId') == $key->id ? 'selected=""' : ''}}>{{ $key->nama_kategori }} - {{ $key->judul_event }}</option>
+                                          @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <table class="table" id="itemList">
+                                  <thead>
+                                      <tr>
+                                          <th width="3%">#</th>
+                                          <th>Unggah Foto</th>
+                                          <th>Nama Sponsor</th>
+                                          <th>Link Sponsor</th>
+                                          <th>Keterangan</th>
+                                          <th>Rekomendasi</th>
+                                          <th width="3%">
+                                            <button type ="button" name="addItem" id="addItem" class="btn btn-success btn-sm">
+                                              Tambah</button></th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+
+                                  </tbody>
+                                </table>
+                                <div>
+                                  <span class="text-muted"><i>* Max Size: 2MB.</i></span><br>
+                                  <span class="text-muted"><i>* Rekomendasi ukuran terbaik: 457 x 250 px.</i></span>
+                                </div>
+                                <br>
+                                <!-- <div class="form-group mandatory">
                                     <div class="form-line">
                                         <label>Gambar Sponsor</label>
                                         @if ($errors->has('urlSponsor'))
@@ -192,7 +231,7 @@
                                     <div>
                                       <span class="text-muted"><i>* Berikan nilai terbaik anda untuk sponsor ini.</i></span>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="form-group mandatory">
                                     <div class="form-line">
                                         <label>Status</label>
@@ -224,6 +263,20 @@
                         {{csrf_field()}}
                         <div class="row clearfix">
                             <div class="col-sm-12">
+                                <div class="form-group mandatory">
+                                    <div class="form-line">
+                                        <label>Events</label>
+                                        @if ($errors->has('eventsIdEdit'))
+                                          <small style="color:red">* {{$errors->first('eventsIdEdit')}}</small>
+                                        @endif
+                                        <select name="eventsIdEdit" id="eventsIdEdit" class="form-control" style="width: 100%;">
+                                          <option value="">-- Pilih --</option>
+                                          @foreach($getDataEvents as $key)
+                                            <option value="{{ $key->id }}" {{ old('eventsIdEdit') == $key->id ? 'selected=""' : ''}}>{{ $key->nama_kategori }} - {{ $key->judul_event }}</option>
+                                          @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="form-group mandatory">
                                     <div class="form-line">
                                         <label>Gambar Sponsor</label>
@@ -353,13 +406,40 @@
 </script>
 
 <script>
-  @if ($errors->has('urlSponsor') || $errors->has('namaSponsor') || $errors->has('linkSponsor') || $errors->has('keteranganSponsor') || $errors->has('rekomendasi') || $errors->has('activated'))
+  @if ($errors->has('eventsId') || $errors->has('urlSponsor.*') || $errors->has('namaSponsor.*') || $errors->has('linkSponsor.*') || $errors->has('keteranganSponsor.*') || $errors->has('rekomendasi.*') || $errors->has('activated'))
   $('#modalinsert').modal('show');
   @endif
 
-  @if ($errors->has('namaSponsorEdit') || $errors->has('linkSponsorEdit') || $errors->has('keteranganSponsorEdit') || $errors->has('rekomendasiEdit'))
+  @if ($errors->has('eventsIdEdit') || $errors->has('namaSponsorEdit') || $errors->has('linkSponsorEdit') || $errors->has('keteranganSponsorEdit') || $errors->has('rekomendasiEdit'))
   $('#modaledit').modal('show');
   @endif
+
+  $("#addItem").click(function () {
+        var totalRow = $('#itemList tr').length - 1;
+        var html = '';
+        html += '<tr class="rowData">';
+        html += '<td>'+totalRow+'</td>';
+        html += '<td><div class="form-group mandatory"><div class="form-line"><input id="urlSponsor'+totalRow+'" type="file" class="form-control urlSponsor" name="data_item['+totalRow+'][urlSponsor]"></div></div></td>';
+        html += '<td><div class="form-group mandatory"><div class="form-line"><input id="namaSponsor'+totalRow+'" type="text" class="form-control namaSponsor" name="data_item['+totalRow+'][namaSponsor]"></div></div></td>';
+        html += '<td><div class="form-group mandatory"><div class="form-line"><input id="linkSponsor'+totalRow+'" type="text" class="form-control linkSponsor" name="data_item['+totalRow+'][linkSponsor]"></div></div></td>';
+        html += '<td><div class="form-group mandatory"><div class="form-line"><input id="keteranganSponsor'+totalRow+'" type="text" class="form-control keteranganSponsor" name="data_item['+totalRow+'][keteranganSponsor]"></div></div></td>';
+        html += '<td><div class="form-group mandatory"><div class="form-line"><input id="rekomendasi'+totalRow+'" type="text" class="form-control rekomendasi" name="data_item['+totalRow+'][rekomendasi]"></div></div></td>';
+        html += '<td><button type="button" name="removeItem" class="btn btn-danger btn-sm removeItem">Hapus</button></td>';
+        html += '</tr>';
+        $('#itemList tbody').append(html);
+        refreshTableNumber();
+  });
+
+  $(document).on('click', '.removeItem', function () {
+      $(this).closest('tr').remove();
+      refreshTableNumber();
+  });
+
+  function refreshTableNumber() {
+      $('#itemList tbody tr').each(function (idx) {
+          $(this).children("td:eq(0)").html(idx + 1);
+      });
+  };
 
   $("#tabelinfo").on("click", "a.flagpublish", function(){
     var a = $(this).data('value');
@@ -385,6 +465,7 @@
       dataType: 'json',
       success: function(data){
         var id = data.id;
+        var id_events = data.id_events;
         var nama_sponsor = data.nama_sponsor;
         var link_sponsor = data.link_sponsor;
         var keterangan_sponsor = data.keterangan_sponsor;
@@ -392,10 +473,12 @@
         var url_sponsor = data.url_sponsor;
 
         $('#id').attr('value', id);
+        $("#eventsIdEdit").val(0).trigger("change");
         $('#namaSponsorEdit').val(nama_sponsor);
         $('#linkSponsorEdit').val(link_sponsor);
         $('#keteranganSponsorEdit').val(keterangan_sponsor);
         $('#rekomendasiEdit').val(rekomendasi);
+        $("#eventsIdEdit").val(id_events).trigger("change");
       }
     })
   });

@@ -2,7 +2,7 @@
 
 @section('banner')
 <!-- Breadcrumb Area Start -->
-<section class="breadcrumb-area bg-img jarallax" style="background-image: url({{url('images/slider')}}/{{$getSlider[0]->url_slider}});">
+<section class="breadcrumb-area bg-img bg-gradient-overlay jarallax" style="background-image: url({{url('themeuser/img/video-bg.jpg')}});">
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12">
@@ -61,9 +61,10 @@
                         @if($getEvents[0]->url_rules!="")
                           <p><i class="zmdi zmdi-file"></i> Download Rules Form: <a href="{{url('documents/')}}/{{$getEvents[0]->url_rules}}" download><img src="{{url('images/')}}/doc.png" width="32px" height="32px"/></a></p>
                         @endif
-                        <p><i class="zmdi zmdi-nature-people"></i> Participans : <a href="#"><img style="margin-top:-2%" src="{{url('images/')}}/participans.png" width="32px" height="32px"/></a></p>
+                        <p><i class="zmdi zmdi-nature-people"></i> Participans : <a href="#" onclick="onClkarticipans()"><img style="margin-top:-2%" src="{{url('images/')}}/participans.png" width="32px" height="32px"/></a></p>
                         <p><i class="zmdi zmdi-money-box"></i> Entrance Fee : {{UtilHelper::convertToIdr($getEvents[0]->entrance_fee)}}</p>
-                        <p><i class="zmdi zmdi-home"></i> Payment : {{$getEvents[0]->payment}}</p>
+                        <p><i class="zmdi zmdi-paypal"></i> Payment : {{$getEvents[0]->payment}}</p>
+                        <p><i class="zmdi zmdi-layers"></i> Shirt Sizes : {{$getEvents[0]->shirt_sizes}}</p>
                       </div>
                       <div class="col-lg-5">
                         <img src="{{ url('images/events/asli') }}/{{$getEvents[0]->url_foto}}">
@@ -74,7 +75,7 @@
 
                     </div>
                 </div>
-                <div class="single-schedule-area wow fadeInUp" data-wow-delay="300ms">
+                <div class="single-schedule-area wow fadeInUp" data-wow-delay="300ms" id="divParticipans">
                     <!-- Single Schedule Thumb and Info -->
                     <h3>List Participans</h3>
                     <hr>
@@ -84,8 +85,8 @@
                           <th>#</th>
                           <th>No Registrasi</th>
                           <th>Nama Driver</th>
+                          <th>Nama Co Driver</th>
                           <th>Email</th>
-                          <th>No Mobil</th>
                           <th>No Telp</th>
                           <th>No Pintu</th>
                         </tr>
@@ -97,8 +98,8 @@
                               <td>{{$i++}}</td>
                               <td>{{$key->no_registrasi}}</td>
                               <td>{{$key->nama_driver}}</td>
+                              <td>{{$key->nama_co_driver}}</td>
                               <td>{{$key->email}}</th>
-                              <td>{{$key->no_polisi}}</td>
                               <td>{{$key->no_telp_driver}}</td>
                               <td>{{$key->nomor_pintu}}</td>
                             </tr>
@@ -169,12 +170,21 @@
 
 @section('footscript')
 <script>
-    $(function () {
-        $('#tabelinfo').DataTable({
-            "pageLength": 25,
-            "scrollX": true
-        })
-
+    $(document).ready(function() {
+      $('#tabelinfo').DataTable({
+          "pageLength": 25,
+          "scrollX": true
+      });
+      var x = document.getElementById("divParticipans");
+      x.style.display = "none";
     });
+    function onClkarticipans() {
+        var x = document.getElementById("divParticipans");
+        if (x.style.display === "none") {
+        x.style.display = "block";
+        } else {
+        x.style.display = "none";
+        }
+    }
 </script>
 @endsection
