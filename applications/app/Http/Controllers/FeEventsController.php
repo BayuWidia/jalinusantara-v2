@@ -36,6 +36,7 @@ class FeEventsController extends Controller
                       ->leftJoin('master_users','events.created_by','=','master_users.id')
                       ->select('events.*', 'master_kategori.nama_kategori','master_users.name',
                                 'master_users.fullname', 'master_users.email', 'master_users.url_foto as url_foto2')
+                      ->where('events.id','!=','11')
                       ->where('events.id_kategori','=',$id)
                       ->where('flag_publish', 1)
                       ->orderBy('created_at', 'DESC')

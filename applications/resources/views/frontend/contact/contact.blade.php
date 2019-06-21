@@ -31,7 +31,7 @@
             <!-- Contact Us Thumb -->
             <div class="col-12 col-lg-6">
                 <div class="contact-us-thumb mb-100">
-                    <img src="{{asset('themeuser/img/core-img/contact.png')}}" alt="">
+                    <img src="{{asset('themeuser/img/contact.png')}}" alt="">
                 </div>
             </div>
 

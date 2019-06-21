@@ -60,7 +60,7 @@
             <!-- About Thumb -->
             <div class="col-12 col-md-6">
                 <div class="about-thumb mb-80 wow fadeInUp" data-wow-delay="300ms">
-                    <img src="{{asset('themeuser/img/core-img/home2.png')}}" alt="">
+                    <img src="{{asset('themeuser/img/sejarah.png')}}" alt="">
                 </div>
             </div>
         </div>
@@ -70,7 +70,7 @@
 
 
 <!-- Our Ticket Pricing Table Area Start -->
-<section class="our-ticket-pricing-table-area bg-img bg-gradient-overlay section-padding-100-0 jarallax" style="background-image: url({{url('themeuser/img/video-bg.jpg')}});">
+<section class="our-ticket-pricing-table-area bg-img bg-gradient-overlay section-padding-100-0 jarallax" style="background-image: url({{url('themeuser/img/home4.jpg')}});">
     <div class="container">
         <div class="row">
             <!-- Heading -->
@@ -324,7 +324,7 @@
 <!-- Our Schedule Area End -->
 
 <!-- Our Ticket Pricing Table Area Start -->
-<section class="our-ticket-pricing-table-area bg-img bg-gradient-overlay section-padding-100-0 jarallax" style="background-image: url({{url('themeuser/img/video-bg.jpg')}});">
+<section class="our-ticket-pricing-table-area bg-img bg-gradient-overlay section-padding-100-0 jarallax" style="background-image: url({{url('themeuser/img/home2.jpg')}});">
     <div class="container">
         <div class="row">
             <!-- Heading -->
