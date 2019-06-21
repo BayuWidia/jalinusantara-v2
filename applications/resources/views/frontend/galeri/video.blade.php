@@ -31,7 +31,7 @@
             <!-- Heading -->
             <div class="col-12">
                 <div class="section-heading-3 text-center wow fadeInUp" data-wow-delay="300ms">
-                    <h1>Video Photo</h1>
+                    <h1>Gallery Video</h1>
                 </div>
             </div>
         </div>
