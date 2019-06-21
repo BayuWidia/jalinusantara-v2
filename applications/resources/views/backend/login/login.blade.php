@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Sign In | Bootstrap Based Admin Template - Material Design</title>
+    <title>Jalin || Offroad</title>
     <!-- Favicon-->
     <link rel="icon" href="{{asset('theme/favicon.ico')}}" type="image/x-icon">
 
@@ -28,7 +28,7 @@
 <body class="login-page" style="background-color:#3F51B5">
     <div class="login-box">
         <div class="logo">
-            <a href="javascript:void(0);">Jalinnusantara</a>
+            <a href="javascript:void(0);">Jalin || Offroad</a>
             <small>Admin Control Panel</small>
         </div>
         <div class="card">

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  @yield('title')
+  <title>Jalin || Offroad</title>
   @include('backend.master.includes.head')
 </head>
 <body class="theme-indigo">

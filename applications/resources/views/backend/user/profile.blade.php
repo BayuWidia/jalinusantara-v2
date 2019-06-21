@@ -1,9 +1,4 @@
 @extends('backend.master.layouts.master')
-
-@section('title')
-    <title>Jalinusantara</title>
-@endsection
-
 @section('content')
 <div class="container-fluid">
     <div class="block-header">

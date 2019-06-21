@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- Title -->
-<title>Jalinnusantara || Offroad</title>
+<title>Jalin || Offroad</title>
 
 <!-- Favicon -->
 <!-- <link rel="icon" href="{{asset('themeuser/img/core-img/favicon.png')}}"> -->
