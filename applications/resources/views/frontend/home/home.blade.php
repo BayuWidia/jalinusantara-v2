@@ -501,7 +501,7 @@
                     <!-- Single Contact Info -->
                     <div class="single-contact-info wow fadeInUp" data-wow-delay="300ms">
                         <p>Address:</p>
-                        <h6>Jl. Gading Kirana Timur<br>Blok H 13 No. 31 - 14240</h6>
+                        <h6>Jl. GADING KIRANA TIMUR<br>Blok H 13 No. 31 - 14240</h6>
                     </div>
                     <!-- Single Contact Info -->
                     <div class="single-contact-info wow fadeInUp" data-wow-delay="300ms">
