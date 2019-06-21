@@ -2,7 +2,7 @@
 
 @section('banner')
 <!-- Breadcrumb Area Start -->
-<section class="breadcrumb-area bg-img bg-gradient-overlay jarallax" style="background-image: url({{url('themeuser/img/video-bg.jpg')}});">
+<section class="breadcrumb-area bg-img bg-gradient-overlay jarallax" style="background-image: url({{url('themeuser/img/bg-img/video-bg.jpg')}});">
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12">

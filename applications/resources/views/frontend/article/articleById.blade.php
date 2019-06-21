@@ -2,7 +2,7 @@
 
 @section('banner')
 <!-- Breadcrumb Area Start -->
-<section class="breadcrumb-area bg-img bg-gradient-overlay jarallax" style="background-image: url({{url('themeuser/img/video-bg.jpg')}});">
+<section class="breadcrumb-area bg-img bg-gradient-overlay jarallax" style="background-image: url({{url('themeuser/img/bg-img/video-bg.jpg')}});">
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12">
@@ -75,7 +75,7 @@
                                           <div class="comment-content d-flex">
                                               <!-- Comment Author -->
                                               <div class="comment-author">
-                                                  <img src="{{asset('themeuser/img/robot.png')}}" alt="author">
+                                                  <img src="{{asset('themeuser/img/core-img/robot.png')}}" alt="author">
                                               </div>
                                               <!-- Comment Meta -->
                                               <div class="comment-meta">
@@ -94,7 +94,7 @@
                                                   <div class="comment-content d-flex">
                                                       <!-- Comment Author -->
                                                       <div class="comment-author">
-                                                          <img src="{{asset('themeuser/img/robot2.png')}}" alt="author">
+                                                          <img src="{{asset('themeuser/img/core-img/robot2.png')}}" alt="author">
                                                       </div>
                                                       <!-- Comment Meta -->
                                                       <div class="comment-meta">
@@ -219,7 +219,7 @@
                           <div class="post-author-widget">
                               <!-- Thumbnail -->
                               <div class="post-author-avatar">
-                                  <img src="{{asset('themeuser/img/robot.png')}}" alt="">
+                                  <img src="{{asset('themeuser/img/core-img/robot.png')}}" alt="">
                               </div>
                               <!-- Author Content -->
                               <div class="post-author-content">

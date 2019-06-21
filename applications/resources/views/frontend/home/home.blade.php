@@ -60,7 +60,7 @@
             <!-- About Thumb -->
             <div class="col-12 col-md-6">
                 <div class="about-thumb mb-80 wow fadeInUp" data-wow-delay="300ms">
-                    <img src="{{asset('themeuser/img/sejarah.png')}}" alt="">
+                    <img src="{{asset('themeuser/img/bg-img/sejarah.png')}}" alt="">
                 </div>
             </div>
         </div>
@@ -70,7 +70,7 @@
 
 
 <!-- Our Ticket Pricing Table Area Start -->
-<section class="our-ticket-pricing-table-area bg-img bg-gradient-overlay section-padding-100-0 jarallax" style="background-image: url({{url('themeuser/img/home4.jpg')}});">
+<section class="our-ticket-pricing-table-area bg-img bg-gradient-overlay section-padding-100-0 jarallax" style="background-image: url({{url('themeuser/img/bg-img/home4.jpg')}});">
     <div class="container">
         <div class="row">
             <!-- Heading -->
@@ -206,7 +206,7 @@
                                           <div class="single-schedule-tumb-info d-flex align-items-center">
                                               <!-- Single Schedule Thumb -->
                                               <div class="single-schedule-tumb">
-                                                  <img src="{{asset('themeuser/img/event.png')}}" alt="">
+                                                  <img src="{{asset('themeuser/img/core-img/event.png')}}" alt="">
                                               </div>
                                               <!-- Single Schedule Info -->
                                               <div class="single-schedule-info">
@@ -247,7 +247,7 @@
                                           <div class="single-schedule-tumb-info d-flex align-items-center">
                                               <!-- Single Schedule Thumb -->
                                               <div class="single-schedule-tumb">
-                                                  <img src="{{asset('themeuser/img/event.png')}}" alt="">
+                                                  <img src="{{asset('themeuser/img/core-img/event.png')}}" alt="">
                                               </div>
                                               <!-- Single Schedule Info -->
                                               <div class="single-schedule-info">
@@ -288,7 +288,7 @@
                                           <div class="single-schedule-tumb-info d-flex align-items-center">
                                               <!-- Single Schedule Thumb -->
                                               <div class="single-schedule-tumb">
-                                                  <img src="{{asset('themeuser/img/event.png')}}" alt="">
+                                                  <img src="{{asset('themeuser/img/core-img/event.png')}}" alt="">
                                               </div>
                                               <!-- Single Schedule Info -->
                                               <div class="single-schedule-info">
@@ -324,7 +324,7 @@
 <!-- Our Schedule Area End -->
 
 <!-- Our Ticket Pricing Table Area Start -->
-<section class="our-ticket-pricing-table-area bg-img bg-gradient-overlay section-padding-100-0 jarallax" style="background-image: url({{url('themeuser/img/home2.jpg')}});">
+<section class="our-ticket-pricing-table-area bg-img bg-gradient-overlay section-padding-100-0 jarallax" style="background-image: url({{url('themeuser/img/bg-img/home2.jpg')}});">
     <div class="container">
         <div class="row">
             <!-- Heading -->
@@ -391,7 +391,7 @@
                                   <div class="single-client-thumb-info d-flex align-items-center">
                                       <!-- Single client Thumb -->
                                       <div class="single-client-thumb">
-                                          <img src="{{asset('themeuser/img/robot.png')}}" alt="">
+                                          <img src="{{asset('themeuser/img/core-img/robot.png')}}" alt="">
                                       </div>
                                       <!-- Single client Info -->
                                       <div class="client-info">
@@ -415,7 +415,7 @@
 <!-- Our Sponsor And Client Area End -->
 
 <!-- Our Blog Area Start -->
-<section class="our-blog-area bg-img bg-gradient-overlay section-padding-100-60" style="background-image: url({{url('themeuser/img/review-bg.jpg')}});">
+<section class="our-blog-area bg-img bg-gradient-overlay section-padding-100-60" style="background-image: url({{url('themeuser/img/bg-img/review-bg.jpg')}});">
     <div class="container">
         <div class="row">
             <div class="col-12">

@@ -2,7 +2,7 @@
 
 @section('banner')
 <!-- Breadcrumb Area Start -->
-<section class="breadcrumb-area bg-img bg-gradient-overlay jarallax" style="background-image: url({{url('themeuser/img/video-bg.jpg')}});">
+<section class="breadcrumb-area bg-img bg-gradient-overlay jarallax" style="background-image: url({{url('themeuser/img/bg-img/video-bg.jpg')}});">
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12">
@@ -31,7 +31,7 @@
             <!-- Contact Us Thumb -->
             <div class="col-12 col-lg-6">
                 <div class="contact-us-thumb mb-100">
-                    <img src="{{asset('themeuser/img/contact.png')}}" alt="">
+                    <img src="{{asset('themeuser/img/bg-img/contact.png')}}" alt="">
                 </div>
             </div>
 
