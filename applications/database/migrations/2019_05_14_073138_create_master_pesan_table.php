@@ -15,14 +15,14 @@ class CreateMasterPesanTable extends Migration
     {
         Schema::create('master_pesan', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('email');
-            $table->string('nama');
-            $table->string('telepon');
-            $table->string('isi');
-            $table->string('flag_pesan');
-            $table->string('activated');
-            $table->string('created_by');
-            $table->string('updated_by');
+            $table->string('email')->nullable();
+            $table->string('nama')->nullable();
+            $table->string('telepon')->nullable();
+            $table->string('isi')->nullable();
+            $table->string('flag_pesan')->nullable();
+            $table->string('activated')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->timestamps();
         });
     }

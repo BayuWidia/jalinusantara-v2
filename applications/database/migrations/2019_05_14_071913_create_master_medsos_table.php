@@ -15,11 +15,11 @@ class CreateMasterMedsosTable extends Migration
     {
         Schema::create('master_medsos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama_sosmed');
-            $table->string('link_sosmed');
-            $table->string('activated');
-            $table->string('created_by');
-            $table->string('updated_by');
+            $table->string('nama_sosmed')->nullable();
+            $table->string('link_sosmed')->nullable();
+            $table->string('activated')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->timestamps();
         });
     }

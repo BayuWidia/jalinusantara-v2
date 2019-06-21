@@ -14,7 +14,7 @@ class AddColumnVideoTable extends Migration
     public function up()
     {
         Schema::table('master_video', function($table){
-          $table->string('flag_video')->after('flag_important_video');
+          $table->string('flag_video')->nullable()->after('flag_important_video');
         });
     }
 

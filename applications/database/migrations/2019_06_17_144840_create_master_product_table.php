@@ -15,14 +15,14 @@ class CreateMasterProductTable extends Migration
     {
         Schema::create('master_product', function (Blueprint $table) {
           $table->increments('id');
-          $table->string('nama_product');
-          $table->string('link_product');
-          $table->string('url_product');
-          $table->string('keterangan_product');
-          $table->string('flag_product');
-          $table->string('activated');
-          $table->string('created_by');
-          $table->string('updated_by');
+          $table->string('nama_product')->nullable();
+          $table->string('link_product')->nullable();
+          $table->string('url_product')->nullable();
+          $table->string('keterangan_product')->nullable();
+          $table->string('flag_product')->nullable();
+          $table->string('activated')->nullable();
+          $table->string('created_by')->nullable();
+          $table->string('updated_by')->nullable();
           $table->timestamps();
         });
     }

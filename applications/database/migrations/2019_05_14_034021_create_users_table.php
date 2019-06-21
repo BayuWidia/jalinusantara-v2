@@ -15,17 +15,17 @@ class CreateUsersTable extends Migration
     {
         Schema::create('master_users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('fullname');
-            $table->string('email', 250);
-            $table->string('password');
-            $table->string('url_foto');
+            $table->string('name')->nullable();
+            $table->string('fullname')->nullable();
+            $table->string('email', 250)->nullable();
+            $table->string('password')->nullable();
+            $table->string('url_foto')->nullable();
             $table->integer('login_count')->nullable()->default(1);
-            $table->integer('id_role');
+            $table->integer('id_role')->nullable();
             //0:belum aktif, 1:sudah aktif
-            $table->integer('activated')->default(1);
-            $table->string('created_by');
-            $table->string('updated_by');
+            $table->integer('activated')->nullable()->default(1);
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -15,13 +15,13 @@ class CreateMasterMenusTable extends Migration
     {
         Schema::create('master_menus', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_parent');
-            $table->string('nama_menu');
-            $table->string('icon');
-            $table->string('url');
-            $table->string('activated');
-            $table->string('created_by');
-            $table->string('updated_by');
+            $table->integer('id_parent')->nullable();
+            $table->string('nama_menu')->nullable();
+            $table->string('icon')->nullable();
+            $table->string('url')->nullable();
+            $table->string('activated')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->timestamps();
         });
     }

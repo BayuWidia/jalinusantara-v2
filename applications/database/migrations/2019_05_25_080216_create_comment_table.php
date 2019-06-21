@@ -16,14 +16,14 @@ class CreateCommentTable extends Migration
         Schema::create('master_comment', function (Blueprint $table) {
           $table->increments('id');
           $table->integer('id_informasi')->unsigned()->nullable();
-          $table->string('email');
+          $table->string('email')->nullable();
           $table->string('nama')->nullable();
-          $table->string('subject');
-          $table->string('message');
+          $table->string('subject')->nullable();
+          $table->string('message')->nullable();
           $table->string('flag_comment')->nullable();
-          $table->string('activated');
+          $table->string('activated')->nullable();
           $table->string('created_by')->nullable();
-          $table->string('updated_by');
+          $table->string('updated_by')->nullable();
           $table->timestamps();
         });
 

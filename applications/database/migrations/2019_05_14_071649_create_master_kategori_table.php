@@ -15,13 +15,13 @@ class CreateMasterKategoriTable extends Migration
     {
         Schema::create('master_kategori', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama_kategori');
-            $table->string('keterangan_kategori');
+            $table->string('nama_kategori')->nullable();
+            $table->string('keterangan_kategori')->nullable();
             // 1 untuk profile; 2 untuk article; 3 untuk event
             $table->string('flag_utama')->nullable();
-            $table->string('activated');
-            $table->string('created_by');
-            $table->string('updated_by');
+            $table->string('activated')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->timestamps();
         });
     }

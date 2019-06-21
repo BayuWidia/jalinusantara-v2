@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddFieldToEventsTable extends Migration
+class AddField1ToEventsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,8 @@ class AddFieldToEventsTable extends Migration
     {
         Schema::table('events', function (Blueprint $table) {
             //
-            $table->string('shirt_sizes')->nullable()->after('alamat');
+            $table->string('entrance_fee')->nullable()->after('url_scrut');
+            $table->string('payment')->nullable()->after('entrance_fee');
         });
     }
 

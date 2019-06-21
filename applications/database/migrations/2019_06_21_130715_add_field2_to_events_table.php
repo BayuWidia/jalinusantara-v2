@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class DropFieldToRegistrasiEventsTable extends Migration
+class AddField2ToEventsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class DropFieldToRegistrasiEventsTable extends Migration
      */
     public function up()
     {
-        Schema::table('registrasi_events', function (Blueprint $table) {
+        Schema::table('events', function (Blueprint $table) {
             //
-            $table->dropColumn(['ukuran_kemeja_driver', 'ukuran_kemeja_co_driver']);
+            $table->string('shirt_sizes')->nullable()->after('alamat');
         });
     }
 
@@ -26,7 +26,7 @@ class DropFieldToRegistrasiEventsTable extends Migration
      */
     // public function down()
     // {
-    //     Schema::table('registrasi_events', function (Blueprint $table) {
+    //     Schema::table('events', function (Blueprint $table) {
     //         //
     //     });
     // }

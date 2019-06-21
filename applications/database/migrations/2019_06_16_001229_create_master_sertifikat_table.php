@@ -18,7 +18,7 @@ class CreateMasterSertifikatTable extends Migration
             $table->string('nama_sertifikat')->nullable();
             $table->string('keterangan_sertifikat')->nullable();
             $table->string('activated')->nullable();
-            $table->string('created_by');
+            $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
             $table->timestamps();
         });

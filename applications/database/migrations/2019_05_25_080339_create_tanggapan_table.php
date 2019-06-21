@@ -16,10 +16,10 @@ class CreateTanggapanTable extends Migration
         Schema::create('master_tanggapan', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_comment')->unsigned()->nullable();
-            $table->string('tanggapan');
-            $table->string('activated');
+            $table->string('tanggapan')->nullable();
+            $table->string('activated')->nullable();
             $table->string('created_by')->nullable();
-            $table->string('updated_by');
+            $table->string('updated_by')->nullable();
             $table->timestamps();
         });
 

@@ -15,8 +15,8 @@ class AddFieldToEventTable extends Migration
     {
         Schema::table('events', function (Blueprint $table) {
             //
-            $table->string('url_scrut')->after('url_foto');
-            $table->string('url_rules')->after('url_scrut');
+            $table->string('url_scrut')->nullable()->after('url_foto');
+            $table->string('url_rules')->nullable()->after('url_scrut');
         });
     }
 

@@ -16,11 +16,11 @@ class CreateKeluargaTable extends Migration
         Schema::create('keluarga', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_registrasi')->unsigned()->nullable();
-            $table->string('nama_keluarga');
-            $table->string('hubungan_keluarga');
-            $table->string('no_telp_keluarga');
-            $table->string('activated');
-            $table->string('created_by');
+            $table->string('nama_keluarga')->nullable();
+            $table->string('hubungan_keluarga')->nullable();
+            $table->string('no_telp_keluarga')->nullable();
+            $table->string('activated')->nullable();
+            $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
             $table->timestamps();
         });

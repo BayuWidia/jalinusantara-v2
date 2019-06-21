@@ -14,7 +14,7 @@ class AddColumnSponsorTable extends Migration
     public function up()
     {
         Schema::table('master_sponsor', function($table){
-          $table->string('flag_sponsor')->after('keterangan_sponsor');
+          $table->string('flag_sponsor')->nullable()->after('keterangan_sponsor');
         });
     }
 

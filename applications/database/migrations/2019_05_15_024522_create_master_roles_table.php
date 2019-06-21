@@ -15,11 +15,11 @@ class CreateMasterRolesTable extends Migration
     {
         Schema::create('master_roles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama_role');
-            $table->string('keterangan');
-            $table->string('activated');
-            $table->string('created_by');
-            $table->string('updated_by');
+            $table->string('nama_role')->nullable();
+            $table->string('keterangan')->nullable();
+            $table->string('activated')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
         });
     }
 

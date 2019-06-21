@@ -14,13 +14,13 @@ class CreateMasterGaleriTable extends Migration
     public function up()
     {
         Schema::create('master_galeri', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('judul');
-            $table->string('url_gambar');
-            $table->string('keterangan_gambar');
-            $table->string('activated');
-            $table->string('created_by');
-            $table->string('updated_by');
+            $table->increments('id')->nullable();
+            $table->string('judul')->nullable();
+            $table->string('url_gambar')->nullable();
+            $table->string('keterangan_gambar')->nullable();
+            $table->string('activated')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->timestamps();
         });
     }

@@ -14,7 +14,7 @@ class AddColumnSliderTable extends Migration
     public function up()
     {
         Schema::table('master_slider', function($table){
-          $table->string('flag_slider')->after('keterangan_slider');
+          $table->string('flag_slider')->nullable()->after('keterangan_slider');
         });
     }
 

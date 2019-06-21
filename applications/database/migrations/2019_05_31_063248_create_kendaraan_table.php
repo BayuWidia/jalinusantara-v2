@@ -42,7 +42,7 @@ class CreateKendaraanTable extends Migration
             $table->string('shackle')->nullable();
             $table->string('glove')->nullable();
             $table->string('sling')->nullable();
-            $table->string('created_by');
+            $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
             $table->timestamps();
         });

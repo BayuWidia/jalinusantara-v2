@@ -14,7 +14,7 @@ class AddColoumnInformasiTable extends Migration
     public function up()
     {
         Schema::table('informasi', function($table){
-          $table->string('flag_status')->after('flag_publish');
+          $table->string('flag_status')->nullable()->after('flag_publish');
         });
     }
 

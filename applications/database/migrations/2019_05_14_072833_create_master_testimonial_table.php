@@ -15,12 +15,12 @@ class CreateMasterTestimonialTable extends Migration
     {
         Schema::create('master_testimonial', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama');
-            $table->string('isi');
-            $table->string('flag_testimonial');
-            $table->string('activated');
-            $table->string('created_by');
-            $table->string('updated_by');
+            $table->string('nama')->nullable();
+            $table->string('isi')->nullable();
+            $table->string('flag_testimonial')->nullable();
+            $table->string('activated')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->timestamps();
         });
     }

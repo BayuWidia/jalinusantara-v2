@@ -15,12 +15,12 @@ class CreateMasterVideoTable extends Migration
     {
         Schema::create('master_video', function (Blueprint $table) {
           $table->increments('id');
-          $table->string('judul');
-          $table->string('url_video');
-          $table->integer('flag_important_video');
-          $table->string('activated');
-          $table->string('created_by');
-          $table->string('updated_by');
+          $table->string('judul')->nullable();
+          $table->string('url_video')->nullable();
+          $table->integer('flag_important_video')->nullable();
+          $table->string('activated')->nullable();
+          $table->string('created_by')->nullable();
+          $table->string('updated_by')->nullable();
           $table->timestamps();
         });
     }

@@ -15,14 +15,14 @@ class CreateMasterPartnersTable extends Migration
     {
         Schema::create('master_partners', function (Blueprint $table) {
           $table->increments('id');
-          $table->string('nama_partners');
-          $table->string('link_partners');
-          $table->string('url_partners');
-          $table->string('keterangan_partners');
-          $table->string('flag_partners');
-          $table->string('activated');
-          $table->string('created_by');
-          $table->string('updated_by');
+          $table->string('nama_partners')->nullable();
+          $table->string('link_partners')->nullable();
+          $table->string('url_partners')->nullable();
+          $table->string('keterangan_partners')->nullable();
+          $table->string('flag_partners')->nullable();
+          $table->string('activated')->nullable();
+          $table->string('created_by')->nullable();
+          $table->string('updated_by')->nullable();
           $table->timestamps();
         });
     }

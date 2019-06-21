@@ -17,9 +17,9 @@ class CreateMasterPermissionTable extends Migration
             $table->increments('id');
             $table->integer('id_menu')->unsigned()->nullable();
             $table->integer('id_role')->unsigned()->nullable();
-            $table->string('activated');
-            $table->string('created_by');
-            $table->string('updated_by');
+            $table->string('activated')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->timestamps();
         });
 

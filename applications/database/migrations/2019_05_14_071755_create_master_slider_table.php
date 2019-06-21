@@ -15,12 +15,12 @@ class CreateMasterSliderTable extends Migration
     {
         Schema::create('master_slider', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('judul');
-            $table->string('url_slider');
-            $table->string('keterangan_slider');
-            $table->string('activated');
-            $table->string('created_by');
-            $table->string('updated_by');
+            $table->string('judul')->nullable();
+            $table->string('url_slider')->nullable();
+            $table->string('keterangan_slider')->nullable();
+            $table->string('activated')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->timestamps();
         });
     }
