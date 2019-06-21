@@ -1,0 +1,44 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateMasterAccessTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('master_access', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('id_menu')->unsigned()->nullable();
+            $table->integer('id_role')->unsigned()->nullable();
+            $table->string('activated');
+            $table->string('created_by');
+            $table->string('updated_by');
+            $table->timestamps();
+        });
+
+        Schema::table('master_access', function($table){
+          $table->foreign('id_menu')->references('id')->on('master_menus');
+        });
+
+        Schema::table('master_access', function($table){
+          $table->foreign('id_role')->references('id')->on('master_roles');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        // Schema::dropIfExists('master_access');
+    }
+}
