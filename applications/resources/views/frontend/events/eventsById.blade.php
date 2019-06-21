@@ -110,7 +110,7 @@
 
                 <div class="single-schedule-area wow fadeInUp" data-wow-delay="300ms">
                     <!-- Single Schedule Thumb and Info -->
-                    <h3>Isi Konten Event's</h3>
+                    <h3>Fill in the content of this event</h3>
                     <hr>
                     <?php echo $getEvents[0]->isi_event ?>
                     <hr>

@@ -60,7 +60,7 @@
             <!-- About Thumb -->
             <div class="col-12 col-md-6">
                 <div class="about-thumb mb-80 wow fadeInUp" data-wow-delay="300ms">
-                    <img src="{{asset('themeuser/img/bg-img/sejarah.png')}}" alt="">
+                    <img style="border:8px solid white;" src="{{asset('themeuser/img/bg-img/sejarah.png')}}" alt="">
                 </div>
             </div>
         </div>
@@ -112,7 +112,7 @@
             <!-- Heading -->
             <div class="col-12">
                 <div class="section-heading text-center wow fadeInUp" data-wow-delay="300ms">
-                    <p>Certificate</p>
+                    <p>Our Certificate</p>
                     <h4>Who’s we are</h4>
                 </div>
             </div>

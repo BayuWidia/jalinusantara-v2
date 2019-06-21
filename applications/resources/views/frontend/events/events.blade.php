@@ -38,7 +38,7 @@
                       <div class="single-schedule-tumb-info d-flex align-items-center">
                           <!-- Single Schedule Thumb -->
                           <div class="single-schedule-tumb">
-                              <img src="{{asset('themeuser/img/event.png')}}" alt="">
+                              <img src="{{asset('themeuser/img/core-img/event.png')}}" alt="">
                           </div>
                           <!-- Single Schedule Info -->
                           <div class="single-schedule-info">
