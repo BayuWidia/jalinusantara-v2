@@ -35,7 +35,6 @@ class VideoController extends Controller
     public function store(Request $request)
     {
         //
-        // dd($request);
         $messages = [
           'eventsId.required' => 'Tidak boleh kosong.',
           'judul.*.required' => 'Tidak boleh kosong.',
@@ -45,8 +44,8 @@ class VideoController extends Controller
 
         $validator = Validator::make($request->all(), [
                 'eventsId' => 'required',
-                'judul' => 'required',
-                'urlVideo' => 'required',
+                'judul.*' => 'required',
+                'urlVideo.*' => 'required',
                 'activated' => 'required',
             ], $messages);
 
@@ -59,7 +58,8 @@ class VideoController extends Controller
               foreach($dataItems as $dataItem){
               //set important video value
               $valimportantvideo="";
-              if($dataItem['flagImportantVideo'] =="") {
+
+              if(!isset($dataItem['flagImportantVideo'])) {
                 $valimportantvideo=0;
               } else {
                 $valimportantvideo=1;

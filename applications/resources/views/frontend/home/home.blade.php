@@ -11,14 +11,14 @@
                 <div class="row h-100 align-items-center">
                     <div class="col-12">
                         <div class="welcome-text-two text-center">
-                            <h5 data-animation="fadeInUp" data-delay="100ms">Whenever we drive, drive with our heart</h5>
+                            <!-- <h5 data-animation="fadeInUp" data-delay="100ms">Whenever we drive, drive with our heart</h5> -->
                             <h2 data-animation="fadeInUp" data-delay="300ms">{{$getSlider[0]->judul}}</h2>
-                            <div class="event-meta" data-animation="fadeInUp" data-delay="500ms">
+                            <!-- <div class="event-meta" data-animation="fadeInUp" data-delay="500ms">
                                 <a class="event-date" href="#">{{$getSlider[0]->keterangan_slider}}.</a>
-                            </div>
-                            <div class="hero-btn-group" data-animation="fadeInUp" data-delay="700ms">
+                            </div> -->
+                            <!-- <div class="hero-btn-group" data-animation="fadeInUp" data-delay="700ms">
                                 <a href="{{ route('about.us', $getDataSejarah[0]->id) }}" id="" class="btn confer-btn m-2">View more <i class="zmdi zmdi-long-arrow-right"></i></a>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

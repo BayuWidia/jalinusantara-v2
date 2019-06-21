@@ -47,9 +47,11 @@
           @endphp
           @foreach($getVideo as $key)
             @if ($key->id_events == $temp)
-                  <div class="col-12 col-sm-3">
+                  <div class="col-12 col-sm-6">
                       <div class="wow fadeInUp" data-wow-delay="300ms">
+                        <div class="embed-responsive embed-responsive-16by9">
                           <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<?php echo substr($key->url_video,-11,23)?>" allowfullscreen></iframe>
+                        </div>
                       </div>
                       <br>
                   </div>
@@ -60,9 +62,11 @@
                       <h3>{{$key->judul_event}}</h3>
                   </div>
                 </div>
-                <div class="col-12 col-sm-3">
+                <div class="col-12 col-sm-6">
                     <div class="wow fadeInUp" data-wow-delay="300ms">
-                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<?php echo substr($key->url_video,-11,23)?>" allowfullscreen></iframe>
+                        <div class="embed-responsive embed-responsive-16by9">
+                          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<?php echo substr($key->url_video,-11,23)?>" allowfullscreen></iframe>
+                        </div>
                     </div>
                     <br>
                 </div>

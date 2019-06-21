@@ -47,7 +47,7 @@
                                 <tr>
                                     <th style="text-align:center">No</th>
                                     <th style="text-align:center">Judul Video</th>
-                                    <th style="text-align:center">Url Video</th>
+                                    <th style="text-align:center;width:40%">Url Video</th>
                                     <th style="text-align:center">Status</th>
                                     <th style="text-align:center">Video Utama</th>
                                     <th style="text-align:center">Status Publish</th>
@@ -61,7 +61,9 @@
                                   <td>{{$i++}}</td>
                                   <td>{{$key->judul}}</td>
                                   <td>
-                                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<?php echo substr($key->url_video,-11,23)?>" allowfullscreen></iframe>
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<?php echo substr($key->url_video,-11,23)?>" allowfullscreen></iframe>
+                                    </div>
                                   </td>
                                   <td style="text-align:center">
                                     @if($key->activated=="1")
@@ -143,7 +145,7 @@
                                         @if ($errors->has('eventsId'))
                                           <small style="color:red">* {{$errors->first('eventsId')}}</small>
                                         @endif
-                                        <select name="roleId" class="form-control" style="width: 100%;">
+                                        <select name="eventsId" class="form-control" style="width: 100%;">
                                           <option value="">-- Pilih --</option>
                                           @foreach($getDataEvents as $key)
                                             <option value="{{ $key->id }}" {{ old('eventsId') == $key->id ? 'selected=""' : ''}}>{{ $key->nama_kategori }} - {{ $key->judul_event }}</option>
