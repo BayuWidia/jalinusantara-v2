@@ -11,7 +11,7 @@
 <header class="header-area">
 		<div class="row" style="background-color:#9E46B0;height:30px">
 			<div class="col-lg-12" style="text-align:center;color:white;margin-top:0.2%">
-				RESPECTING THE ENVIRONMENT, MUTUAL COOPERATION AND SPORTSMANSHIP
+				<b>RESPECTING THE ENVIRONMENT, MUTUAL COOPERATION AND SPORTSMANSHIP</b>
 			</div>
 		</div>
     <div class="classy-nav-container breakpoint-off">
