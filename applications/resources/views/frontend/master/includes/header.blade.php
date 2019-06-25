@@ -84,9 +84,6 @@
 	                              </ul>
 	                          </li>
                         </ul>
-
-                        <!-- Get Tickets Button -->
-												<div id="google_translate_element" style="float:left;"></div>
                       </div>
                     <!-- Nav End -->
                 </div>
@@ -100,13 +97,19 @@
 									->get();
 		 ?>
 		<div class="row" style="background-color:white;height:90px" id="divProduct">
-			<div class="col-lg-12">
+			<div class="col-lg-1">
+			</div>
+			<div class="col-lg-9">
 				<marquee>
 						@foreach($getProduct as $key)
 							<img src="{{url('images/product/asli')}}/{{$key->url_product}}" alt="">&nbsp;&nbsp;&nbsp;
 						@endforeach
 				</marquee>
 			</div>
+			<div class="col-lg-2" style="margin-top:1.5%">
+				<div id="google_translate_element" style="float:left;"></div>
+			</div>
+
 		</div>
 </header>
 <!-- Header Area End -->

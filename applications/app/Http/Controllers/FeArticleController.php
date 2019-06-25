@@ -28,6 +28,7 @@ class FeArticleController extends Controller
                                 'master_users.fullname', 'master_users.email', 'master_users.url_foto as url_foto2')
                       ->where('informasi.id_kategori','=',$id)
                       ->where('flag_publish', 1)
+                      ->orderby('informasi.id', 'DESC')
                       ->get();
                       // dd($getInformasi[0]->nama_kategori);
 
@@ -63,7 +64,7 @@ class FeArticleController extends Controller
                           ->where('id_kategori', $idKategori)
                           ->where('flag_publish', 1)
                           ->limit(5)
-                          ->orderby(DB::raw('rand()'))
+                          ->orderby('id', 'DESC')
                           ->get();
 
       $getArticlePopuler = Informasi::select('informasi.*')

@@ -39,33 +39,33 @@ class SponsorController extends Controller
     public function store(Request $request)
     {
       // dd($request->all());
-          $messages = [
-            'idEvents.required' => 'Tidak boleh kosong.',
-            'namaSponsor.*.required' => 'Tidak boleh kosong.',
-            'linkSponsor.*.required' => 'Tidak boleh kosong.',
-            'urlSponsor.*.required' => 'Tidak boleh kosong.',
-            'urlSponsor.*.required' => 'Periksa kembali file image anda.',
-            'urlSponsor.*.image' => 'File upload harus image.',
-            'urlSponsor.*.mimes' => 'Ekstensi file tidak valid.',
-            'urlSponsor.*.max' => 'Ukuran file terlalu besar.',
-            'keteranganSponsor.*.required' => 'Tidak boleh kosong.',
-            'rekomendasi.*.required' => 'Tidak boleh kosong.',
-            'activated.required' => 'Tidak boleh kosong.',
-          ];
-
-          $validator = Validator::make($request->all(), [
-                  'idEvents' => 'required',
-                  'namaSponsor.*' => 'required',
-                  'linkSponsor.*' => 'required',
-                  'keteranganSponsor.*' => 'required',
-                  'rekomendasi.*' => 'required',
-                  'activated' => 'required',
-                  'urlSponsor.*' => 'required|image|mimes:jpeg,jpg,png|max:20000',
-              ], $messages);
-
-          if ($validator->fails()) {
-              return redirect()->route('sponsor.index')->withErrors($validator)->withInput();
-          }
+          // $messages = [
+          //   'idEvents.required' => 'Tidak boleh kosong.',
+          //   'namaSponsor.*.required' => 'Tidak boleh kosong.',
+          //   'linkSponsor.*.required' => 'Tidak boleh kosong.',
+          //   'urlSponsor.*.required' => 'Tidak boleh kosong.',
+          //   'urlSponsor.*.required' => 'Periksa kembali file image anda.',
+          //   'urlSponsor.*.image' => 'File upload harus image.',
+          //   'urlSponsor.*.mimes' => 'Ekstensi file tidak valid.',
+          //   'urlSponsor.*.max' => 'Ukuran file terlalu besar.',
+          //   'keteranganSponsor.*.required' => 'Tidak boleh kosong.',
+          //   'rekomendasi.*.required' => 'Tidak boleh kosong.',
+          //   'activated.required' => 'Tidak boleh kosong.',
+          // ];
+          //
+          // $validator = Validator::make($request->all(), [
+          //         'idEvents' => 'required',
+          //         'namaSponsor.*' => 'required',
+          //         'linkSponsor.*' => 'required',
+          //         'keteranganSponsor.*' => 'required',
+          //         'rekomendasi.*' => 'required',
+          //         'activated' => 'required',
+          //         'urlSponsor.*' => 'required|image|mimes:jpeg,jpg,png|max:20000',
+          //     ], $messages);
+          //
+          // if ($validator->fails()) {
+          //     return redirect()->route('sponsor.index')->withErrors($validator)->withInput();
+          // }
 
           DB::transaction(function() use($request) {
               $dataItems = $request->data_item;
@@ -119,28 +119,28 @@ class SponsorController extends Controller
     public function update(Request $request)
     {
         // dd($request->all());
-        $messages = [
-          'id.required' => 'Tidak boleh kosong.',
-          'eventsIdEdit.required' => 'Tidak boleh kosong.',
-          'namaSponsorEdit.required' => 'Tidak boleh kosong.',
-          'linkSponsorEdit.required' => 'Tidak boleh kosong.',
-          'keteranganSponsorEdit.required' => 'Tidak boleh kosong.',
-          'rekomendasiEdit.required' => 'Tidak boleh kosong.',
-        ];
-
-        $validator = Validator::make($request->all(), [
-                'id' => 'required',
-                'eventsIdEdit' => 'required',
-                'namaSponsorEdit' => 'required',
-                'linkSponsorEdit' => 'required',
-                'keteranganSponsorEdit' => 'required',
-                'rekomendasiEdit' => 'required',
-            ], $messages);
-
-        if ($validator->fails()) {
-          // dd($validator);
-            return redirect()->route('sponsor.index')->withErrors($validator)->withInput();
-        }
+        // $messages = [
+        //   'id.required' => 'Tidak boleh kosong.',
+        //   'eventsIdEdit.required' => 'Tidak boleh kosong.',
+        //   'namaSponsorEdit.required' => 'Tidak boleh kosong.',
+        //   'linkSponsorEdit.required' => 'Tidak boleh kosong.',
+        //   'keteranganSponsorEdit.required' => 'Tidak boleh kosong.',
+        //   'rekomendasiEdit.required' => 'Tidak boleh kosong.',
+        // ];
+        //
+        // $validator = Validator::make($request->all(), [
+        //         'id' => 'required',
+        //         'eventsIdEdit' => 'required',
+        //         'namaSponsorEdit' => 'required',
+        //         'linkSponsorEdit' => 'required',
+        //         'keteranganSponsorEdit' => 'required',
+        //         'rekomendasiEdit' => 'required',
+        //     ], $messages);
+        //
+        // if ($validator->fails()) {
+        //   // dd($validator);
+        //     return redirect()->route('sponsor.index')->withErrors($validator)->withInput();
+        // }
 
         $set = MasterSponsor::find($request->id);
         $set->id_events = $request->eventsIdEdit;

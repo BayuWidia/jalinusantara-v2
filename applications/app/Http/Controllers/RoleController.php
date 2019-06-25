@@ -22,7 +22,7 @@ class RoleController extends Controller
     public function index()
     {
         //
-        $getRole = MasterRoles::all();
+        $getRole = MasterRoles::select('*')->orderby('id', 'desc')->get();
         return view('backend.role.kelolarole', compact('getRole'));
     }
 

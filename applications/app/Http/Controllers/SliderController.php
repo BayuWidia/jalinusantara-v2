@@ -28,29 +28,27 @@ class SliderController extends Controller
     public function store(Request $request)
     {
       // dd($request->all());
-          $messages = [
-            'judul.required' => 'Tidak boleh kosong.',
-            'urlSlider.required' => 'Tidak boleh kosong.',
-            'urlSlider.required' => 'Periksa kembali file image anda.',
-            'urlSlider.image' => 'File upload harus image.',
-            'urlSlider.mimes' => 'Ekstensi file tidak valid.',
-            'urlSlider.max' => 'Ukuran file terlalu besar.',
-            'keteranganSlider.required' => 'Tidak boleh kosong.',
-            'activated.required' => 'Tidak boleh kosong.',
-          ];
-
-          $validator = Validator::make($request->all(), [
-                  'judul' => 'required',
-                  'keteranganSlider' => 'required',
-                  'activated' => 'required',
-                  'urlSlider' => 'required|image|mimes:jpeg,jpg,png|max:50000',
-              ], $messages);
-
-              if ($validator->fails()) {
-                  return redirect()->route('slider.index')
-                              ->withErrors($validator)
-                              ->withInput();
-              }
+          // $messages = [
+          //   'judul.required' => 'Tidak boleh kosong.',
+          //   'urlSlider.required' => 'Tidak boleh kosong.',
+          //   'urlSlider.required' => 'Periksa kembali file image anda.',
+          //   'urlSlider.image' => 'File upload harus image.',
+          //   'urlSlider.mimes' => 'Ekstensi file tidak valid.',
+          //   'urlSlider.max' => 'Ukuran file terlalu besar.',
+          //   'keteranganSlider.required' => 'Tidak boleh kosong.',
+          //   'activated.required' => 'Tidak boleh kosong.',
+          // ];
+          //
+          // $validator = Validator::make($request->all(), [
+          //         'judul' => 'required',
+          //         'keteranganSlider' => 'required',
+          //         'activated' => 'required',
+          //         'urlSlider' => 'required|image|mimes:jpeg,jpg,png|max:50000',
+          // ], $messages);
+          //
+          // if ($validator->fails()) {
+          //     return redirect()->route('slider.index')->withErrors($validator)->withInput();
+          // }
 
           $file = $request->file('urlSlider');
           if($file!="") {
@@ -101,21 +99,22 @@ class SliderController extends Controller
 
     public function update(Request $request)
     {
-        $messages = [
-          'id.required' => 'Tidak boleh kosong.',
-          'judul.required' => 'Tidak boleh kosong.',
-          'keteranganSlider.required' => 'Tidak boleh kosong.',
-        ];
+        // $messages = [
+        //   'id.required' => 'Tidak boleh kosong.',
+        //   'judul.required' => 'Tidak boleh kosong.',
+        //   'keteranganSlider.required' => 'Tidak boleh kosong.',
+        // ];
+        //
+        // $validator = Validator::make($request->all(), [
+        //     'id' => 'required',
+        //     'judul' => 'required',
+        //     'keteranganSlider' => 'required',
+        // ], $messages);
+        //
+        // if ($validator->fails()) {
+        //     return redirect()->route('slider.index')->withErrors($validator)->withInput();
+        // }
 
-        $validator = Validator::make($request->all(), [
-            'id' => 'required',
-            'judul' => 'required',
-            'keteranganSlider' => 'required',
-        ], $messages);
-
-        if ($validator->fails()) {
-            return redirect()->route('slider.index')->withErrors($validator)->withInput();
-        }
         $set = MasterSlider::find($request->id);
         $set->judul = $request->judul;
         $file = $request->file('urlSliderEdit');

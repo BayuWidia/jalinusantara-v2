@@ -157,6 +157,172 @@
 </section>
 <!-- Our Speakings Area End -->
 
+<!-- Our Schedule Area Start -->
+<section class="our-schedule-area section-padding-100">
+    <div class="container">
+        <div class="row">
+            <!-- Heading -->
+            <div class="col-12">
+                <div class="section-heading-2 text-center wow fadeInUp" data-wow-delay="300ms">
+                    <p>Our Timetable</p>
+                    <h4>time event's</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="schedule-tab">
+                    <!-- Nav Tabs -->
+                    <ul class="nav nav-tabs wow fadeInUp" data-wow-delay="300ms" id="conferScheduleTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="monday-tab" data-toggle="tab" href="#step-one" role="tab" aria-controls="step-one" aria-expanded="true">
+                              Today <br> <span>{{ \Carbon\Carbon::now()->format('M d, Y')}}</span></a>
+                        </li>
+                        <!-- Nav Item -->
+                        <li class="nav-item">
+                            <a class="nav-link" id="tuesday-tab" data-toggle="tab" href="#step-two" role="tab" aria-controls="step-two" aria-expanded="true">
+                              Tomorrow <br> <span>{{date('M d, Y', strtotime('+1 day'))}}</span></a>
+                        </li>
+                        <!-- Nav Item -->
+                        <li class="nav-item">
+                            <a class="nav-link" id="wednesday-tab" data-toggle="tab" href="#step-three" role="tab" aria-controls="step-three" aria-expanded="true">
+                              Etc <br> <span>{{date('M d, Y', strtotime('+2 day'))}}</span></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="conferScheduleTabContent">
+                    <div class="tab-pane fade show active" id="step-one" role="tabpanel" aria-labelledby="monday-tab">
+                        <!-- Single Tab Content -->
+                        <div class="single-tab-content">
+                            <div class="row">
+                                <div class="col-12">
+                                    <!-- Single Schedule Area -->
+                                    @foreach($getDataEventsToday as $key)
+                                      <div class="single-schedule-area d-flex flex-wrap justify-content-between align-items-center wow fadeInUp" data-wow-delay="300ms">
+                                          <!-- Single Schedule Thumb and Info -->
+                                          <div class="single-schedule-tumb-info d-flex align-items-center">
+                                              <!-- Single Schedule Thumb -->
+                                              <div class="single-schedule-tumb">
+                                                  <img src="{{asset('themeuser/img/core-img/event.png')}}" alt="">
+                                              </div>
+                                              <!-- Single Schedule Info -->
+                                              <div class="single-schedule-info">
+                                                  <h6>{{$key->judul_event}}</h6>
+                                                  <p>by <span>Admin jalinnusantara</span></p>
+                                              </div>
+                                          </div>
+                                          <!-- Single Schedule Info -->
+                                          <div class="schedule-time-place">
+                                              <p><i class="zmdi zmdi-time"></i> {{ \Carbon\Carbon::parse($key->tanggal_mulai)->format('d/M/y')}} - {{ \Carbon\Carbon::parse($key->tanggal_akhir)->format('d/M/y')}}</p>
+                                              <p><i class="zmdi zmdi-map"></i> {{$key->lokasi}}</p>
+                                          </div>
+                                          <!-- Schedule Btn -->
+                                          <a href="{{url('eventsById')}}/{{$key->id}}/{{$key->id_kategori}}" class="btn confer-btn">View More <i class="zmdi zmdi-long-arrow-right"></i></a>
+                                      </div>
+                                    @endforeach
+                                </div>
+
+                                <!-- More Schedule Btn -->
+                                <div class="col-12">
+                                    <div class="more-schedule-btn text-center mt-50 wow fadeInUp" data-wow-delay="300ms">
+                                        <a href="{{ route('events.today') }}" class="btn confer-gb-btn">View All</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="step-two" role="tabpanel" aria-labelledby="tuesday-tab">
+                        <!-- Single Tab Content -->
+                        <div class="single-tab-content">
+                            <div class="row">
+                                <div class="col-12">
+                                    <!-- Single Schedule Area -->
+                                    @foreach($getDataEventsTomorrow as $key)
+                                      <div class="single-schedule-area d-flex flex-wrap justify-content-between align-items-center wow fadeInUp" data-wow-delay="300ms">
+                                          <!-- Single Schedule Thumb and Info -->
+                                          <div class="single-schedule-tumb-info d-flex align-items-center">
+                                              <!-- Single Schedule Thumb -->
+                                              <div class="single-schedule-tumb">
+                                                  <img src="{{asset('themeuser/img/core-img/event.png')}}" alt="">
+                                              </div>
+                                              <!-- Single Schedule Info -->
+                                              <div class="single-schedule-info">
+                                                  <h6>{{$key->judul_event}}</h6>
+                                                  <p>by <span>Admin jalinnusantara</span></p>
+                                              </div>
+                                          </div>
+                                          <!-- Single Schedule Info -->
+                                          <div class="schedule-time-place">
+                                              <p><i class="zmdi zmdi-time"></i> {{ \Carbon\Carbon::parse($key->tanggal_mulai)->format('d/M/y')}} - {{ \Carbon\Carbon::parse($key->tanggal_akhir)->format('d/M/y')}}</p>
+                                              <p><i class="zmdi zmdi-map"></i> {{$key->lokasi}}</p>
+                                          </div>
+                                          <!-- Schedule Btn -->
+                                          <a href="{{url('eventsById')}}/{{$key->id}}/{{$key->id_kategori}}" class="btn confer-btn">View More <i class="zmdi zmdi-long-arrow-right"></i></a>
+                                      </div>
+                                    @endforeach
+                                </div>
+
+                                <!-- More Schedule Btn -->
+                                <div class="col-12">
+                                    <div class="more-schedule-btn text-center mt-50 wow fadeInUp" data-wow-delay="300ms">
+                                        <a href="{{ route('events.today') }}" class="btn confer-gb-btn">View All</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="step-three" role="tabpanel" aria-labelledby="wednesday-tab">
+                        <!-- Single Tab Content -->
+                        <div class="single-tab-content">
+                            <div class="row">
+                                <div class="col-12">
+                                    <!-- Single Schedule Area -->
+                                    @foreach($getDataEventsEtc as $key)
+                                      <div class="single-schedule-area d-flex flex-wrap justify-content-between align-items-center wow fadeInUp" data-wow-delay="300ms">
+                                          <!-- Single Schedule Thumb and Info -->
+                                          <div class="single-schedule-tumb-info d-flex align-items-center">
+                                              <!-- Single Schedule Thumb -->
+                                              <div class="single-schedule-tumb">
+                                                  <img src="{{asset('themeuser/img/core-img/event.png')}}" alt="">
+                                              </div>
+                                              <!-- Single Schedule Info -->
+                                              <div class="single-schedule-info">
+                                                  <h6>{{$key->judul_event}}</h6>
+                                                  <p>by <span>Admin jalinnusantara</span></p>
+                                              </div>
+                                          </div>
+                                          <!-- Single Schedule Info -->
+                                          <div class="schedule-time-place">
+                                              <p><i class="zmdi zmdi-time"></i> {{ \Carbon\Carbon::parse($key->tanggal_mulai)->format('d/M/y')}} - {{ \Carbon\Carbon::parse($key->tanggal_akhir)->format('d/M/y')}}</p>
+                                              <p><i class="zmdi zmdi-map"></i> {{$key->lokasi}}</p>
+                                          </div>
+                                          <!-- Schedule Btn -->
+                                          <a href="{{url('eventsById')}}/{{$key->id}}/{{$key->id_kategori}}" class="btn confer-btn">View More <i class="zmdi zmdi-long-arrow-right"></i></a>
+                                      </div>
+                                    @endforeach
+                                </div>
+
+                                <!-- More Schedule Btn -->
+                                <div class="col-12">
+                                    <div class="more-schedule-btn text-center mt-50 wow fadeInUp" data-wow-delay="300ms">
+                                        <a href="{{ route('events.today') }}" class="btn confer-gb-btn">View All</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Our Schedule Area End -->
+
 <!-- Our Ticket Pricing Table Area Start -->
 <section class="our-ticket-pricing-table-area bg-img bg-gradient-overlay section-padding-100-0 jarallax" style="background-image: url({{url('themeuser/img/bg-img/home2.jpg')}});">
     <div class="container">

@@ -39,7 +39,7 @@ class FeEventsController extends Controller
                       ->where('events.id','!=','11')
                       ->where('events.id_kategori','=',$id)
                       ->where('flag_publish', 1)
-                      ->orderBy('created_at', 'DESC')
+                      ->orderBy('events.id', 'DESC')
                       ->get();
 
       return view('frontend.events.events', compact('getEvents','getKategori'));
@@ -72,19 +72,19 @@ class FeEventsController extends Controller
                      ->whereRaw('"'.$dt.'" between tanggal_mulai and tanggal_akhir')
                      ->where('events.flag_headline', '=', '1')
                      ->where('flag_publish', '1')
-                     ->orderBy('created_at', 'DESC')
+                     ->orderBy('events.id', 'DESC')
                      ->get();
        $getDataEventsTomorrow = Events::select('events.*')
                     ->whereRaw('"'.$dt1.'" between tanggal_mulai and tanggal_akhir')
                     ->where('events.flag_headline', '=', '1')
                     ->where('flag_publish', '1')
-                    ->orderBy('created_at', 'DESC')
+                    ->orderBy('events.id', 'DESC')
                     ->get();
         $getDataEventsEtc = Events::select('events.*')
                      ->whereRaw('"'.$dt2.'" between tanggal_mulai and tanggal_akhir')
                      ->where('events.flag_headline', '=', '1')
                      ->where('flag_publish', '1')
-                     ->orderBy('created_at', 'DESC')
+                     ->orderBy('events.id', 'DESC')
                      ->get();
         return view('frontend.events.eventsToday', compact('getDataEventsToday'
                                                   ,'getDataEventsTomorrow','getDataEventsEtc'));

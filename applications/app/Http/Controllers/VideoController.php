@@ -37,23 +37,23 @@ class VideoController extends Controller
     public function store(Request $request)
     {
         //
-        $messages = [
-          'eventsId.required' => 'Tidak boleh kosong.',
-          'judul.*.required' => 'Tidak boleh kosong.',
-          'urlVideo.*.required' => 'Tidak boleh kosong.',
-          'activated.required' => 'Tidak boleh kosong.',
-        ];
-
-        $validator = Validator::make($request->all(), [
-                'eventsId' => 'required',
-                'judul.*' => 'required',
-                'urlVideo.*' => 'required',
-                'activated' => 'required',
-            ], $messages);
-
-        if ($validator->fails()) {
-            return redirect()->route('video.index')->withErrors($validator)->withInput();
-        }
+        // $messages = [
+        //   'eventsId.required' => 'Tidak boleh kosong.',
+        //   'judul.*.required' => 'Tidak boleh kosong.',
+        //   'urlVideo.*.required' => 'Tidak boleh kosong.',
+        //   'activated.required' => 'Tidak boleh kosong.',
+        // ];
+        //
+        // $validator = Validator::make($request->all(), [
+        //         'eventsId' => 'required',
+        //         'judul.*' => 'required',
+        //         'urlVideo.*' => 'required',
+        //         'activated' => 'required',
+        //     ], $messages);
+        //
+        // if ($validator->fails()) {
+        //     return redirect()->route('video.index')->withErrors($validator)->withInput();
+        // }
 
         DB::transaction(function() use($request) {
             $dataItems = $request->data_item;
@@ -130,23 +130,23 @@ class VideoController extends Controller
     public function update(Request $request)
     {
         //
-        $messages = [
-          'id.required' => 'Tidak boleh kosong.',
-          'eventsIdEdit.required' => 'Tidak boleh kosong.',
-          'judulEdit.required' => 'Tidak boleh kosong.',
-          'urlVideoEdit.required' => 'Tidak boleh kosong.',
-        ];
-
-        $validator = Validator::make($request->all(), [
-                'id' => 'required',
-                'eventsIdEdit' => 'required',
-                'judulEdit' => 'required',
-                'urlVideoEdit' => 'required',
-            ], $messages);
-
-        if ($validator->fails()) {
-            return redirect()->route('video.index')->withErrors($validator)->withInput();
-        }
+        // $messages = [
+        //   'id.required' => 'Tidak boleh kosong.',
+        //   'eventsIdEdit.required' => 'Tidak boleh kosong.',
+        //   'judulEdit.required' => 'Tidak boleh kosong.',
+        //   'urlVideoEdit.required' => 'Tidak boleh kosong.',
+        // ];
+        //
+        // $validator = Validator::make($request->all(), [
+        //         'id' => 'required',
+        //         'eventsIdEdit' => 'required',
+        //         'judulEdit' => 'required',
+        //         'urlVideoEdit' => 'required',
+        //     ], $messages);
+        //
+        // if ($validator->fails()) {
+        //     return redirect()->route('video.index')->withErrors($validator)->withInput();
+        // }
 
         $set = MasterVideo::find($request->id);
         $set->id_events = $request->eventsIdEdit;

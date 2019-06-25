@@ -20,16 +20,17 @@ class FePartnersController extends Controller
     {
         $getPartners = MasterPartners::select('*')
                                 ->where('flag_partners', 1)
+                                ->orderby('id', 'DESC')
                                 ->get();
         $getSertifikatPortrait = MasterSertifikat::select('master_sertifikat.*')
                       ->where('flag_sertifikat', 1)
                       ->where('format_sertifikat', 'P')
-                      ->orderby(DB::raw('rand()'))
+                      ->orderby('id', 'DESC')
                       ->get();
         $getSertifikatLandscape = MasterSertifikat::select('master_sertifikat.*')
                       ->where('flag_sertifikat', 1)
                       ->where('format_sertifikat', 'L')
-                      ->orderby(DB::raw('rand()'))
+                      ->orderby('id', 'DESC')
                       ->get();
 
         return view('frontend.partners.partners', compact('getPartners','getSertifikatPortrait','getSertifikatLandscape'));

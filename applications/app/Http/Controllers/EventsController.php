@@ -152,51 +152,51 @@ class EventsController extends Controller
      public function store(Request $request)
      {
          //
-         $messages = [
-           'judul.required' => 'Tidak boleh kosong.',
-           'kategoriId.required' => 'Tidak boleh kosong.',
-           'tglAwal.required' => 'Tidak boleh kosong.',
-           'tglAkhir.required' => 'Tidak boleh kosong.',
-           'urlFoto.required' => 'Tidak boleh kosong.',
-           'urlFoto.required' => 'Periksa kembali file image anda.',
-           'urlFoto.image' => 'File upload harus image.',
-           'urlFoto.mimes' => 'Ekstensi file tidak valid.',
-           'urlFoto.max' => 'Ukuran file terlalu besar.',
-           'urlScrut.required' => 'Tidak boleh kosong.',
-           'urlRules.required' => 'Tidak boleh kosong.',
-           'isiKonten.required' => 'Tidak boleh kosong.',
-           'fasilitator.required' => 'Tidak boleh kosong.',
-           'jmlPeserta.required' => 'Tidak boleh kosong.',
-           'lokasi.required' => 'Tidak boleh kosong.',
-           'alamat.required' => 'Tidak boleh kosong.',
-           'entranceFee.required' => 'Tidak boleh kosong.',
-           'shirtSizes.required' => 'Tidak boleh kosong.',
-           'payment.required' => 'Tidak boleh kosong.',
-           'kategoriId.not_in' => 'Pilih salah satu.',
-         ];
-
-         $validator = Validator::make($request->all(), [
-                 'judul' => 'required',
-                 'kategoriId' => 'required',
-                 'isiKonten' => 'required',
-                 'tglAwal' => 'required',
-                 'tglAkhir' => 'required',
-                 'fasilitator' => 'required',
-                 'jmlPeserta' => 'required',
-                 'lokasi' => 'required',
-                 'alamat' => 'required',
-                 'entranceFee' => 'required',
-                 'payment' => 'required',
-                 'shirtSizes' => 'required',
-                 'kategoriId' => 'required|not_in:-- Pilih --',
-                 'urlFoto' => 'required|image|mimes:jpeg,jpg,png|max:40000',
-                 'urlScrut' => 'required',
-                 'urlRules' => 'required',
-             ], $messages);
-
-         if ($validator->fails()) {
-             return redirect()->route('events.tambah')->withErrors($validator)->withInput();
-         }
+         // $messages = [
+         //   'judul.required' => 'Tidak boleh kosong.',
+         //   'kategoriId.required' => 'Tidak boleh kosong.',
+         //   'tglAwal.required' => 'Tidak boleh kosong.',
+         //   'tglAkhir.required' => 'Tidak boleh kosong.',
+         //   'urlFoto.required' => 'Tidak boleh kosong.',
+         //   'urlFoto.required' => 'Periksa kembali file image anda.',
+         //   'urlFoto.image' => 'File upload harus image.',
+         //   'urlFoto.mimes' => 'Ekstensi file tidak valid.',
+         //   'urlFoto.max' => 'Ukuran file terlalu besar.',
+         //   'urlScrut.required' => 'Tidak boleh kosong.',
+         //   'urlRules.required' => 'Tidak boleh kosong.',
+         //   'isiKonten.required' => 'Tidak boleh kosong.',
+         //   'fasilitator.required' => 'Tidak boleh kosong.',
+         //   'jmlPeserta.required' => 'Tidak boleh kosong.',
+         //   'lokasi.required' => 'Tidak boleh kosong.',
+         //   'alamat.required' => 'Tidak boleh kosong.',
+         //   'entranceFee.required' => 'Tidak boleh kosong.',
+         //   'shirtSizes.required' => 'Tidak boleh kosong.',
+         //   'payment.required' => 'Tidak boleh kosong.',
+         //   'kategoriId.not_in' => 'Pilih salah satu.',
+         // ];
+         //
+         // $validator = Validator::make($request->all(), [
+         //         'judul' => 'required',
+         //         'kategoriId' => 'required',
+         //         'isiKonten' => 'required',
+         //         'tglAwal' => 'required',
+         //         'tglAkhir' => 'required',
+         //         'fasilitator' => 'required',
+         //         'jmlPeserta' => 'required',
+         //         'lokasi' => 'required',
+         //         'alamat' => 'required',
+         //         'entranceFee' => 'required',
+         //         'payment' => 'required',
+         //         'shirtSizes' => 'required',
+         //         'kategoriId' => 'required|not_in:-- Pilih --',
+         //         'urlFoto' => 'required|image|mimes:jpeg,jpg,png|max:40000',
+         //         'urlScrut' => 'required',
+         //         'urlRules' => 'required',
+         //     ], $messages);
+         //
+         // if ($validator->fails()) {
+         //     return redirect()->route('events.tambah')->withErrors($validator)->withInput();
+         // }
 
          $file = $request->file('urlFoto');
          $fileScrut = $request->file('urlScrut');
@@ -329,41 +329,41 @@ class EventsController extends Controller
      public function update(Request $request)
      {
          //
-         $messages = [
-           'judul.required' => 'Tidak boleh kosong.',
-           'kategoriId.required' => 'Tidak boleh kosong.',
-           'tglAwal.required' => 'Tidak boleh kosong.',
-           'tglAkhir.required' => 'Tidak boleh kosong.',
-           // 'isiKonten.required' => 'Tidak boleh kosong.',
-           'fasilitator.required' => 'Tidak boleh kosong.',
-           'jmlPeserta.required' => 'Tidak boleh kosong.',
-           'lokasi.required' => 'Tidak boleh kosong.',
-           'alamat.required' => 'Tidak boleh kosong.',
-           'shirtSizes.required' => 'Tidak boleh kosong.',
-           'entranceFee.required' => 'Tidak boleh kosong.',
-           'payment.required' => 'Tidak boleh kosong.',
-           'kategoriId.not_in' => 'Pilih salah satu.',
-         ];
-
-         $validator = Validator::make($request->all(), [
-                 'judul' => 'required',
-                 'kategoriId' => 'required',
-                 // 'isiKonten' => 'required',
-                 'tglAwal' => 'required',
-                 'tglAkhir' => 'required',
-                 'fasilitator' => 'required',
-                 'jmlPeserta' => 'required',
-                 'lokasi' => 'required',
-                 'alamat' => 'required',
-                 'shirtSizes' => 'required',
-                 'entranceFee' => 'required',
-                 'payment' => 'required',
-                 'kategoriId' => 'required|not_in:-- Pilih --',
-             ], $messages);
-
-         if ($validator->fails()) {
-             return redirect()->route('events.edit', $request->id)->withErrors($validator)->withInput();
-         }
+         // $messages = [
+         //   'judul.required' => 'Tidak boleh kosong.',
+         //   'kategoriId.required' => 'Tidak boleh kosong.',
+         //   'tglAwal.required' => 'Tidak boleh kosong.',
+         //   'tglAkhir.required' => 'Tidak boleh kosong.',
+         //   // 'isiKonten.required' => 'Tidak boleh kosong.',
+         //   'fasilitator.required' => 'Tidak boleh kosong.',
+         //   'jmlPeserta.required' => 'Tidak boleh kosong.',
+         //   'lokasi.required' => 'Tidak boleh kosong.',
+         //   'alamat.required' => 'Tidak boleh kosong.',
+         //   'shirtSizes.required' => 'Tidak boleh kosong.',
+         //   'entranceFee.required' => 'Tidak boleh kosong.',
+         //   'payment.required' => 'Tidak boleh kosong.',
+         //   'kategoriId.not_in' => 'Pilih salah satu.',
+         // ];
+         //
+         // $validator = Validator::make($request->all(), [
+         //         'judul' => 'required',
+         //         'kategoriId' => 'required',
+         //         // 'isiKonten' => 'required',
+         //         'tglAwal' => 'required',
+         //         'tglAkhir' => 'required',
+         //         'fasilitator' => 'required',
+         //         'jmlPeserta' => 'required',
+         //         'lokasi' => 'required',
+         //         'alamat' => 'required',
+         //         'shirtSizes' => 'required',
+         //         'entranceFee' => 'required',
+         //         'payment' => 'required',
+         //         'kategoriId' => 'required|not_in:-- Pilih --',
+         //     ], $messages);
+         //
+         // if ($validator->fails()) {
+         //     return redirect()->route('events.edit', $request->id)->withErrors($validator)->withInput();
+         // }
 
          $flagHeadline="";
          if($request->flagHeadline=="") {

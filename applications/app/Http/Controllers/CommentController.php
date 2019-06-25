@@ -21,6 +21,7 @@ class CommentController extends Controller
         $getComment = MasterComment::all();
         $getComment = MasterComment::leftJoin('informasi', 'master_comment.id_informasi', '=', 'informasi.id')
                         ->select('master_comment.*', 'informasi.judul_informasi')
+                        ->orderby('master_comment.created_at','desc')
                         ->get();
         return view('backend.comment.kelolacomment', compact('getComment'));
     }
@@ -35,23 +36,24 @@ class CommentController extends Controller
     public function store(Request $request)
     {
       // dd($request->all());
-          $messages = [
-            'email.required' => 'Tidak boleh kosong.',
-            'nama.required' => 'Tidak boleh kosong.',
-            'subject.required' => 'Tidak boleh kosong.',
-            'message.required' => 'Tidak boleh kosong.',
-          ];
+          // $messages = [
+          //   'email.required' => 'Tidak boleh kosong.',
+          //   'nama.required' => 'Tidak boleh kosong.',
+          //   'subject.required' => 'Tidak boleh kosong.',
+          //   'message.required' => 'Tidak boleh kosong.',
+          // ];
+          //
+          // $validator = Validator::make($request->all(), [
+          //         'email' => 'required',
+          //         'nama' => 'required',
+          //         'subject' => 'required',
+          //         'message' => 'required',
+          //     ], $messages);
+          //
+          // if ($validator->fails()) {
+          //     return redirect()->route('articleById', ['id' => $request->id, 'idKategori' => $request->idKategori])->withErrors($validator)->withInput();
+          // }
 
-          $validator = Validator::make($request->all(), [
-                  'email' => 'required',
-                  'nama' => 'required',
-                  'subject' => 'required',
-                  'message' => 'required',
-              ], $messages);
-
-          if ($validator->fails()) {
-              return redirect()->route('articleById', ['id' => $request->id, 'idKategori' => $request->idKategori])->withErrors($validator)->withInput();
-          }
           $set = new MasterComment;
           $set->id_informasi = $request->id;
           $set->email = $request->email;

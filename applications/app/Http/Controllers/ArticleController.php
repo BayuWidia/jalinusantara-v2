@@ -161,29 +161,29 @@ class ArticleController extends Controller
     {
         //
         // dd($request->all());
-        $messages = [
-          'judul.required' => 'Tidak boleh kosong.',
-          'kategoriId.required' => 'Tidak boleh kosong.',
-          'urlFoto.required' => 'Tidak boleh kosong.',
-          'urlFoto.required' => 'Periksa kembali file image anda.',
-          'urlFoto.image' => 'File upload harus image.',
-          'urlFoto.mimes' => 'Ekstensi file tidak valid.',
-          'urlFoto.max' => 'Ukuran file terlalu besar.',
-          'isiKonten.required' => 'Tidak boleh kosong.',
-          'kategoriId.not_in' => 'Pilih salah satu.',
-        ];
-
-        $validator = Validator::make($request->all(), [
-                'judul' => 'required',
-                'kategoriId' => 'required',
-                'isiKonten' => 'required',
-                'kategoriId' => 'required|not_in:-- Pilih --',
-                'urlFoto' => 'required|image|mimes:jpeg,jpg,png|max:40000',
-            ], $messages);
-
-        if ($validator->fails()) {
-            return redirect()->route('article.tambah')->withErrors($validator)->withInput();
-        }
+        // $messages = [
+        //   'judul.required' => 'Tidak boleh kosong.',
+        //   'kategoriId.required' => 'Tidak boleh kosong.',
+        //   'urlFoto.required' => 'Tidak boleh kosong.',
+        //   'urlFoto.required' => 'Periksa kembali file image anda.',
+        //   'urlFoto.image' => 'File upload harus image.',
+        //   'urlFoto.mimes' => 'Ekstensi file tidak valid.',
+        //   'urlFoto.max' => 'Ukuran file terlalu besar.',
+        //   'isiKonten.required' => 'Tidak boleh kosong.',
+        //   'kategoriId.not_in' => 'Pilih salah satu.',
+        // ];
+        //
+        // $validator = Validator::make($request->all(), [
+        //         'judul' => 'required',
+        //         'kategoriId' => 'required',
+        //         'isiKonten' => 'required',
+        //         'kategoriId' => 'required|not_in:-- Pilih --',
+        //         'urlFoto' => 'required|image|mimes:jpeg,jpg,png|max:40000',
+        //     ], $messages);
+        //
+        // if ($validator->fails()) {
+        //     return redirect()->route('article.tambah')->withErrors($validator)->withInput();
+        // }
 
         $file = $request->file('urlFoto');
         if($file!="") {
@@ -297,23 +297,23 @@ class ArticleController extends Controller
     public function update(Request $request)
     {
         //
-        $messages = [
-          'judul.required' => 'Tidak boleh kosong.',
-          'kategoriId.required' => 'Tidak boleh kosong.',
-          'isiKonten.required' => 'Tidak boleh kosong.',
-          'kategoriId.not_in' => 'Pilih salah satu.',
-        ];
-
-        $validator = Validator::make($request->all(), [
-                'judul' => 'required',
-                'kategoriId' => 'required',
-                'isiKonten' => 'required',
-                'kategoriId' => 'required|not_in:-- Pilih --',
-            ], $messages);
-
-        if ($validator->fails()) {
-            return redirect()->route('article.edit', $request->id)->withErrors($validator)->withInput();
-        }
+        // $messages = [
+        //   'judul.required' => 'Tidak boleh kosong.',
+        //   'kategoriId.required' => 'Tidak boleh kosong.',
+        //   'isiKonten.required' => 'Tidak boleh kosong.',
+        //   'kategoriId.not_in' => 'Pilih salah satu.',
+        // ];
+        //
+        // $validator = Validator::make($request->all(), [
+        //         'judul' => 'required',
+        //         'kategoriId' => 'required',
+        //         'isiKonten' => 'required',
+        //         'kategoriId' => 'required|not_in:-- Pilih --',
+        //     ], $messages);
+        //
+        // if ($validator->fails()) {
+        //     return redirect()->route('article.edit', $request->id)->withErrors($validator)->withInput();
+        // }
 
         $flagHeadline="";
         if($request->flagHeadline=="") {

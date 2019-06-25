@@ -22,7 +22,7 @@ class MedsosController extends Controller
     public function index()
     {
         //
-        $getMedsos = MasterMedsos::all();
+        $getMedsos = MasterMedsos::select('*')->orderby('id', 'desc')->get();
         return view('backend.medsos.kelolamedsos', compact('getMedsos'));
     }
 
@@ -30,21 +30,21 @@ class MedsosController extends Controller
     public function store(Request $request)
     {
       // dd($request->all());
-          $messages = [
-            'namaSosmed.required' => 'Tidak boleh kosong.',
-            'linkSosmed.required' => 'Tidak boleh kosong.',
-            'activated.required' => 'Tidak boleh kosong.',
-          ];
-
-          $validator = Validator::make($request->all(), [
-                  'namaSosmed' => 'required',
-                  'linkSosmed' => 'required',
-                  'activated' => 'required',
-              ], $messages);
-
-          if ($validator->fails()) {
-              return redirect()->route('medsos.index')->withErrors($validator)->withInput();
-          }
+          // $messages = [
+          //   'namaSosmed.required' => 'Tidak boleh kosong.',
+          //   'linkSosmed.required' => 'Tidak boleh kosong.',
+          //   'activated.required' => 'Tidak boleh kosong.',
+          // ];
+          //
+          // $validator = Validator::make($request->all(), [
+          //         'namaSosmed' => 'required',
+          //         'linkSosmed' => 'required',
+          //         'activated' => 'required',
+          //     ], $messages);
+          //
+          // if ($validator->fails()) {
+          //     return redirect()->route('medsos.index')->withErrors($validator)->withInput();
+          // }
 
           // $checkdouble = MasterMedsos::where('nama_sosmed','=' ,$request->namaSosmed)->get();
           //
@@ -74,20 +74,20 @@ class MedsosController extends Controller
     public function update(Request $request)
     {
         // dd($request->all());
-        $messages = [
-          'id.required' => 'Tidak boleh kosong.',
-          'linkSosmedEdit.required' => 'Tidak boleh kosong.',
-        ];
-
-        $validator = Validator::make($request->all(), [
-                'id' => 'required',
-                'linkSosmedEdit' => 'required',
-            ], $messages);
-
-        if ($validator->fails()) {
-          // dd($validator);
-            return redirect()->route('medsos.index')->withErrors($validator)->withInput();
-        }
+        // $messages = [
+        //   'id.required' => 'Tidak boleh kosong.',
+        //   'linkSosmedEdit.required' => 'Tidak boleh kosong.',
+        // ];
+        //
+        // $validator = Validator::make($request->all(), [
+        //         'id' => 'required',
+        //         'linkSosmedEdit' => 'required',
+        //     ], $messages);
+        //
+        // if ($validator->fails()) {
+        //   // dd($validator);
+        //     return redirect()->route('medsos.index')->withErrors($validator)->withInput();
+        // }
 
         $set = MasterMedsos::find($request->id);
         $set->link_sosmed = $request->linkSosmedEdit;

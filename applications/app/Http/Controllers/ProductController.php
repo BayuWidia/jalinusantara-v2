@@ -23,7 +23,7 @@ class ProductController extends Controller
     public function index()
     {
         //
-        $getProduct = MasterProduct::all();
+        $getProduct = MasterProduct::select('*')->orderby('id', 'desc')->get();
         return view('backend.product.kelolaproduct', compact('getProduct'));
     }
 
@@ -31,29 +31,29 @@ class ProductController extends Controller
     public function store(Request $request)
     {
       // dd($request->all());
-          $messages = [
-            'namaProduct.required' => 'Tidak boleh kosong.',
-            'linkProduct.required' => 'Tidak boleh kosong.',
-            'urlProduct.required' => 'Tidak boleh kosong.',
-            'urlProduct.required' => 'Periksa kembali file image anda.',
-            'urlProduct.image' => 'File upload harus image.',
-            'urlProduct.mimes' => 'Ekstensi file tidak valid.',
-            'urlProduct.max' => 'Ukuran file terlalu besar.',
-            'keteranganProduct.required' => 'Tidak boleh kosong.',
-            'activated.required' => 'Tidak boleh kosong.',
-          ];
-
-          $validator = Validator::make($request->all(), [
-                  'namaProduct' => 'required',
-                  'linkProduct' => 'required',
-                  'keteranganProduct' => 'required',
-                  'activated' => 'required',
-                  'urlProduct' => 'required|image|mimes:jpeg,jpg,png|max:20000',
-              ], $messages);
-
-          if ($validator->fails()) {
-              return redirect()->route('product.index')->withErrors($validator)->withInput();
-          }
+          // $messages = [
+          //   'namaProduct.required' => 'Tidak boleh kosong.',
+          //   'linkProduct.required' => 'Tidak boleh kosong.',
+          //   'urlProduct.required' => 'Tidak boleh kosong.',
+          //   'urlProduct.required' => 'Periksa kembali file image anda.',
+          //   'urlProduct.image' => 'File upload harus image.',
+          //   'urlProduct.mimes' => 'Ekstensi file tidak valid.',
+          //   'urlProduct.max' => 'Ukuran file terlalu besar.',
+          //   'keteranganProduct.required' => 'Tidak boleh kosong.',
+          //   'activated.required' => 'Tidak boleh kosong.',
+          // ];
+          //
+          // $validator = Validator::make($request->all(), [
+          //         'namaProduct' => 'required',
+          //         'linkProduct' => 'required',
+          //         'keteranganProduct' => 'required',
+          //         'activated' => 'required',
+          //         'urlProduct' => 'required|image|mimes:jpeg,jpg,png|max:20000',
+          //     ], $messages);
+          //
+          // if ($validator->fails()) {
+          //     return redirect()->route('product.index')->withErrors($validator)->withInput();
+          // }
 
           $file = $request->file('urlProduct');
           if($file!="") {
@@ -103,24 +103,24 @@ class ProductController extends Controller
 
     public function update(Request $request)
     {
-        $messages = [
-          'id.required' => 'Tidak boleh kosong.',
-          'namaProductEdit.required' => 'Tidak boleh kosong.',
-          'linkProductEdit.required' => 'Tidak boleh kosong.',
-          'keteranganProductEdit.required' => 'Tidak boleh kosong.',
-        ];
-
-        $validator = Validator::make($request->all(), [
-                'id' => 'required',
-                'namaProductEdit' => 'required',
-                'linkProductEdit' => 'required',
-                'keteranganProductEdit' => 'required',
-            ], $messages);
-
-        if ($validator->fails()) {
-          // dd($validator);
-            return redirect()->route('product.index')->withErrors($validator)->withInput();
-        }
+        // $messages = [
+        //   'id.required' => 'Tidak boleh kosong.',
+        //   'namaProductEdit.required' => 'Tidak boleh kosong.',
+        //   'linkProductEdit.required' => 'Tidak boleh kosong.',
+        //   'keteranganProductEdit.required' => 'Tidak boleh kosong.',
+        // ];
+        //
+        // $validator = Validator::make($request->all(), [
+        //         'id' => 'required',
+        //         'namaProductEdit' => 'required',
+        //         'linkProductEdit' => 'required',
+        //         'keteranganProductEdit' => 'required',
+        //     ], $messages);
+        //
+        // if ($validator->fails()) {
+        //   // dd($validator);
+        //     return redirect()->route('product.index')->withErrors($validator)->withInput();
+        // }
 
         $set = MasterProduct::find($request->id);
         $set->nama_product = $request->namaProductEdit;

@@ -38,21 +38,21 @@ class KategoriController extends Controller
     public function store(Request $request)
     {
       // dd($request->all());
-          $messages = [
-            'namaKategori.required' => 'Tidak boleh kosong.',
-            'keteranganKategori.required' => 'Tidak boleh kosong.',
-            'activated.required' => 'Tidak boleh kosong.',
-          ];
-
-          $validator = Validator::make($request->all(), [
-                  'namaKategori' => 'required',
-                  'keteranganKategori' => 'required',
-                  'activated' => 'required',
-              ], $messages);
-
-          if ($validator->fails()) {
-              return redirect()->route('kategori.index',$request->flagUtama)->withErrors($validator)->withInput();
-          }
+          // $messages = [
+          //   'namaKategori.required' => 'Tidak boleh kosong.',
+          //   'keteranganKategori.required' => 'Tidak boleh kosong.',
+          //   'activated.required' => 'Tidak boleh kosong.',
+          // ];
+          //
+          // $validator = Validator::make($request->all(), [
+          //         'namaKategori' => 'required',
+          //         'keteranganKategori' => 'required',
+          //         'activated' => 'required',
+          //     ], $messages);
+          //
+          // if ($validator->fails()) {
+          //     return redirect()->route('kategori.index',$request->flagUtama)->withErrors($validator)->withInput();
+          // }
 
           $set = new MasterKategori;
           $set->nama_kategori = $request->namaKategori;
@@ -77,22 +77,22 @@ class KategoriController extends Controller
     public function update(Request $request)
     {
         // dd($request->all());
-        $messages = [
-          'id.required' => 'Tidak boleh kosong.',
-          'namaKategoriEdit.required' => 'Tidak boleh kosong.',
-          'keteranganKategoriEdit.required' => 'Tidak boleh kosong.',
-        ];
-
-        $validator = Validator::make($request->all(), [
-                'id' => 'required',
-                'namaKategoriEdit' => 'required',
-                'keteranganKategoriEdit' => 'required',
-            ], $messages);
-
-        if ($validator->fails()) {
-          // dd($validator);
-            return redirect()->route('kategori.index',$request->flagUtamaEdit)->withErrors($validator)->withInput();
-        }
+        // $messages = [
+        //   'id.required' => 'Tidak boleh kosong.',
+        //   'namaKategoriEdit.required' => 'Tidak boleh kosong.',
+        //   'keteranganKategoriEdit.required' => 'Tidak boleh kosong.',
+        // ];
+        //
+        // $validator = Validator::make($request->all(), [
+        //         'id' => 'required',
+        //         'namaKategoriEdit' => 'required',
+        //         'keteranganKategoriEdit' => 'required',
+        //     ], $messages);
+        //
+        // if ($validator->fails()) {
+        //   // dd($validator);
+        //     return redirect()->route('kategori.index',$request->flagUtamaEdit)->withErrors($validator)->withInput();
+        // }
 
         $set = MasterKategori::find($request->id);
         $set->nama_kategori = $request->namaKategoriEdit;

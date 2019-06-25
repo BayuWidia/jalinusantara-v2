@@ -23,7 +23,7 @@ class PartnersController extends Controller
     public function index()
     {
         //
-        $getPartners = MasterPartners::all();
+        $getPartners = MasterPartners::select('*')->orderby('id', 'desc')->get();
         return view('backend.partners.kelolapartners', compact('getPartners'));
     }
 

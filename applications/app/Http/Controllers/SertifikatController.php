@@ -23,7 +23,7 @@ class SertifikatController extends Controller
     public function index()
     {
         //
-        $getSertifikat = MasterSertifikat::all();
+        $getSertifikat = MasterSertifikat::select('*')->orderby('id', 'desc')->get();
         return view('backend.sertifikat.kelolasertifikat', compact('getSertifikat'));
     }
 
@@ -31,29 +31,29 @@ class SertifikatController extends Controller
     public function store(Request $request)
     {
       // dd($request->all());
-          $messages = [
-            'namaSertifikat.required' => 'Tidak boleh kosong.',
-            'urlSertifikat.required' => 'Tidak boleh kosong.',
-            'urlSertifikat.required' => 'Periksa kembali file image anda.',
-            'urlSertifikat.image' => 'File upload harus image.',
-            'urlSertifikat.mimes' => 'Ekstensi file tidak valid.',
-            'urlSertifikat.max' => 'Ukuran file terlalu besar.',
-            'keteranganSertifikat.required' => 'Tidak boleh kosong.',
-            'format.required' => 'Tidak boleh kosong.',
-            'activated.required' => 'Tidak boleh kosong.',
-          ];
-
-          $validator = Validator::make($request->all(), [
-                  'namaSertifikat' => 'required',
-                  'keteranganSertifikat' => 'required',
-                  'format' => 'required',
-                  'activated' => 'required',
-                  'urlSertifikat' => 'required|image|mimes:jpeg,jpg,png|max:20000',
-              ], $messages);
-
-          if ($validator->fails()) {
-              return redirect()->route('sertifikat.index')->withErrors($validator)->withInput();
-          }
+          // $messages = [
+          //   'namaSertifikat.required' => 'Tidak boleh kosong.',
+          //   'urlSertifikat.required' => 'Tidak boleh kosong.',
+          //   'urlSertifikat.required' => 'Periksa kembali file image anda.',
+          //   'urlSertifikat.image' => 'File upload harus image.',
+          //   'urlSertifikat.mimes' => 'Ekstensi file tidak valid.',
+          //   'urlSertifikat.max' => 'Ukuran file terlalu besar.',
+          //   'keteranganSertifikat.required' => 'Tidak boleh kosong.',
+          //   'format.required' => 'Tidak boleh kosong.',
+          //   'activated.required' => 'Tidak boleh kosong.',
+          // ];
+          //
+          // $validator = Validator::make($request->all(), [
+          //         'namaSertifikat' => 'required',
+          //         'keteranganSertifikat' => 'required',
+          //         'format' => 'required',
+          //         'activated' => 'required',
+          //         'urlSertifikat' => 'required|image|mimes:jpeg,jpg,png|max:20000',
+          //     ], $messages);
+          //
+          // if ($validator->fails()) {
+          //     return redirect()->route('sertifikat.index')->withErrors($validator)->withInput();
+          // }
 
           $file = $request->file('urlSertifikat');
           if($file!="") {
@@ -103,24 +103,24 @@ class SertifikatController extends Controller
     public function update(Request $request)
     {
         // dd($request->all());
-        $messages = [
-          'id.required' => 'Tidak boleh kosong.',
-          'namaSertifikatEdit.required' => 'Tidak boleh kosong.',
-          'keteranganSertifikatEdit.required' => 'Tidak boleh kosong.',
-          // 'formatEdit.required' => 'Tidak boleh kosong.',
-        ];
-
-        $validator = Validator::make($request->all(), [
-                'id' => 'required',
-                'namaSertifikatEdit' => 'required',
-                'keteranganSertifikatEdit' => 'required',
-                // 'formatEdit' => 'required',
-            ], $messages);
-
-        if ($validator->fails()) {
-          // dd($validator);
-            return redirect()->route('sertifikat.index')->withErrors($validator)->withInput();
-        }
+        // $messages = [
+        //   'id.required' => 'Tidak boleh kosong.',
+        //   'namaSertifikatEdit.required' => 'Tidak boleh kosong.',
+        //   'keteranganSertifikatEdit.required' => 'Tidak boleh kosong.',
+        //   // 'formatEdit.required' => 'Tidak boleh kosong.',
+        // ];
+        //
+        // $validator = Validator::make($request->all(), [
+        //         'id' => 'required',
+        //         'namaSertifikatEdit' => 'required',
+        //         'keteranganSertifikatEdit' => 'required',
+        //         // 'formatEdit' => 'required',
+        //     ], $messages);
+        //
+        // if ($validator->fails()) {
+        //   // dd($validator);
+        //     return redirect()->route('sertifikat.index')->withErrors($validator)->withInput();
+        // }
 
         $set = MasterSertifikat::find($request->id);
         $set->nama_sertifikat = $request->namaSertifikatEdit;

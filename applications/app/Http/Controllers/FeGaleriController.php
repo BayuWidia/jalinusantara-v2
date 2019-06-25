@@ -22,7 +22,7 @@ class FeGaleriController extends Controller
         $getVideo = MasterVideo::leftJoin('events','master_video.id_events','=','events.id')
                                             ->select('master_video.*','events.judul_event')
                                             ->where('master_video.flag_video', 1)
-                                            ->orderby('master_video.id_events','ASC')
+                                            ->orderby('master_video.id','DESC')
                                             ->get();
 
         return view('frontend.galeri.video', compact('getVideo'));
@@ -33,7 +33,7 @@ class FeGaleriController extends Controller
         $getPhoto = MasterGaleri::leftJoin('events','master_galeri.id_events','=','events.id')
                                 ->select('master_galeri.*','events.judul_event')
                                 ->where('master_galeri.flag_gambar', 1)
-                                ->orderby('master_galeri.id_events','ASC')
+                                ->orderby('master_galeri.id','DESC')
                                 ->get();
 // dd($getPhoto);
         return view('frontend.galeri.photo', compact('getPhoto'));

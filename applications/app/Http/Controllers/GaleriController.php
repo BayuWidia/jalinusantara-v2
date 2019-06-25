@@ -27,7 +27,7 @@ class GaleriController extends Controller
                       ->orderBy('judul_event', 'ASC')->get();
           $getGaleri = MasterGaleri::leftJoin('events','master_galeri.id_events','=','events.id')
               ->select(['master_galeri.*','events.judul_event'])
-                      ->orderBy('judul_event', 'ASC')->get();
+                      ->orderBy('master_galeri.d', 'DESC')->get();
 
           return view('backend.galeri.kelolagaleri', compact('getGaleri','getDataEvents'));
     }
@@ -35,29 +35,29 @@ class GaleriController extends Controller
     public function store(Request $request)
     {
       // dd($request->all());
-          $messages = [
-            'eventsId.required' => 'Tidak boleh kosong.',
-            'judul.required' => 'Tidak boleh kosong.',
-            'urlGaleri.*.required' => 'Tidak boleh kosong.',
-            'urlGaleri.*.required' => 'Periksa kembali file image anda.',
-            'urlGaleri.*.image' => 'File upload harus image.',
-            'urlGaleri.*.mimes' => 'Ekstensi file tidak valid.',
-            'urlGaleri.*.max' => 'Ukuran file terlalu besar.',
-            'keteranganGaleri.required' => 'Tidak boleh kosong.',
-            'activated.required' => 'Tidak boleh kosong.',
-          ];
-
-          $validator = Validator::make($request->all(), [
-                  'eventsId' => 'required',
-                  'judul' => 'required',
-                  'keteranganGaleri' => 'required',
-                  'activated' => 'required',
-                  'urlGaleri.*' => 'required|image|mimes:jpeg,jpg,png|max:20000',
-              ], $messages);
-
-          if ($validator->fails()) {
-              return redirect()->route('galeri.index')->withErrors($validator)->withInput();
-          }
+          // $messages = [
+          //   'eventsId.required' => 'Tidak boleh kosong.',
+          //   'judul.required' => 'Tidak boleh kosong.',
+          //   'urlGaleri.*.required' => 'Tidak boleh kosong.',
+          //   'urlGaleri.*.required' => 'Periksa kembali file image anda.',
+          //   'urlGaleri.*.image' => 'File upload harus image.',
+          //   'urlGaleri.*.mimes' => 'Ekstensi file tidak valid.',
+          //   'urlGaleri.*.max' => 'Ukuran file terlalu besar.',
+          //   'keteranganGaleri.required' => 'Tidak boleh kosong.',
+          //   'activated.required' => 'Tidak boleh kosong.',
+          // ];
+          //
+          // $validator = Validator::make($request->all(), [
+          //         'eventsId' => 'required',
+          //         'judul' => 'required',
+          //         'keteranganGaleri' => 'required',
+          //         'activated' => 'required',
+          //         'urlGaleri.*' => 'required|image|mimes:jpeg,jpg,png|max:20000',
+          //     ], $messages);
+          //
+          // if ($validator->fails()) {
+          //     return redirect()->route('galeri.index')->withErrors($validator)->withInput();
+          // }
 
           DB::transaction(function() use($request) {
               $dataItems = $request->data_item;
@@ -112,24 +112,24 @@ class GaleriController extends Controller
     public function update(Request $request)
     {
         // dd($request);
-        $messages = [
-          'id.required' => 'Tidak boleh kosong.',
-          'eventsIdEdit.required' => 'Tidak boleh kosong.',
-          'judulEdit.required' => 'Tidak boleh kosong.',
-          'keteranganGaleriEdit.required' => 'Tidak boleh kosong.',
-        ];
-
-        $validator = Validator::make($request->all(), [
-                'id' => 'required',
-                'eventsIdEdit' => 'required',
-                'judulEdit' => 'required',
-                'keteranganGaleriEdit' => 'required',
-            ], $messages);
-
-        if ($validator->fails()) {
-          // dd($validator);
-            return redirect()->route('galeri.index')->withErrors($validator)->withInput();
-        }
+        // $messages = [
+        //   'id.required' => 'Tidak boleh kosong.',
+        //   'eventsIdEdit.required' => 'Tidak boleh kosong.',
+        //   'judulEdit.required' => 'Tidak boleh kosong.',
+        //   'keteranganGaleriEdit.required' => 'Tidak boleh kosong.',
+        // ];
+        //
+        // $validator = Validator::make($request->all(), [
+        //         'id' => 'required',
+        //         'eventsIdEdit' => 'required',
+        //         'judulEdit' => 'required',
+        //         'keteranganGaleriEdit' => 'required',
+        //     ], $messages);
+        //
+        // if ($validator->fails()) {
+        //   // dd($validator);
+        //     return redirect()->route('galeri.index')->withErrors($validator)->withInput();
+        // }
 
         $set = MasterGaleri::find($request->id);
         $set->id_events = $request->eventsIdEdit;
