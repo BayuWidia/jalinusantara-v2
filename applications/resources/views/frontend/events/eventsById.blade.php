@@ -57,14 +57,22 @@
                         <!-- <p><i class="zmdi zmdi-pin-drop"></i> Address : {{$getEvents[0]->alamat}}</p> -->
                         @if($getEvents[0]->url_scrut!="")
                           <p><i class="zmdi zmdi-file"></i> Download Scrutneering Form: <a href="{{url('documents/')}}/{{$getEvents[0]->url_scrut}}" download><img src="{{url('images/')}}/doc.png" width="32px" height="32px"/></a></p>
+                        @else
+                          <p><i class="zmdi zmdi-file"></i> Download Rules Form: <span class="text-muted"><i>* File tidak tersedia.</i></span></p>
                         @endif
                         @if($getEvents[0]->url_rules!="")
                           <p><i class="zmdi zmdi-file"></i> Download Rules Form: <a href="{{url('documents/')}}/{{$getEvents[0]->url_rules}}" download><img src="{{url('images/')}}/doc.png" width="32px" height="32px"/></a></p>
+                        @else
+                          <p><i class="zmdi zmdi-file"></i> Download Rules Form: <span class="text-muted"><i>* File tidak tersedia.</i></span></p>
                         @endif
-                        <p><i class="zmdi zmdi-nature-people"></i> Participans : <a href="#" onclick="onClkarticipans()"><img style="margin-top:-2%" src="{{url('images/')}}/participans.png" width="32px" height="32px"/></a></p>
+                        <p><i class="zmdi zmdi-nature-people"></i> Participans : <a href="#" onclick="onClkParticipans()"><img style="margin-top:-2%" src="{{url('images/')}}/participans.png" width="32px" height="32px"/></a></p>
                         <p><i class="zmdi zmdi-money-box"></i> Entrance Fee : {{UtilHelper::convertToIdr($getEvents[0]->entrance_fee)}}</p>
                         <p><i class="zmdi zmdi-paypal"></i> Payment : {{$getEvents[0]->payment}}</p>
-                        <p><i class="zmdi zmdi-layers"></i> Shirt Sizes : {{$getEvents[0]->shirt_sizes}}</p>
+                        @if($getEvents[0]->shirt_sizes!="")
+                          <p><i class="zmdi zmdi-layers"></i> Shirt Sizes: <a href="#" onclick="onClkViewShirtSize()"><img src="{{url('images/')}}/pdf.png" width="32px" height="32px"/></a></p>
+                        @else
+                          <p><i class="zmdi zmdi-layers"></i> Shirt Sizes: <span class="text-muted"><i>* File tidak tersedia.</i></span></p>
+                        @endif
                       </div>
                       <div class="col-lg-5">
                         <img src="{{ url('images/events/asli') }}/{{$getEvents[0]->url_foto}}">
@@ -75,6 +83,7 @@
 
                     </div>
                 </div>
+
                 <div class="single-schedule-area wow fadeInUp" data-wow-delay="300ms" id="divParticipans">
                     <!-- Single Schedule Thumb and Info -->
                     <h3>List Participans</h3>
@@ -106,6 +115,14 @@
                           @endforeach
                       </tbody>
                     </table>
+                </div>
+
+                <div class="single-schedule-area wow fadeInUp" data-wow-delay="300ms" id="divViewShirtSizes">
+                    <!-- Single Schedule Thumb and Info -->
+                    <h3>View Shirt Sizes</h3>
+                    <hr>
+                    <embed src="{{url('documents/')}}/{{$getEvents[0]->shirt_sizes}}" type="application/pdf"
+                      height="500px" width="100%" class="responsive">
                 </div>
 
                 <div class="single-schedule-area wow fadeInUp" data-wow-delay="300ms">
@@ -177,8 +194,12 @@
       });
       var x = document.getElementById("divParticipans");
       x.style.display = "none";
+
+      var y = document.getElementById("divViewShirtSizes");
+      y.style.display = "none";
     });
-    function onClkarticipans() {
+    
+    function onClkParticipans() {
         var x = document.getElementById("divParticipans");
         if (x.style.display === "none") {
         x.style.display = "block";
@@ -186,5 +207,16 @@
         x.style.display = "none";
         }
     }
+
+    function onClkViewShirtSize() {
+          var x = document.getElementById("divViewShirtSizes");
+          if (x.style.display === "none") {
+          x.style.display = "block";
+          } else {
+          x.style.display = "none";
+          }
+      }
 </script>
+
+onClkViewShirtSize
 @endsection

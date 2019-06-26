@@ -102,7 +102,6 @@
                                     @else
                                       <input type="text" class="form-control" value="{{$viewEvents->entranceFee}}" placeholder="Ketikkan Entrance Fee..." name="entranceFee" id="entranceFee" disabled/>
                                     @endif
-
                                 </div>
                             </div>
                             <div class="form-group mandatory">
@@ -179,19 +178,31 @@
                                   </div>
                                 </div>
                             </div>
+                            @if(isset($editEvents))
                             <div class="form-group mandatory">
                                 <div class="form-line">
                                     <label>Shirt Sizes</label>
                                     @if ($errors->has('shirtSizes'))
                                       <small style="color:red">* {{$errors->first('shirtSizes')}}</small>
                                     @endif
-                                    @if(isset($editEvents))
-                                      <input type="text" class="form-control" value="{{$editEvents->shirtSizes}}" placeholder="Ketikkan Shirt Sizes..." name="shirtSizes" id="shirtSizes"/>
-                                    @else
-                                      <input type="text" class="form-control" value="{{$viewEvents->shirtSizes}}" placeholder="Ketikkan Shirt Sizes..." name="shirtSizes" id="shirtSizes" disabled/>
-                                    @endif
+                                    <input type="file" name="shirtSizes" class="form-control" value="{{ old('shirtSizes') }}" >
+                                </div>
+                                <div>
+                                  <span style="color:red;">* Biarkan kosong jika tidak ingin diganti.</span><br>
+                                  <span class="text-muted"><i>* Form harus berbentuk Pdf.</i></span>
                                 </div>
                             </div>
+                            @else
+                            <div class="form-group mandatory">
+                                <label>Shirt Sizes</label>
+                                @if($viewEvents->shirt_sizes!="")
+                                  <a href="{{url('documents/')}}/{{$viewEvents->shirt_sizes}}" download><img src="{{url('images/')}}/pdf.png" width="32px" height="32px"/></a>
+                                @else
+                                  <span class="text-muted"><i>* File tidak tersedia.</i></span>
+                                @endif
+                            </div>
+                            @endif
+
                             <div class="form-group mandatory">
                                 <label>Tanggal</label>
                                 @if ($errors->has('tglAwal'))

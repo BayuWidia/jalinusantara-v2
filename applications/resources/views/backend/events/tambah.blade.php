@@ -126,7 +126,10 @@
                                     @if ($errors->has('shirtSizes'))
                                       <small style="color:red">* {{$errors->first('shirtSizes')}}</small>
                                     @endif
-                                    <input type="text" class="form-control" value="{{ old('shirtSizes') }}" placeholder="Ketikkan Shirt Sizes..." name="shirtSizes" id="shirtSizes"/>
+                                    <input type="file" name="shirtSizes" class="form-control" value="{{ old('shirtSizes') }}" >
+                                </div>
+                                <div>
+                                  <span class="text-muted"><i>* Form harus berbentuk Pdf.</i></span>
                                 </div>
                             </div>
                             <div class="form-group mandatory">

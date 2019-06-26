@@ -201,6 +201,7 @@ class EventsController extends Controller
          $file = $request->file('urlFoto');
          $fileScrut = $request->file('urlScrut');
          $fileRules = $request->file('urlRules');
+         $fileShirtSizes = $request->file('shirtSizes');
          if($file!="") {
            $photoName = Auth::user()->email.'_'.time(). '.' . $file->getClientOriginalExtension();
            Image::make($file)->save('images/events/asli/'. $photoName);
@@ -211,6 +212,9 @@ class EventsController extends Controller
 
            $rulesName = 'rules_'.Auth::user()->email.'_'.time(). '.' . $fileRules->getClientOriginalExtension();
            $fileRules->move('documents', $rulesName);
+
+           $shirtSizesName = 'shirtSizesName_'.Auth::user()->email.'_'.time(). '.' . $fileShirtSizes->getClientOriginalExtension();
+           $fileShirtSizes->move('documents', $shirtSizesName);
 
 
            $flagHeadline="";
@@ -228,14 +232,14 @@ class EventsController extends Controller
            $set->tanggal_akhir = $setEndDate;
            $set->id_kategori = $request->kategoriId;
            $set->url_foto = $photoName;
-           $set->url_scrut = $photoName;
-           $set->url_rules = $photoName;
+           $set->url_scrut = $scrutName;
+           $set->url_rules = $rulesName;
            $set->maps = $request->maps;
            $set->fasilitator = $request->fasilitator;
            $set->jumlah_peserta = $request->jmlPeserta;
            $set->lokasi = $request->lokasi;
            $set->alamat = $request->alamat;
-           $set->shirt_sizes = $request->shirtSizes;
+           $set->shirt_sizes = $shirtSizesName;
            $set->entrance_fee = $request->entranceFee;
            $set->payment = $request->payment;
            $set->isi_event = $request->isiKonten;
@@ -402,7 +406,14 @@ class EventsController extends Controller
          }
 
          $set->maps = $request->maps;
-         $set->shirt_sizes = $request->shirtSizes;
+         // $set->shirt_sizes = $request->shirtSizes;
+         $fileShirtSizes = $request->file('shirtSizes');
+         if($fileShirtSizes!=null){
+           $shirtSizesName = 'shirtSizesName_'.Auth::user()->email.'_'.time(). '.' . $fileShirtSizes->getClientOriginalExtension();
+           $fileShirtSizes->move('documents', $shirtSizesName);
+           $set->shirt_sizes = $shirtSizesName;
+         }
+
          $set->fasilitator = $request->fasilitator;
          $set->jumlah_peserta = $request->jmlPeserta;
          $set->lokasi = $request->lokasi;
