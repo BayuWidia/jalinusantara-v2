@@ -121,7 +121,7 @@
                             <div class="contact--info-icon">
                                 <img src="{{asset('themeuser/img/core-img/icon-5.png')}}" alt="">
                             </div>
-                            <h7>Jl. GADING KIRANA TIMUR. Blok H13. No. 31 <br>JAKARTA 14240. INDONESIA</h7>
+                            <h7>Jl. GADING KIRANA TIMUR. <br>Blok H13. No. 31 <br>JAKARTA 14240. INDONESIA</h7>
                         </div>
                     </div>
 

@@ -17,7 +17,7 @@ class CreateMasterSliderTable extends Migration
             $table->increments('id');
             $table->string('judul')->nullable();
             $table->string('url_slider')->nullable();
-            $table->string('keterangan_slider')->nullable();
+            $table->longText('keterangan_slider')->nullable();
             $table->string('activated')->nullable();
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();

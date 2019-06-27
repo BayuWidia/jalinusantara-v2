@@ -202,6 +202,7 @@ class EventsController extends Controller
          $fileScrut = $request->file('urlScrut');
          $fileRules = $request->file('urlRules');
          $fileShirtSizes = $request->file('shirtSizes');
+         $fileRegister = $request->file('urlRegister');
          if($file!="") {
            $photoName = Auth::user()->email.'_'.time(). '.' . $file->getClientOriginalExtension();
            Image::make($file)->save('images/events/asli/'. $photoName);
@@ -213,9 +214,11 @@ class EventsController extends Controller
            $rulesName = 'rules_'.Auth::user()->email.'_'.time(). '.' . $fileRules->getClientOriginalExtension();
            $fileRules->move('documents', $rulesName);
 
-           $shirtSizesName = 'shirtSizesName_'.Auth::user()->email.'_'.time(). '.' . $fileShirtSizes->getClientOriginalExtension();
+           $shirtSizesName = 'shirtSizes_'.Auth::user()->email.'_'.time(). '.' . $fileShirtSizes->getClientOriginalExtension();
            $fileShirtSizes->move('documents', $shirtSizesName);
 
+           $registerName = 'register_'.Auth::user()->email.'_'.time(). '.' . $fileRegister->getClientOriginalExtension();
+           $fileRegister->move('documents', $registerName);
 
            $flagHeadline="";
            if($request->flagHeadline=="") {
@@ -234,6 +237,7 @@ class EventsController extends Controller
            $set->url_foto = $photoName;
            $set->url_scrut = $scrutName;
            $set->url_rules = $rulesName;
+           $set->url_register = $registerName;
            $set->maps = $request->maps;
            $set->fasilitator = $request->fasilitator;
            $set->jumlah_peserta = $request->jmlPeserta;
@@ -409,10 +413,18 @@ class EventsController extends Controller
          // $set->shirt_sizes = $request->shirtSizes;
          $fileShirtSizes = $request->file('shirtSizes');
          if($fileShirtSizes!=null){
-           $shirtSizesName = 'shirtSizesName_'.Auth::user()->email.'_'.time(). '.' . $fileShirtSizes->getClientOriginalExtension();
+           $shirtSizesName = 'shirtSizes_'.Auth::user()->email.'_'.time(). '.' . $fileShirtSizes->getClientOriginalExtension();
            $fileShirtSizes->move('documents', $shirtSizesName);
            $set->shirt_sizes = $shirtSizesName;
          }
+
+         $fileRegister = $request->file('urlRegister');
+         if($fileRegister!=null){
+           $registerName = 'register_'.Auth::user()->email.'_'.time(). '.' . $fileRegister->getClientOriginalExtension();
+           $fileRegister->move('documents', $registerName);
+           $set->url_register = $registerName;
+         }
+
 
          $set->fasilitator = $request->fasilitator;
          $set->jumlah_peserta = $request->jmlPeserta;

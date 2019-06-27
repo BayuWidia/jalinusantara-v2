@@ -31,29 +31,29 @@ class PartnersController extends Controller
     public function store(Request $request)
     {
       // dd($request->all());
-          $messages = [
-            'namaPartners.required' => 'Tidak boleh kosong.',
-            'linkPartners.required' => 'Tidak boleh kosong.',
-            'urlPartners.required' => 'Tidak boleh kosong.',
-            'urlPartners.required' => 'Periksa kembali file image anda.',
-            'urlPartners.image' => 'File upload harus image.',
-            'urlPartners.mimes' => 'Ekstensi file tidak valid.',
-            'urlPartners.max' => 'Ukuran file terlalu besar.',
-            'keteranganPartners.required' => 'Tidak boleh kosong.',
-            'activated.required' => 'Tidak boleh kosong.',
-          ];
-
-          $validator = Validator::make($request->all(), [
-                  'namaPartners' => 'required',
-                  'linkPartners' => 'required',
-                  'keteranganPartners' => 'required',
-                  'activated' => 'required',
-                  'urlPartners' => 'required|image|mimes:jpeg,jpg,png|max:20000',
-              ], $messages);
-
-          if ($validator->fails()) {
-              return redirect()->route('partners.index')->withErrors($validator)->withInput();
-          }
+          // $messages = [
+          //   'namaPartners.required' => 'Tidak boleh kosong.',
+          //   'linkPartners.required' => 'Tidak boleh kosong.',
+          //   'urlPartners.required' => 'Tidak boleh kosong.',
+          //   'urlPartners.required' => 'Periksa kembali file image anda.',
+          //   'urlPartners.image' => 'File upload harus image.',
+          //   'urlPartners.mimes' => 'Ekstensi file tidak valid.',
+          //   'urlPartners.max' => 'Ukuran file terlalu besar.',
+          //   'keteranganPartners.required' => 'Tidak boleh kosong.',
+          //   'activated.required' => 'Tidak boleh kosong.',
+          // ];
+          //
+          // $validator = Validator::make($request->all(), [
+          //         'namaPartners' => 'required',
+          //         'linkPartners' => 'required',
+          //         'keteranganPartners' => 'required',
+          //         'activated' => 'required',
+          //         'urlPartners' => 'required|image|mimes:jpeg,jpg,png|max:20000',
+          //     ], $messages);
+          //
+          // if ($validator->fails()) {
+          //     return redirect()->route('partners.index')->withErrors($validator)->withInput();
+          // }
 
           $file = $request->file('urlPartners');
           if($file!="") {
@@ -104,24 +104,24 @@ class PartnersController extends Controller
     public function update(Request $request)
     {
         // dd($request->all());
-        $messages = [
-          'id.required' => 'Tidak boleh kosong.',
-          'namaPartnersEdit.required' => 'Tidak boleh kosong.',
-          'linkPartnersEdit.required' => 'Tidak boleh kosong.',
-          'keteranganPartnersEdit.required' => 'Tidak boleh kosong.',
-        ];
-
-        $validator = Validator::make($request->all(), [
-                'id' => 'required',
-                'namaPartnersEdit' => 'required',
-                'linkPartnersEdit' => 'required',
-                'keteranganPartnersEdit' => 'required',
-            ], $messages);
-
-        if ($validator->fails()) {
-          // dd($validator);
-            return redirect()->route('partners.index')->withErrors($validator)->withInput();
-        }
+        // $messages = [
+        //   'id.required' => 'Tidak boleh kosong.',
+        //   'namaPartnersEdit.required' => 'Tidak boleh kosong.',
+        //   'linkPartnersEdit.required' => 'Tidak boleh kosong.',
+        //   'keteranganPartnersEdit.required' => 'Tidak boleh kosong.',
+        // ];
+        //
+        // $validator = Validator::make($request->all(), [
+        //         'id' => 'required',
+        //         'namaPartnersEdit' => 'required',
+        //         'linkPartnersEdit' => 'required',
+        //         'keteranganPartnersEdit' => 'required',
+        //     ], $messages);
+        //
+        // if ($validator->fails()) {
+        //   // dd($validator);
+        //     return redirect()->route('partners.index')->withErrors($validator)->withInput();
+        // }
 
         $set = MasterPartners::find($request->id);
         $set->nama_partners = $request->namaPartnersEdit;

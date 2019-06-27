@@ -52,22 +52,25 @@
                         <h4>{{$getEvents[0]->judul_event}}</h4>
                         <hr>
                         <p><i class="zmdi zmdi-time"></i> Date : {{ \Carbon\Carbon::parse($getEvents[0]->tanggal_mulai)->format('d M Y')}} - {{ \Carbon\Carbon::parse($getEvents[0]->tanggal_akhir)->format('d M Y')}}</p>
-                        <!-- <p><i class="zmdi zmdi-account-circle"></i> Fasilitator : {{$getEvents[0]->fasilitator}}</p> -->
                         <p><i class="zmdi zmdi-pin-drop"></i> Location : {{$getEvents[0]->lokasi}}</p>
-                        <!-- <p><i class="zmdi zmdi-pin-drop"></i> Address : {{$getEvents[0]->alamat}}</p> -->
+                        @if($getEvents[0]->url_register!="")
+                          <p><i class="zmdi zmdi-file"></i> Download Registration Form: <a href="{{url('documents/')}}/{{$getEvents[0]->url_register}}" download onclick="onClkViewRegister()"><img src="{{url('images/')}}/doc.png" width="32px" height="32px"/></a></p>
+                          <p id="pRegister"><i style="color:red">*Mohon diisikan dan dikirim ke email sandi@jalinnusantara.com</i></p>
+                        @endif
                         @if($getEvents[0]->url_scrut!="")
-                          <p><i class="zmdi zmdi-file"></i> Download Scrutneering Form: <a href="{{url('documents/')}}/{{$getEvents[0]->url_scrut}}" download><img src="{{url('images/')}}/doc.png" width="32px" height="32px"/></a></p>
-                        @else
-                          <p><i class="zmdi zmdi-file"></i> Download Rules Form: <span class="text-muted"><i>* File tidak tersedia.</i></span></p>
+                          <p><i class="zmdi zmdi-file"></i> Download Scrutneering Form: <a href="{{url('documents/')}}/{{$getEvents[0]->url_scrut}}" download><img src="{{url('images/')}}/pdf.png" width="32px" height="32px"/></a></p>
                         @endif
                         @if($getEvents[0]->url_rules!="")
-                          <p><i class="zmdi zmdi-file"></i> Download Rules Form: <a href="{{url('documents/')}}/{{$getEvents[0]->url_rules}}" download><img src="{{url('images/')}}/doc.png" width="32px" height="32px"/></a></p>
-                        @else
-                          <p><i class="zmdi zmdi-file"></i> Download Rules Form: <span class="text-muted"><i>* File tidak tersedia.</i></span></p>
+                          <p><i class="zmdi zmdi-file"></i> Download Rules: <a href="{{url('documents/')}}/{{$getEvents[0]->url_rules}}" download><img src="{{url('images/')}}/pdf.png" width="32px" height="32px"/></a></p>
                         @endif
                         <p><i class="zmdi zmdi-nature-people"></i> Participans : <a href="#" onclick="onClkParticipans()"><img style="margin-top:-2%" src="{{url('images/')}}/participans.png" width="32px" height="32px"/></a></p>
+                        @if($getEvents[0]->entrance_fee!="")
                         <p><i class="zmdi zmdi-money-box"></i> Entrance Fee : {{UtilHelper::convertToIdr($getEvents[0]->entrance_fee)}}</p>
-                        <p><i class="zmdi zmdi-paypal"></i> Payment : {{$getEvents[0]->payment}}</p>
+                        @endif
+                        @if($getEvents[0]->payment!="")
+                        <p><i class="zmdi zmdi-paypal"></i> Payment : <img src="{{url('images/')}}/payment.png" width="32px" height="32px" onclick="onClkViewPayment()"/></p>
+                        <p id="pPayment">{{$getEvents[0]->payment}}</p>
+                        @endif
                         @if($getEvents[0]->shirt_sizes!="")
                           <p><i class="zmdi zmdi-layers"></i> Shirt Sizes: <a href="#" onclick="onClkViewShirtSize()"><img src="{{url('images/')}}/pdf.png" width="32px" height="32px"/></a></p>
                         @else
@@ -77,9 +80,9 @@
                       <div class="col-lg-5">
                         <img src="{{ url('images/events/asli') }}/{{$getEvents[0]->url_foto}}">
                       </div>
-                      <a href="{{url('events.pendaftaran')}}/{{$getEvents[0]->id}}" class="btn confer-btn" target="_blank">Register</a>
+                      <!-- <a href="{{url('events.pendaftaran')}}/{{$getEvents[0]->id}}" class="btn confer-btn" target="_blank">Register</a>
                       &nbsp;&nbsp;
-                      <a href="#" data-toggle='modal' data-target='#modalUpload' data-backdrop="static" data-keyboard="false" class="btn confer-btn">Upload</a>
+                      <a href="#" data-toggle='modal' data-target='#modalUpload' data-backdrop="static" data-keyboard="false" class="btn confer-btn">Upload</a> -->
 
                     </div>
                 </div>
@@ -127,8 +130,6 @@
 
                 <div class="single-schedule-area wow fadeInUp" data-wow-delay="300ms">
                     <!-- Single Schedule Thumb and Info -->
-                    <h3>Fill in the content of this event</h3>
-                    <hr>
                     <?php echo $getEvents[0]->isi_event ?>
                     <hr>
                     <h5>Share Event's this</h5>
@@ -197,8 +198,14 @@
 
       var y = document.getElementById("divViewShirtSizes");
       y.style.display = "none";
+
+      var z = document.getElementById("pRegister");
+      z.style.display = "none";
+
+      var a = document.getElementById("pPayment");
+      a.style.display = "none";
     });
-    
+
     function onClkParticipans() {
         var x = document.getElementById("divParticipans");
         if (x.style.display === "none") {
@@ -209,14 +216,28 @@
     }
 
     function onClkViewShirtSize() {
-          var x = document.getElementById("divViewShirtSizes");
-          if (x.style.display === "none") {
-          x.style.display = "block";
-          } else {
-          x.style.display = "none";
-          }
-      }
+        var x = document.getElementById("divViewShirtSizes");
+        if (x.style.display === "none") {
+        x.style.display = "block";
+        } else {
+        x.style.display = "none";
+        }
+    }
+
+    function onClkViewRegister() {
+        var x = document.getElementById("pRegister");
+        x.style.display = "block";
+    }
+
+    function onClkViewPayment() {
+        var x = document.getElementById("pPayment");
+        if (x.style.display === "none") {
+        x.style.display = "block";
+        } else {
+        x.style.display = "none";
+        }
+    }
+
 </script>
 
-onClkViewShirtSize
 @endsection

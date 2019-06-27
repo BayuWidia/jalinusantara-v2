@@ -46,7 +46,7 @@
 
                         <!-- Contact Area -->
                         <div class="footer-contact-info">
-                            <p><i class="zmdi zmdi-map"></i> Jl. GADING KIRANA TIMUR. Blok H13. No. 31<br>JAKARTA 14240. INDONESIA</p>
+                            <p><i class="zmdi zmdi-map"></i> Jl. GADING KIRANA TIMUR. <br>Blok H13. No. 31<br>JAKARTA 14240. INDONESIA</p>
                             <p><i class="zmdi zmdi-phone"></i> +62 21 451 7337 (office)</p>
                             <p><i class="zmdi zmdi-phone"></i> +62 812 8778 7266</p>
                             <p><i class="zmdi zmdi-email"></i> office@jalinnusantara.com</p>

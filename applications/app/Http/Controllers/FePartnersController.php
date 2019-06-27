@@ -20,7 +20,7 @@ class FePartnersController extends Controller
     {
         $getPartners = MasterPartners::select('*')
                                 ->where('flag_partners', 1)
-                                ->orderby('id', 'DESC')
+                                ->orderby('id', 'ASC')
                                 ->get();
         $getSertifikatPortrait = MasterSertifikat::select('master_sertifikat.*')
                       ->where('flag_sertifikat', 1)

@@ -6,26 +6,21 @@
     <div class="welcome-slides owl-carousel">
 
         <!-- Single Slide-->
-        <div class="single-welcome-slide bg-img bg-overlay jarallax" style="background-image: url({{url('images/slider')}}/{{$getSlider[0]->url_slider}});">
-            <div class="container h-100">
-                <div class="row h-100 align-items-center">
-                    <div class="col-12">
-                        <div class="welcome-text-two text-center">
-                            <!-- <h5 data-animation="fadeInUp" data-delay="100ms">Whenever we drive, drive with our heart</h5> -->
-                            <h2 data-animation="fadeInUp" data-delay="300ms">{{$getSlider[0]->judul}}</h2>
-                            <!-- <div class="event-meta" data-animation="fadeInUp" data-delay="500ms">
-                                <a class="event-date" href="#">{{$getSlider[0]->keterangan_slider}}.</a>
-                            </div> -->
-                            <!-- <div class="hero-btn-group" data-animation="fadeInUp" data-delay="700ms">
-                                <a href="{{ route('about.us', $getDataSejarah[0]->id) }}" id="" class="btn confer-btn m-2">View more <i class="zmdi zmdi-long-arrow-right"></i></a>
-                            </div> -->
-                        </div>
-                    </div>
-                </div>
+        <div class="single-welcome-slide jarallax" style="background-color:#9E46B0">
+          <br><br><br><br><br><br><br><br><br><br>
+            <div class="rows">
+              <div class="col-2">
+                <img style="width:110px;height:70px" src="{{asset('themeuser/img/core-img/logo.png')}}" alt="">
+              </div>
+              <div class="col-10">
+                  <p><?php echo $getSlider[0]->keterangan_slider ?></p>
+              </div>
+              <div class="col-2">
+                <img style="width:110px;height:70px" src="{{asset('themeuser/img/core-img/logo.png')}}" alt="">
+              </div>
             </div>
         </div>
     </div>
-
     <!-- Scroll Icon -->
     <div class="icon-scroll" id="scrollDown"></div>
 </section>

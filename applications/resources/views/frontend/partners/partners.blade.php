@@ -44,7 +44,7 @@
         <div class="row">
             @foreach($getPartners as $key)
                 <!-- Single Gallery Thumb -->
-                <div class="col-12 col-sm-4" style="text-align:center">
+                <div class="col-12 col-sm-3" style="text-align:center">
                     <div class="wow fadeInUp" data-wow-delay="300ms">
                         <a href="{{ url('images/partners/asli/') }}/{{$key->url_partners}}" class="single-gallery-item">
                           <img src="{{ url('images/partners/asli/') }}/{{$key->url_partners}}" alt=""></a>

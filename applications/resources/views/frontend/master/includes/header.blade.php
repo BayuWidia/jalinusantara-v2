@@ -42,11 +42,11 @@
 
 											$getMenuArticle = \App\Models\MasterKategori::select('*')
 												->where('master_kategori.flag_utama', '=', 'article')->where('master_kategori.activated', '=', '1')
-												->orderby('nama_kategori','asc')->get();
+												->get();
 
 											$getMenuEvents = \App\Models\MasterKategori::select('*')
 												->where('master_kategori.flag_utama', '=', 'events')->where('master_kategori.activated', '=', '1')
-												->orderby('nama_kategori','asc')->get();
+												->get();
 
 											// $getMenuEvents = \App\Models\Events::join('master_kategori', 'events.id_kategori', '=', 'master_kategori.id')
 											// 	->select(DB::raw('distinct(master_kategori.nama_kategori)'), 'master_kategori.id')
@@ -77,7 +77,7 @@
                             <li><a href="{{ route('contact') }}">Contact</a></li>
 														<li><a href="{{ route('partners') }}">Partners</a>
 	                          </li>
-														<li><a href="#">Media</a>
+														<li><a href="#">Gallery</a>
 	                              <ul class="dropdown" style="width:200px;">
 	                                  <li><a href="{{ route('galeri.photo') }}">Photo</a></li>
 																		<li><a href="{{ route('galeri.video') }}">Video</a></li>

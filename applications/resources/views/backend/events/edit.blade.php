@@ -262,6 +262,31 @@
                             @if(isset($editEvents))
                             <div class="form-group mandatory">
                                 <div class="form-line">
+                                    <label>Form Registrasi</label>
+                                    @if ($errors->has('urlRegister'))
+                                      <small style="color:red">* {{$errors->first('urlRegister')}}</small>
+                                    @endif
+                                    <input type="file" name="urlRegister" class="form-control" value="{{ old('urlRegister') }}" >
+                                </div>
+                                <div>
+                                  <span style="color:red;">* Biarkan kosong jika tidak ingin diganti.</span><br>
+                                  <span class="text-muted"><i>* Form harus berbentuk Pdf, Excel atau Word.</i></span>
+                                </div>
+                            </div>
+                            @else
+                            <div class="form-group mandatory">
+                                <label>Form Registrasi</label>
+                                @if($viewEvents->url_register!="")
+                                  <a href="{{url('documents/')}}/{{$viewEvents->url_register}}" download><img src="{{url('images/')}}/doc.png" width="32px" height="32px"/></a>
+                                @else
+                                  <span class="text-muted"><i>* File tidak tersedia.</i></span>
+                                @endif
+                            </div>
+                            @endif
+
+                            @if(isset($editEvents))
+                            <div class="form-group mandatory">
+                                <div class="form-line">
                                     <label>Form Scrutneering</label>
                                     @if ($errors->has('urlScrut'))
                                       <small style="color:red">* {{$errors->first('urlScrut')}}</small>
@@ -277,7 +302,7 @@
                             <div class="form-group mandatory">
                                 <label>Form Scrutneering</label>
                                 @if($viewEvents->url_scrut!="")
-                                  <a href="{{url('documents/')}}/{{$viewEvents->url_scrut}}" download><img src="{{url('images/')}}/doc.png" width="32px" height="32px"/></a>
+                                  <a href="{{url('documents/')}}/{{$viewEvents->url_scrut}}" download><img src="{{url('images/')}}/pdf.png" width="32px" height="32px"/></a>
                                 @else
                                   <span class="text-muted"><i>* File tidak tersedia.</i></span>
                                 @endif
@@ -287,7 +312,7 @@
                             @if(isset($editEvents))
                             <div class="form-group mandatory">
                                 <div class="form-line">
-                                    <label>Form Rules</label>
+                                    <label>Rules</label>
                                     @if ($errors->has('urlRules'))
                                       <small style="color:red">* {{$errors->first('urlRules')}}</small>
                                     @endif
@@ -300,9 +325,9 @@
                             </div>
                             @else
                             <div class="form-group mandatory">
-                                <label>Form Rules</label>
+                                <label>Rules</label>
                                 @if($viewEvents->url_rules!="")
-                                  <a href="{{url('documents/')}}/{{$viewEvents->url_rules}}" download><img src="{{url('images/')}}/doc.png" width="32px" height="32px"/></a>
+                                  <a href="{{url('documents/')}}/{{$viewEvents->url_rules}}" download><img src="{{url('images/')}}/pdf.png" width="32px" height="32px"/></a>
                                 @else
                                   <span class="text-muted"><i>* File tidak tersedia.</i></span>
                                 @endif

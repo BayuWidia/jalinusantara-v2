@@ -31,7 +31,7 @@ class CreateEventsTable extends Migration
             //0:belum publish, 1:publish.
             $table->integer('flag_publish')->nullable()->default(0);
             //0:biasa, 1:jadi pioritas.
-            $table->integer('flag_headline_utama')->nullable();
+            // $table->integer('flag_headline_utama')->nullable();
             $table->integer('view_counter')->nullable();
             $table->string('activated')->nullable();
             $table->string('created_by')->nullable();

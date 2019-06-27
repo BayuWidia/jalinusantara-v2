@@ -162,6 +162,18 @@
                             </div>
                             <div class="form-group mandatory">
                                 <div class="form-line">
+                                    <label>Form Registrasi</label>
+                                    @if ($errors->has('urlRegister'))
+                                      <small style="color:red">* {{$errors->first('urlRegister')}}</small>
+                                    @endif
+                                    <input type="file" name="urlRegister" class="form-control" value="{{ old('urlRegister') }}" >
+                                </div>
+                                <div>
+                                  <span class="text-muted"><i>* Form harus berbentuk Pdf, Excel atau Word.</i></span>
+                                </div>
+                            </div>
+                            <div class="form-group mandatory">
+                                <div class="form-line">
                                     <label>Form Scrutneering</label>
                                     @if ($errors->has('urlScrut'))
                                       <small style="color:red">* {{$errors->first('urlScrut')}}</small>
@@ -174,7 +186,7 @@
                             </div>
                             <div class="form-group mandatory">
                                 <div class="form-line">
-                                    <label>Form Rules</label>
+                                    <label>Rules</label>
                                     @if ($errors->has('urlRules'))
                                       <small style="color:red">* {{$errors->first('urlRules')}}</small>
                                     @endif
