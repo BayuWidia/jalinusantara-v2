@@ -13,7 +13,7 @@
               <br>
               <img src="{{asset('themeuser/img/core-img/logo.png')}}" alt="" style="padding-left:10%">
             </div>
-            <div class="col-8">
+            <div class="col-8"><br><br>
               <div class="welcome-text-two text-center">
                 <p style="color:white"><?php echo $getSlider[0]->keterangan_slider ?></p>
               </div>
