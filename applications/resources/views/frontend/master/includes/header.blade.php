@@ -83,7 +83,7 @@
 																		<li><a href="{{ route('galeri.video') }}">Video</a></li>
 	                              </ul>
 	                          </li>
-                        </ul>
+                        </ul><div id="google_translate_element" style="float:left;"></div>
                       </div>
                     <!-- Nav End -->
                 </div>
@@ -106,9 +106,9 @@
 						@endforeach
 				</marquee>
 			</div>
-			<div class="col-lg-2" style="margin-top:1.5%">
+			<!-- <div class="col-lg-2" style="margin-top:1.5%">
 				<div id="google_translate_element" style="float:left;"></div>
-			</div>
+			</div> -->
 
 		</div>
 </header>
