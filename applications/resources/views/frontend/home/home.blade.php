@@ -11,7 +11,7 @@
           <div class="row">
             <div class="col-2">
               <br><br><br><br><br><br><br><br><br><br><br><br>
-              <img src="{{asset('themeuser/img/core-img/logo.png')}}" alt="" style="padding-left:10%">
+              <img src="{{asset('themeuser/img/core-img/bee.png')}}" alt="" style="padding-left:10%">
             </div>
             <div class="col-8">
               <br><br><br><br><br><br><br><br><br><br><br><br>
@@ -21,7 +21,7 @@
             </div>
             <div class="col-2">
               <br><br><br><br><br><br><br><br><br><br><br>
-              <img src="{{asset('themeuser/img/core-img/bee.png')}}" alt="">
+              <img src="{{asset('themeuser/img/core-img/logo.png')}}" alt="">
             </div>
           </div>
         </div>

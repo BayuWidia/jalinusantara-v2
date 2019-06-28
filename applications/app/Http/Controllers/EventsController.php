@@ -198,27 +198,27 @@ class EventsController extends Controller
          //     return redirect()->route('events.tambah')->withErrors($validator)->withInput();
          // }
 
-         $file = $request->file('urlFoto');
-         $fileScrut = $request->file('urlScrut');
-         $fileRules = $request->file('urlRules');
-         $fileShirtSizes = $request->file('shirtSizes');
-         $fileRegister = $request->file('urlRegister');
-         if($file!="") {
-           $photoName = Auth::user()->email.'_'.time(). '.' . $file->getClientOriginalExtension();
-           Image::make($file)->save('images/events/asli/'. $photoName);
-           Image::make($file)->fit(555,280)->save('images/events/'. $photoName);
-
-           $scrutName = 'scrut_'.Auth::user()->email.'_'.time(). '.' . $fileScrut->getClientOriginalExtension();
-           $fileScrut->move('documents', $scrutName);
-
-           $rulesName = 'rules_'.Auth::user()->email.'_'.time(). '.' . $fileRules->getClientOriginalExtension();
-           $fileRules->move('documents', $rulesName);
-
-           $shirtSizesName = 'shirtSizes_'.Auth::user()->email.'_'.time(). '.' . $fileShirtSizes->getClientOriginalExtension();
-           $fileShirtSizes->move('documents', $shirtSizesName);
-
-           $registerName = 'register_'.Auth::user()->email.'_'.time(). '.' . $fileRegister->getClientOriginalExtension();
-           $fileRegister->move('documents', $registerName);
+         // $file = $request->file('urlFoto');
+         // $fileScrut = $request->file('urlScrut');
+         // $fileRules = $request->file('urlRules');
+         // $fileShirtSizes = $request->file('shirtSizes');
+         // $fileRegister = $request->file('urlRegister');
+         // if($file!="") {
+         //   $photoName = Auth::user()->email.'_'.time(). '.' . $file->getClientOriginalExtension();
+         //   Image::make($file)->save('images/events/asli/'. $photoName);
+         //   Image::make($file)->fit(555,280)->save('images/events/'. $photoName);
+         //
+         //   $scrutName = 'scrut_'.Auth::user()->email.'_'.time(). '.' . $fileScrut->getClientOriginalExtension();
+         //   $fileScrut->move('documents', $scrutName);
+         //
+         //   $rulesName = 'rules_'.Auth::user()->email.'_'.time(). '.' . $fileRules->getClientOriginalExtension();
+         //   $fileRules->move('documents', $rulesName);
+         //
+         //   $shirtSizesName = 'shirtSizes_'.Auth::user()->email.'_'.time(). '.' . $fileShirtSizes->getClientOriginalExtension();
+         //   $fileShirtSizes->move('documents', $shirtSizesName);
+         //
+         //   $registerName = 'register_'.Auth::user()->email.'_'.time(). '.' . $fileRegister->getClientOriginalExtension();
+         //   $fileRegister->move('documents', $registerName);
 
            $flagHeadline="";
            if($request->flagHeadline=="") {
@@ -234,16 +234,55 @@ class EventsController extends Controller
            $set->tanggal_mulai = $setStartDate;
            $set->tanggal_akhir = $setEndDate;
            $set->id_kategori = $request->kategoriId;
-           $set->url_foto = $photoName;
-           $set->url_scrut = $scrutName;
-           $set->url_rules = $rulesName;
-           $set->url_register = $registerName;
+
+           // $set->url_foto = $photoName;
+           // $set->url_scrut = $scrutName;
+           // $set->url_rules = $rulesName;
+           // $set->url_register = $registerName;
+
+           $file = $request->file('urlFoto');
+           if($file!="") {
+             $photoName = Auth::user()->email.'_'.time(). '.' . $file->getClientOriginalExtension();
+             Image::make($file)->save('images/events/asli/'. $photoName);
+             Image::make($file)->fit(555,280)->save('images/events/'. $photoName);
+             $set->url_foto = $photoName;
+           }
+           $fileScrut = $request->file('urlScrut');
+           if($fileScrut!=null){
+             $scrutName = 'scrut_'.Auth::user()->email.'_'.time(). '.' . $fileScrut->getClientOriginalExtension();
+             $fileScrut->move('documents', $scrutName);
+             $set->url_scrut = $scrutName;
+           }
+
+           $fileRules = $request->file('urlRules');
+           if($fileRules!=null){
+             $rulesName = 'rules_'.Auth::user()->email.'_'.time(). '.' . $fileRules->getClientOriginalExtension();
+             $fileRules->move('documents', $rulesName);
+             $set->url_rules = $rulesName;
+           }
+
            $set->maps = $request->maps;
+           // $set->shirt_sizes = $request->shirtSizes;
+           $fileShirtSizes = $request->file('shirtSizes');
+           if($fileShirtSizes!=null){
+             $shirtSizesName = 'shirtSizes_'.Auth::user()->email.'_'.time(). '.' . $fileShirtSizes->getClientOriginalExtension();
+             $fileShirtSizes->move('documents', $shirtSizesName);
+             $set->shirt_sizes = $shirtSizesName;
+           }
+
+           $fileRegister = $request->file('urlRegister');
+           if($fileRegister!=null){
+             $registerName = 'register_'.Auth::user()->email.'_'.time(). '.' . $fileRegister->getClientOriginalExtension();
+             $fileRegister->move('documents', $registerName);
+             $set->url_register = $registerName;
+           }
+
+           // $set->maps = $request->maps;
            $set->fasilitator = $request->fasilitator;
            $set->jumlah_peserta = $request->jmlPeserta;
            $set->lokasi = $request->lokasi;
            $set->alamat = $request->alamat;
-           $set->shirt_sizes = $shirtSizesName;
+           // $set->shirt_sizes = $shirtSizesName;
            $set->entrance_fee = $request->entranceFee;
            $set->payment = $request->payment;
            $set->isi_event = $request->isiKonten;
@@ -252,9 +291,9 @@ class EventsController extends Controller
            $set->activated = 1;
            $set->created_by = Auth::user()->id;
            $set->save();
-         } else {
-           return redirect()->route('events.index')->with('messagefail', 'Gambar events harus di upload.');
-         }
+         // } else {
+         //   return redirect()->route('events.index')->with('messagefail', 'Gambar events harus di upload.');
+         // }
 
          \LogActivities::insLogActivities('log insert successfully.');
 
@@ -424,7 +463,6 @@ class EventsController extends Controller
            $fileRegister->move('documents', $registerName);
            $set->url_register = $registerName;
          }
-
 
          $set->fasilitator = $request->fasilitator;
          $set->jumlah_peserta = $request->jmlPeserta;

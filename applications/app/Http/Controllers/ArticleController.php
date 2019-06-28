@@ -185,11 +185,11 @@ class ArticleController extends Controller
         //     return redirect()->route('article.tambah')->withErrors($validator)->withInput();
         // }
 
-        $file = $request->file('urlFoto');
-        if($file!="") {
-          $photoName = Auth::user()->email.'_'.time(). '.' . $file->getClientOriginalExtension();
-          Image::make($file)->save('images/article/asli/'. $photoName);
-          Image::make($file)->fit(1000,589)->save('images/article/'. $photoName);
+        // $file = $request->file('urlFoto');
+        // if($file!="") {
+        //   $photoName = Auth::user()->email.'_'.time(). '.' . $file->getClientOriginalExtension();
+        //   Image::make($file)->save('images/article/asli/'. $photoName);
+        //   Image::make($file)->fit(1000,589)->save('images/article/'. $photoName);
 
           $flagHeadline="";
           if($request->flagHeadline=="") {
@@ -202,7 +202,14 @@ class ArticleController extends Controller
           $set = new Informasi;
           $set->judul_informasi = $request->judul;
           $set->id_kategori = $request->kategoriId;
-          $set->url_foto = $photoName;
+          $file = $request->file('urlFoto');
+          if($file!="") {
+            $photoName = Auth::user()->email.'_'.time(). '.' . $file->getClientOriginalExtension();
+            Image::make($file)->save('images/article/asli/'. $photoName);
+            Image::make($file)->fit(1000,589)->save('images/article/'. $photoName);
+            $set->url_foto = $photoName;
+          }
+          // $set->url_foto = $photoName;
           $set->isi_informasi = $request->isiKonten;
           $set->tags = $request->tags;
           $set->flag_headline = $flagHeadline;
@@ -212,9 +219,9 @@ class ArticleController extends Controller
           $set->view_counter = 0;
           $set->created_by = Auth::user()->id;
           $set->save();
-        } else {
-          return redirect()->route('article.index')->with('messagefail', 'Gambar article harus di upload.');
-        }
+        // } else {
+        //   return redirect()->route('article.index')->with('messagefail', 'Gambar article harus di upload.');
+        // }
 
         \LogActivities::insLogActivities('log insert successfully.');
 
