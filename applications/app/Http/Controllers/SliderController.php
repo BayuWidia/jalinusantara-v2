@@ -99,22 +99,24 @@ class SliderController extends Controller
 
     public function update(Request $request)
     {
-        // $messages = [
-        //   'id.required' => 'Tidak boleh kosong.',
-        //   'judul.required' => 'Tidak boleh kosong.',
-        //   'keteranganSlider.required' => 'Tidak boleh kosong.',
-        // ];
-        //
-        // $validator = Validator::make($request->all(), [
-        //     'id' => 'required',
-        //     'judul' => 'required',
-        //     'keteranganSlider' => 'required',
-        // ], $messages);
-        //
-        // if ($validator->fails()) {
-        //     return redirect()->route('slider.index')->withErrors($validator)->withInput();
-        // }
+      // dd($request->all());
+        $messages = [
+          'id.required' => 'Tidak boleh kosong.',
+          'judul.required' => 'Tidak boleh kosong.',
+          'keteranganSlider.required' => 'Tidak boleh kosong.',
+        ];
 
+        $validator = Validator::make($request->all(), [
+            'id' => 'required',
+            'judul' => 'required',
+            'keteranganSlider' => 'required',
+        ], $messages);
+
+        if ($validator->fails()) {
+            return redirect()->route('slider.index')->withErrors($validator)->withInput();
+        }
+
+        // dd($request);
         $set = MasterSlider::find($request->id);
         $set->judul = $request->judul;
         $file = $request->file('urlSliderEdit');

@@ -222,11 +222,9 @@ Route::get('events.today', 'FeEventsController@eventToday')->name('events.today'
 Route::get('contact', 'FeContactController@index')->name('contact');
 Route::post('contact.store', 'CommentController@storeContact')->name('contact.store');
 
-// Route::get('galeri.video/{id}', 'FeGaleriController@index')->name('galeri.video');
 Route::get('video', 'FeGaleriController@showVideo')->name('galeri.video');
 Route::get('photo', 'FeGaleriController@showPhoto')->name('galeri.photo');
-// Route::get('video', 'FeGaleriController@indexVideo')->name('video');
-
+Route::post('photo', 'FeGaleriController@postPhoto')->name('galeri.photo');
 
 Route::get('partners', 'FePartnersController@showPartners')->name('partners');
 

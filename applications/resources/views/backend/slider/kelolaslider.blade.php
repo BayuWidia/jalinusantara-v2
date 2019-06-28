@@ -96,7 +96,7 @@
 
     <!-- Modal Update-->
     <div class="modal fade" id="modaledit" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content bounceInRight">
                   <div class="modal-header">
                       <h4 class="modal-title">Edit Konten Slider</h4>

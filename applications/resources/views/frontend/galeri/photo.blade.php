@@ -40,7 +40,7 @@
 <!-- Our Gallery Area Start -->
 <div class="our-gallery-area section-padding-0-85">
     <div class="container-fluid">
-        <div class="row">
+        <div class="row" id="load-data">
           @php
               $temp = '';
           @endphp
@@ -73,11 +73,45 @@
             @endif
           @endforeach
         </div>
+
+        <!-- <div class="row" id="remove-row">
+            <div class="col-12">
+                <div class="more-blog-btn text-center">
+                    <a class="btn confer-btn" id="loadmore" href="#">Load more <i class="zmdi zmdi-refresh"></i></a>
+                </div>
+            </div>
+        </div> -->
+
     </div>
 </div>
 <!-- Our Gallery Area End -->
 @endsection
 
 @section('footscript')
+<script>
+    $(document).ready(function(){
+       $(document).on('click','#loadmore',function(){
+           $("#loadmore").html("Loading....");
+           $.ajax({
+               url : '{{ url("photo") }}',
+               method : "POST",
+               data : {_token:"{{csrf_token()}}"},
+               dataType : "text",
+               success : function (data)
+               {
+                  if(data != '')
+                  {
+                      $('#remove-row').remove();
+                      $('#load-data').append(data);
+                  }
+                  else
+                  {
+                      $('#btn-more').html("No Data");
+                  }
+               }
+           });
+       });
+    });
+</script>
 
 @endsection
