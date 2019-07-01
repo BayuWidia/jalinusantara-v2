@@ -38,74 +38,64 @@
                         <table class="table table-bordered table-striped table-hover js-basic-example dataTable" id="tabelinfo">
                             <thead>
                                 <tr>
+                                    <th style="text-align:center">#</th>
                                     <th style="text-align:center">Judul</th>
                                     <th style="text-align:center">Nomor Pintu</th>
-                                    <th style="text-align:center">Publish</th>
                                     <th style="text-align:center">Status</th>
+                                    <th style="text-align:center">Status Publish</th>
                                     <th style="text-align:center;width:28%">Action</th>
                                 </tr>
-                            </thead>
-                        </table>
-                        <tbody>
-                          @php $i=1; @endphp
-                          @foreach($getDataParticipans as $key)
-                            <tr>
-                              <td>{{$i++}}</td>
-                              <td>{{$key->judul_event}}</td>
-                              <td>{{$key->nomor_pintu}}</td>
-                              <td style="text-align:center">
-                                @if($key->flag_publish=="1")
-                                  <span class="badge bg-orange">
-                                    Publish
-                                  </span>
-                                @else
-                                  <span class="badge bg-blue-grey">
-                                    Un Publish
-                                  </span>
-                                @endif
-                              </td>
-                              <td style="text-align:center">
-                                @if($key->activated=="1")
-                                  <span class="badge bg-green">
-                                    Active
-                                  </span>
-                                @else
-                                  <span class="badge bg-red">
-                                    Non Active
-                                  </span>
-                                @endif
-                              </td>
-                              <td style="text-align:center">
-                                @if($key->flag_publish=="1")
-                                  <a href="#" class="btn btn-warning btn-circle waves-effect waves-circle waves-float flagpublish"
-                                  data-toggle="modal" data-target="#modalflagedit"
-                                  data-value="{{$key->id}}" data-backdrop="static"
-                                  data-keyboard="false"><i class="material-icons">favorite</i></a>
-                                @else
-                                  <a href="#" class="btn bg-blue-grey btn-circle waves-effect waves-circle waves-float flagpublish"
-                                  data-toggle="modal" data-target="#modalflagedit" data-value="{{$key->id}}"
-                                  data-backdrop="static" data-keyboard="false"><i class="material-icons">favorite_border</i></a>
-                                @endif
-                              </td>
-                              <td style="text-align:center">
-                                <a href="#" class="btn btn-success btn-circle waves-effect waves-circle waves-float edit"
-                                   data-toggle="modal" data-target="#modaledit" data-value="{{$key->id}}"
-                                   data-backdrop="static" data-keyboard="false"><i class="material-icons">open_in_new</i></a>
-                                @if($key->activated=="1")
-                                  <a href="#" class="btn btn-danger btn-circle waves-effect waves-circle waves-float hapus"
-                                  data-toggle="modal" data-target="#modaldelete"
-                                  data-value="{{$key->id}}" data-backdrop="static"
-                                  data-keyboard="false"><i class="material-icons">delete_forever</i></a>
-                                @else
-                                  <a href="#" class="btn bg-blue-grey btn-circle waves-effect waves-circle waves-float aktifkan"
-                                  data-toggle="modal" data-target="#modalAktifkan"
-                                  data-value="{{$key->id}}" data-backdrop="static" data-keyboard="false"><i class="material-icons">thumb_down</i></a>
-                                @endif
+                            </thead><tbody>
+                              @php $i=1; @endphp
+                              @foreach($getDataParticipans as $key)
+                                <tr>
+                                  <td>{{$i++}}</td>
+                                  <td>{{$key->judul_event}}</td>
+                                  <td>{{$key->nomor_pintu}}</td>
+                                  <td style="text-align:center">
+                                    @if($key->activated=="1")
+                                      <span class="badge bg-green">
+                                        Active
+                                      </span>
+                                    @else
+                                      <span class="badge bg-red">
+                                        Non Active
+                                      </span>
+                                    @endif
+                                  </td>
+                                  <td style="text-align:center">
+                                    @if($key->flag_publish=="1")
+                                      <a href="#" class="btn btn-warning btn-circle waves-effect waves-circle waves-float flagpublish"
+                                      data-toggle="modal" data-target="#modalflagedit"
+                                      data-value="{{$key->id}}" data-backdrop="static"
+                                      data-keyboard="false"><i class="material-icons">favorite</i></a>
+                                    @else
+                                      <a href="#" class="btn bg-blue-grey btn-circle waves-effect waves-circle waves-float flagpublish"
+                                      data-toggle="modal" data-target="#modalflagedit" data-value="{{$key->id}}"
+                                      data-backdrop="static" data-keyboard="false"><i class="material-icons">favorite_border</i></a>
+                                    @endif
+                                  </td>
+                                  <td style="text-align:center">
+                                   <a href="{{url('admin/participans.edit/')}}/{{$key->id}}" class="btn btn-success btn-circle waves-effect waves-circle waves-float">
+                                                 <i class="material-icons">open_in_new</i></a>
+                                    @if($key->activated=="1")
+                                      <a href="#" class="btn btn-danger btn-circle waves-effect waves-circle waves-float hapus"
+                                      data-toggle="modal" data-target="#modaldelete"
+                                      data-value="{{$key->id}}" data-backdrop="static"
+                                      data-keyboard="false"><i class="material-icons">delete_forever</i></a>
+                                    @else
+                                      <a href="#" class="btn bg-blue-grey btn-circle waves-effect waves-circle waves-float aktifkan"
+                                      data-toggle="modal" data-target="#modalAktifkan"
+                                      data-value="{{$key->id}}" data-backdrop="static" data-keyboard="false"><i class="material-icons">thumb_down</i></a>
+                                    @endif
+                                    <a href="{{url('admin/participans.view/')}}/{{$key->id}}" class="btn btn-primary btn-circle waves-effect waves-circle waves-float">
+                                                  <i class="material-icons">remove_red_eye</i></a>
 
-                              </td>
-                            </tr>
-                          @endforeach
-                        </tbody>
+                                  </td>
+                                </tr>
+                              @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

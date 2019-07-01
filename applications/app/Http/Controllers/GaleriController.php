@@ -27,7 +27,7 @@ class GaleriController extends Controller
                       ->orderBy('judul_event', 'ASC')->get();
           $getGaleri = MasterGaleri::leftJoin('events','master_galeri.id_events','=','events.id')
               ->select(['master_galeri.*','events.judul_event'])
-                      ->orderBy('master_galeri.d', 'DESC')->get();
+                      ->orderBy('master_galeri.id', 'DESC')->get();
 
           return view('backend.galeri.kelolagaleri', compact('getGaleri','getDataEvents'));
     }

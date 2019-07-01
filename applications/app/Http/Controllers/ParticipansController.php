@@ -58,7 +58,7 @@ class ParticipansController extends Controller
                   'nomor_pintu' => $request->nomorPintu,
                   'url_file' => $participansName,
                   'flag_publish' => 1,
-                  'activated' => $request->activated,
+                  'activated' => 1,
                   'created_by' => Auth::user()->id,
               ]);
 

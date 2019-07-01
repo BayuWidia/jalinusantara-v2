@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="block-header">
-        <h2>FORM KELOLA EVENTS</h2>
+        <h2>FORM KELOLA PARTICIPANS</h2>
     </div>
     <div class="row clearfix">
         <div class="col-md-12">
@@ -22,7 +22,7 @@
             <div class="card">
                 <div class="header bg-orange">
                   <h2>
-                      @if(isset($editEvents))
+                      @if(isset($editParticipans))
                         Edit Participans Jalinusantara
                       @else
                         View Participans Jalinusantara
@@ -41,25 +41,27 @@
                                     <small style="color:red">* {{$errors->first('eventsId')}}</small>
                                   @endif
                                       @if(isset($editParticipans))
-                                    <select class="form-control show-tick" name="eventsId" id="eventsId">
-                                        <option value="-- Pilih --">-- Pilih --</option>
-                                        @foreach($getDataEvents as $key)
-                                          @if($editParticipans->id_events==$key->id)
-                                            <option value="{{$key->id}}" selected>{{ $key->nama_kategori }} - {{ $key->judul_event }}</option>
-                                          @else
-                                            <option value="{{$key->id}}" {{ old('kategoriId') == $key->id ? 'selected=""' : ''}}>{{ $key->nama_kategori }} - {{ $key->judul_event }}</option>
-                                          @endif
-                                        @endforeach
+                                        <select class="form-control show-tick" name="eventsId" id="eventsId">
+                                          <option value="-- Pilih --">-- Pilih --</option>
+                                          @foreach($getDataEvents as $key)
+
+                                            @if($editParticipans->id_event==$key->id)
+                                              <option value="{{$key->id}}" selected>{{ $key->nama_kategori }} - {{ $key->judul_event }}</option>
+                                            @else
+                                              <option value="{{$key->id}}" {{ old('eventsId') == $key->id ? 'selected=""' : ''}}>{{ $key->nama_kategori }} - {{ $key->judul_event }}</option>
+                                            @endif
+                                          @endforeach
+                                        </select>
                                       @else
-                                    <select class="form-control show-tick" name="eventsId" id="eventsId" disabled>
-                                        <option value="-- Pilih --">-- Pilih --</option>
-                                        @foreach($getDataEvents as $key)
-                                          @if($viewParticipans->id_events==$key->id)
-                                            <option value="{{$key->id}}" selected>{{ $key->nama_kategori }} - {{ $key->judul_event }}</option>
+                                        <select class="form-control show-tick" name="eventsId" id="eventsId" disabled>
+                                            <option value="-- Pilih --">-- Pilih --</option>
+                                            @foreach($getDataEvents as $key)
+                                              @if($viewParticipans->id_event==$key->id)
+                                                <option value="{{$key->id}}" selected>{{ $key->nama_kategori }} - {{ $key->judul_event }}</option>
+                                              @endif
+                                            @endforeach
                                           @endif
-                                        @endforeach
-                                      @endif
-                                  </select>
+                                      </select>
                               </div>
                             </div>
                             <div class="form-group mandatory">
@@ -69,10 +71,10 @@
                                       <small style="color:red">* {{$errors->first('nomorPintu')}}</small>
                                     @endif
                                     @if(isset($editParticipans))
-                                      <input type="text" class="form-control" value="{{$editEvents->nomorPintu}}" placeholder="Ketikkan >Nomor Pintu..." name="nomorPintu" id="nomorPintu"/>
-                                      <input type="hidden" value="{{$editEvents->id}}" name="id" id="id"/>
+                                      <input type="text" class="form-control" value="{{$editParticipans->nomor_pintu}}" placeholder="Ketikkan Nomor Pintu..." name="nomorPintu" id="nomorPintu"/>
+                                      <input type="hidden" value="{{$editParticipans->id}}" name="id" id="id"/>
                                     @else
-                                      <input type="text" class="form-control" value="{{$viewEvents->nomorPintu}}" placeholder="Ketikkan >Nomor Pintu..." name="nomorPintu" id="nomorPintu" disabled/>
+                                      <input type="text" class="form-control" value="{{$viewParticipans->nomor_pintu}}" placeholder="Ketikkan Nomor Pintu..." name="nomorPintu" id="nomorPintu" disabled/>
                                     @endif
                                 </div>
                             </div>
@@ -102,7 +104,7 @@
                             </div>
                             @endif
 
-                            @if(isset($editEvents))
+                            @if(isset($editParticipans))
                             <button type="submit" class="btn pull-right btn-primary">Simpan Perubahan</button>
                             @endif
                             <a href="{{ URL::previous() }}" class="btn btn-default pull-left btn-flat" data-dismiss="modal">Tidak</a>
@@ -205,7 +207,7 @@
                         <div class="row clearfix">
                             <div class="col-sm-12">
                                 @if(isset($editParticipans))
-                                  <input type="hidden" value="{{$editEvents->id}}" name="participansIdHeader" id="participansIdHeader"/>
+                                  <input type="hidden" value="{{$editParticipans->id}}" name="participansIdHeader" id="participansIdHeader"/>
                                 @endif
                                   <div class="form-group mandatory">
                                       <div class="form-line">
@@ -450,14 +452,14 @@
   $("#tabelinfo").on("click", "a.hapus", function(){
     var a = $(this).data('value');
     var b = "hapus";
-    var c = <?php echo $editEvents->id?>;
+    var c = <?php echo $editParticipans->id?>;
     $('#setYaHapus').attr('href', '{{url('admin/delete-participans-detail/')}}/'+a+'/'+b+'/'+c);
   });
 
   $("#tabelinfo").on("click", "a.aktifkan", function(){
     var a = $(this).data('value');
     var b = "aktifkan";
-    var c = <?php echo $editEvents->id?>;
+    var c = <?php echo $editParticipans->id?>;
     $('#setYaAktifkan').attr('href', '{{url('admin/delete-participans-detail/')}}/'+a+'/'+b+'/'+c);
   });
 

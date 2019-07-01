@@ -96,7 +96,7 @@
 									->orderby(DB::raw('rand()'))
 									->get();
 		 ?>
-		<div class="row" style="background-color:white;height:90px" id="divProduct">
+		<div class="row" style="background-color:white;height:90px" id="divProductold">
 			<div class="col-lg-12">
 				<marquee>
 						@foreach($getProduct as $key)
