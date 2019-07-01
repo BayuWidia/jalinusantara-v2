@@ -22,6 +22,8 @@ use App\Models\Mekanik;
 use App\Models\Kendaraan;
 use App\Models\Keluarga;
 use App\Models\MasterKategori;
+use App\Models\ParticipansHeader;
+use App\Models\ParticipansDetail;
 use App\Http\Requests;
 
 use Carbon\Carbon;
@@ -55,12 +57,20 @@ class FeEventsController extends Controller
                       ->where('flag_publish', 1)
                       ->get();
 
-      $getRegistrasiEvents = RegistrasiEvents::select('*')
+     $getRegistrasiEvents = RegistrasiEvents::select('*')
                           ->where('id_events', '=', $id)
                           ->where('flag_approve', '=', 1)
                           // ->paginate(20);
                           ->get();
-       return view('frontend.events.eventsById', compact('getEvents','getRegistrasiEvents'));
+
+     $getDataParticipans = ParticipansHeader::join('participans_detail', 'participans_header.id', '=', 'participans_detail.id_header')
+                    ->select('participans_header.id_event', 'participans_header.nomor_pintu', 'participans_detail.*')
+                    ->where('participans_header.id_event','=',$id)
+                    ->where('flag_publish', 1)
+                    ->orderBy('participans_header.nomor_pintu', 'ASC')
+                    ->orderBy('participans_detail.nama', 'ASC')
+                    ->get();
+       return view('frontend.events.eventsById', compact('getEvents','getRegistrasiEvents','getDataParticipans'));
     }
 
     public function eventToday()

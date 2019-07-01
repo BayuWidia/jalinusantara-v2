@@ -32,6 +32,39 @@
 <!-- Welcome Area End -->
 @endsection
 
+@section('banner')
+<!-- Welcome Area Start -->
+
+<section class="welcome-area">
+    <div class="welcome-slides owl-carousel">
+
+        <!-- Single Slide-->
+        <div class="single-welcome-slide bg-img bg-gradient-overlay jarallax" style="background-image: url({{url('themeuser/img/bg-img/video-bg.jpg')}});">
+          <div class="row">
+            <div class="col-2">
+              <br><br><br><br><br><br><br><br><br><br><br><br>
+              <img src="{{asset('themeuser/img/core-img/bee.png')}}" alt="" style="padding-left:10%">
+            </div>
+            <div class="col-8">
+              <br><br><br><br><br><br><br><br><br><br><br><br>
+              <div class="welcome-text-two text-center">
+                <p style="color:white"><?php echo $getSlider[0]->keterangan_slider ?></p>
+              </div>
+            </div>
+            <div class="col-2">
+              <br><br><br><br><br><br><br><br><br><br><br>
+              <img src="{{asset('themeuser/img/core-img/logo.png')}}" alt="">
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- Scroll Icon -->
+    <div class="icon-scroll" id="scrollDown"></div>
+</section>
+<!-- Welcome Area End -->
+@endsection
+
 
 @section('content')
 <!-- About Us And Countdown Area Start -->

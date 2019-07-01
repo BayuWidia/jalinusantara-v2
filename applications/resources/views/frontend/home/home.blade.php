@@ -2,28 +2,19 @@
 
 @section('banner')
 <!-- Welcome Area Start -->
-
 <section class="welcome-area">
     <div class="welcome-slides owl-carousel">
 
         <!-- Single Slide-->
-        <div class="single-welcome-slide bg-img bg-gradient-overlay jarallax" style="background-image: url({{url('themeuser/img/bg-img/video-bg.jpg')}});">
-          <div class="row">
-            <div class="col-2">
-              <br><br><br><br><br><br><br><br><br><br><br><br>
-              <img src="{{asset('themeuser/img/core-img/bee.png')}}" alt="" style="padding-left:10%">
+        <div class="single-welcome-slide bg-img jarallax" style="background-image: url({{url('images/slider')}}/{{$getSlider[0]->url_slider}});">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12">
+                        <div class="welcome-text-two text-center">
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-8">
-              <br><br><br><br><br><br><br><br><br><br><br><br>
-              <div class="welcome-text-two text-center">
-                <p style="color:white"><?php echo $getSlider[0]->keterangan_slider ?></p>
-              </div>
-            </div>
-            <div class="col-2">
-              <br><br><br><br><br><br><br><br><br><br><br>
-              <img src="{{asset('themeuser/img/core-img/logo.png')}}" alt="">
-            </div>
-          </div>
         </div>
     </div>
 

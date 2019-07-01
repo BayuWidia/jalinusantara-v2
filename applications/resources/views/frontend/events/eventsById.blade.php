@@ -95,25 +95,31 @@
                       <thead>
                         <tr style="background-color:#111343;color:white">
                           <th>#</th>
-                          <th>No Registrasi</th>
-                          <th>Nama Driver</th>
-                          <th>Nama Co Driver</th>
-                          <th>Email</th>
-                          <th>No Telp</th>
-                          <th>No Pintu</th>
+                          <th style="text-align:center">Nomor Pintu</th>
+                          <th>Nama</th>
+                          <th>Posisi</th>
+                          <th>Pax</th>
+                          <th>Mobil</th>
+                          <th>Nomor Polisi</th>
+                          <th>Telephone</th>
+                          <th>Ukuran Baju</th>
+                          <th>Bahan Bakar</th>
                         </tr>
                       </thead>
                       <tbody>
                         @php $i=1; @endphp
-                          @foreach($getRegistrasiEvents as $key)
+                          @foreach($getDataParticipans as $key)
                             <tr>
                               <td>{{$i++}}</td>
-                              <td>{{$key->no_registrasi}}</td>
-                              <td>{{$key->nama_driver}}</td>
-                              <td>{{$key->nama_co_driver}}</td>
-                              <td>{{$key->email}}</th>
-                              <td>{{$key->no_telp_driver}}</td>
                               <td>{{$key->nomor_pintu}}</td>
+                              <td>{{$key->nama}}</td>
+                              <td>{{$key->posisi}}</td>
+                              <td>{{$key->pax}}</td>
+                              <td>{{$key->mobil}}</td>
+                              <td>{{$key->nomor_polisi}}</td>
+                              <td>{{$key->telephone}}</td>
+                              <td>{{$key->ukuran_baju}}</td>
+                              <td>{{$key->bahan_bakar}}</td>
                             </tr>
                           @endforeach
                       </tbody>
