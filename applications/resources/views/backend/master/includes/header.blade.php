@@ -25,7 +25,7 @@
                 ?>
 
                 <!-- #START# REGISTRASI -->
-                <li class="dropdown">
+                <!-- <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
                         <i class="material-icons">perm_contact_calendar</i>
 
@@ -56,7 +56,7 @@
                             <a href="{{route ('registrasi.index')}}">View All Registrasi</a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
                 <!-- #END# REGISTRASI -->
 
                 <!-- #START# COMMENT -->

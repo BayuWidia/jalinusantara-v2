@@ -197,6 +197,20 @@ Route::get('admin/delete-registrasi/{id}/{status}', 'RegistrasiController@destro
 Route::post('admin/edit-registrasi', 'RegistrasiController@update')->name('registrasi.update');
 Route::get('admin/registrasi.edit/{id}', 'RegistrasiController@edit')->name('registrasi.edit');
 Route::get('admin/approve-registrasi/{id}', 'RegistrasiController@approve')->name('registrasi.approve');
+
+//Menu Participans
+Route::get('participans.index', 'ParticipansController@index')->name('participans.index');
+Route::get('participans.tambah', 'ParticipansController@create')->name('participans.tambah');
+Route::post('admin/store-participans', 'ParticipansController@store')->name('participans.store');
+Route::get('admin/delete-participans-header/{id}/{status}', 'ParticipansController@destroyHeader')->name('participans.destroyHeader');
+Route::get('admin/delete-participans-detail/{id}/{status}/{eventsId}', 'ParticipansController@destroyDetail')->name('participans.destroyDetail');
+Route::post('admin/edit-participans-header', 'ParticipansController@updateHeader')->name('participans.updateHeader');
+Route::post('admin/edit-participans-detail', 'ParticipansController@updateDetail')->name('participans.updateDetail');
+Route::post('admin/insert-participans-detail', 'ParticipansController@insertDetail')->name('participans.insertDetail');
+Route::get('admin/publish-participans/{id}', 'ParticipansController@show')->name('participans.show');
+Route::get('admin/participans.edit/{id}', 'ParticipansController@edit')->name('participans.edit');
+Route::get('admin/participans.view/{id}', 'ParticipansController@view')->name('participans.view');
+Route::get('admin/bind-participans-detail/{id}', 'ParticipansController@bindParticipansDetail')->name('bind.participans.detail');
 // =================================== END BACK END ====================================================================
 
 
