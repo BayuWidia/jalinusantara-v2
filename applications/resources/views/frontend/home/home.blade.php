@@ -6,7 +6,8 @@
     <div class="welcome-slides owl-carousel">
 
         <!-- Single Slide-->
-        <div class="single-welcome-slide bg-img jarallax" style="background-image: url({{url('images/slider')}}/{{$getSlider[0]->url_slider}});">
+        <div class="single-welcome-slide bg-img jarallax" style="background-image: url({{url('themeuser/img/core-img/jalin1.png')}});">
+		
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <div class="col-12">
