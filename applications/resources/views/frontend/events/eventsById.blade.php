@@ -214,19 +214,25 @@
 
     function onClkParticipans() {
         var x = document.getElementById("divParticipans");
+        var y = document.getElementById("divViewShirtSizes");
         if (x.style.display === "none") {
-        x.style.display = "block";
+          x.style.display = "block";
+          y.style.display = "none";
         } else {
-        x.style.display = "none";
+          x.style.display = "none";
+          y.style.display = "none";
         }
     }
 
     function onClkViewShirtSize() {
         var x = document.getElementById("divViewShirtSizes");
+        var y = document.getElementById("divParticipans");
         if (x.style.display === "none") {
-        x.style.display = "block";
+          x.style.display = "block";
+          y.style.display = "none";
         } else {
-        x.style.display = "none";
+          x.style.display = "none";
+          y.style.display = "none";
         }
     }
 
@@ -238,9 +244,9 @@
     function onClkViewPayment() {
         var x = document.getElementById("pPayment");
         if (x.style.display === "none") {
-        x.style.display = "block";
+          x.style.display = "block";
         } else {
-        x.style.display = "none";
+          x.style.display = "none";
         }
     }
 

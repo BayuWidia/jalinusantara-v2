@@ -67,7 +67,7 @@ class FeEventsController extends Controller
                     ->select('participans_header.id_event', 'participans_header.nomor_pintu', 'participans_detail.*')
                     ->where('participans_header.id_event','=',$id)
                     ->where('flag_publish', 1)
-                    ->orderBy('participans_header.nomor_pintu', 'ASC')
+                    ->orderBy('participans_header.id', 'ASC')
                     ->orderBy('participans_detail.nama', 'ASC')
                     ->get();
        return view('frontend.events.eventsById', compact('getEvents','getRegistrasiEvents','getDataParticipans'));
