@@ -6,8 +6,8 @@
     <div class="welcome-slides owl-carousel">
 
         <!-- Single Slide-->
-        <div class="single-welcome-slide bg-img jarallax" style="background-image: url({{url('themeuser/img/core-img/jalin1.png')}});">
-		
+        <div class="single-welcome-slide bg-img jarallax responsive" style="background-image: url({{url('themeuser/img/core-img/jalin2.png')}});">
+
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <div class="col-12">
@@ -18,11 +18,11 @@
             </div>
         </div>
     </div>
-
     <!-- Scroll Icon -->
     <div class="icon-scroll" id="scrollDown"></div>
 </section>
 <!-- Welcome Area End -->
+
 @endsection
 
 
