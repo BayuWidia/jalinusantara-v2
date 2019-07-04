@@ -34,6 +34,9 @@ class FeHomeController extends Controller
         $dt = Carbon::now();
         $dt1 = Carbon::now()->addDays(1);
         $dt2 = Carbon::now()->addDays(2);
+        $getDataEventsHeadline = Events::select('events.*')
+                     ->where('events.flag_headline', '=', '1')
+                     ->get();
         $getDataEventsToday = Events::select('events.*')
                      ->whereRaw('"'.$dt.'" between tanggal_mulai and tanggal_akhir')
                      ->where('events.flag_headline', '=', '1')
@@ -88,10 +91,12 @@ class FeHomeController extends Controller
                       ->limit(3)
                       ->orderby('view_counter','DESC')
                       ->get();
-        return view('frontend.home.home', compact('getSlider','getDataSejarah','getDataEventsToday'
+
+        return view('frontend.home.home', compact('getDataEventsHeadline', 'getSlider','getDataSejarah','getDataEventsToday'
                                                   ,'getDataEventsTomorrow','getDataEventsEtc'
                                                   ,'getSertifikatLandscape','getSertifikatPortrait'
-                                                  ,'getSponsor','getProduct','getDataArticle','getDataPesan'));
+                                                  ,'getSponsor','getProduct','getDataArticle'
+                                                  ,'getDataPesan'));
     }
 
     public function storeContact(Request $request)
