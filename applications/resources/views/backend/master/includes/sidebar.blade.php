@@ -101,7 +101,7 @@
         <!-- Footer-->
         <div class="legal">
             <div class="copyright">
-                <b>Jalinusantara</b> &copy; <?php echo date('Y'); ?>
+                <b>Jalinnusantara</b> &copy; <?php echo date('Y'); ?>
             </div>
         </div>
       <!--  #Footer -->
