@@ -9,6 +9,41 @@
 }
 
 </style>
+
+@section('banner')
+<!-- Welcome Area Start -->
+    <section class="welcome-area">
+        <div class="welcome-slides owl-carousel">
+            <!-- Single Slide -->
+            <div class="single-welcome-slide bg-img jarallax" style="background-image: url({{url('themeuser/img/bg-img/video-bg.jpg')}});">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <!-- Welcome Text -->
+                        <div class="col-12">
+                            <div class="welcome-text-two text-center">
+                                <br><br>
+                                <h5 data-animation="fadeInUp" data-delay="100ms">{{$getDataEventsHeadline[0]->judul_event}}</h5>
+                                <h3 data-animation="fadeInUp" data-delay="300ms" style="color:white">{{$getDataEventsHeadline[0]->lokasi}}</h3>
+                                <!-- Event Meta -->
+                                <div class="event-meta" data-animation="fadeInUp" data-delay="500ms">
+                                    <a class="event-date" href="#"><i class="zmdi zmdi-time"></i> {{ \Carbon\Carbon::parse($getDataEventsHeadline[0]->tanggal_mulai)->format('d M Y')}} - {{ \Carbon\Carbon::parse($getDataEventsHeadline[0]->tanggal_akhir)->format('d M Y')}}</a>
+                                </div>
+                                <div class="hero-btn-group" data-animation="fadeInUp" data-delay="700ms">
+                                    <a href="{{url('eventsById')}}/{{$getDataEventsHeadline[0]->id}}/{{$getDataEventsHeadline[0]->id_kategori}}" class="btn confer-btn m-2">View more <i class="zmdi zmdi-long-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Icon -->
+        <div class="icon-scroll" id="scrollDown"></div>
+    </section>
+    <!-- Welcome Area End -->
+@endsection
+
 @section('banner')
 <!-- Welcome Area Start -->
 <section class="welcome-area">
