@@ -24,7 +24,6 @@ Route::get('/clear-cache', function() {
     Artisan::call('clear-compiled');
     Artisan::call('config:clear');
     Artisan::call('config:cache');
-    Artisan::call('varnish:flush');
     return "Cache is cleared";
 });
 
