@@ -225,10 +225,10 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content bounceInRight">
                   <div class="modal-header">
-                      <h4 class="modal-title">Non Aktifkan Data Foto</h4>
+                      <h4 class="modal-title">Non Aktifkan Data Media Sosial</h4>
                   </div>
                   <div class="modal-body">
-                      <p>Apakah anda yakin untuk mengnonaktifkan data foto ini?</p>
+                      <p>Apakah anda yakin untuk mengnonaktifkan data media sosial ini?</p>
                   </div>
                   <div class="modal-footer">
                       <button type="button" class="btn btn-white" data-dismiss="modal"  onclick="resetPage()">Tidak</button>
@@ -243,10 +243,10 @@
       <div class="modal-dialog">
         <div class="modal-content bounceInRight">
               <div class="modal-header">
-                  <h4 class="modal-title">Aktifkan Data Foto</h4>
+                  <h4 class="modal-title">Aktifkan Data Media Sosial</h4>
               </div>
               <div class="modal-body">
-                  <p>Apakah anda yakin untuk mengaktifkan data foto ini?</p>
+                  <p>Apakah anda yakin untuk mengaktifkan data media sosial ini?</p>
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-white" data-dismiss="modal"  onclick="resetPage()">Tidak</button>

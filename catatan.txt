@@ -1,0 +1,2 @@
+https://laravel.io/forum/11-14-2014-disabling-the-csrf-middleware-in-laravel-5
+https://laravel.io/forum/12-26-2014-routing-with-https
