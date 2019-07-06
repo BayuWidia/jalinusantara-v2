@@ -34,7 +34,7 @@ Route::get('/admin', function () {return view('backend.login.login');})->name('b
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 //ROUTE GROUP ISLOGGEDIN
-Route::group(['middleware' => ['isAdmin']], function () {
+Route::group(['middleware' => ['cacheable']], function () {
     //dashboard basic
     Route::get('backend.dashboard', 'DashboardController@index')->name('backend.dashboard');
 
@@ -214,7 +214,7 @@ Route::group(['middleware' => ['isAdmin']], function () {
     Route::get('admin/participans.view/{id}', 'ParticipansController@view')->name('participans.view');
     Route::get('admin/bind-participans-detail/{id}', 'ParticipansController@bindParticipansDetail')->name('bind.participans.detail');
 
-});
+// });
 // =================================== END BACK END ====================================================================
 
 
@@ -245,5 +245,7 @@ Route::get('photo', 'FeGaleriController@showPhoto')->name('galeri.photo');
 Route::post('photo', 'FeGaleriController@postPhoto')->name('galeri.photo');
 
 Route::get('partners', 'FePartnersController@showPartners')->name('partners');
+
+});
 
 // =================================== END FRONT END ====================================================================

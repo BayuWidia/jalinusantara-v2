@@ -181,14 +181,13 @@ return [
         Yajra\Datatables\DatatablesServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
-        Adldap\Laravel\AdldapServiceProvider::class,
-        Adldap\Laravel\AdldapAuthServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         Milon\Barcode\BarcodeServiceProvider::class,
         Cornford\Googlmapper\MapperServiceProvider::class,
+        Spatie\Varnish\VarnishServiceProvider::class,
 
     ],
 
@@ -247,7 +246,6 @@ return [
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
-        'Adldap' => Adldap\Laravel\Facades\Adldap::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
