@@ -90,7 +90,7 @@
                 <!-- Copywrite Text -->
                 <div class="col-12 col-md-12">
                     <div class="copywrite-text">
-											<p class="footer-text" style="text-align:center">www.jalinusantara.com ||
+											<p class="footer-text" style="text-align:center">www.jalinnusantara.com ||
 												Sebuah Website Untuk Para Pecinta Offroad
 							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                     </div>
