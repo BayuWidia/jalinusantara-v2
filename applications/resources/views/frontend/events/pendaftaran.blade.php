@@ -7,6 +7,7 @@
         <div class="row h-100 align-items-center">
             <div class="col-12">
                 <div class="breadcrumb-content">
+					<br><br><br><br><br><br><br>
                     <h2 class="page-title">Formulir Pendaftaran</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
