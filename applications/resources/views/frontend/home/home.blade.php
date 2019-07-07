@@ -186,7 +186,7 @@
             <!-- Heading -->
             <div class="col-12">
                 <div class="section-heading text-center wow fadeInUp" data-wow-delay="300ms">
-                    <p>Partners &amp; Sponsors</p>
+                    <p>Our Sponsors</p>
                     <h4>OFFICIAL SPONSOR</h4>
                 </div>
             </div>
