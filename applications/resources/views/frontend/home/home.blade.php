@@ -161,11 +161,6 @@
                       <div class="speaker-single-thumb">
                           <img src="{{ url('images/sertifikat/') }}/{{$key->url_sertifikat}}" alt="">
                       </div>
-                      <!-- Info -->
-                      <div class="speaker-info">
-                          <h5>{{$key->nama_sertifikat}}</h5>
-                          <p>{{$key->keterangan_sertifikat}}</p>
-                      </div>
                   </div>
               </div>
             @endforeach
