@@ -70,12 +70,12 @@ class FeHomeController extends Controller
         $getSertifikatPortrait = MasterSertifikat::select('master_sertifikat.*')
                       ->where('flag_sertifikat', 1)
                       ->where('format_sertifikat', 'P')
-                      ->orderby('id', 'DESC')
+                      ->orderby('id', 'ASC')
                       ->get();
         $getSertifikatLandscape = MasterSertifikat::select('master_sertifikat.*')
                       ->where('flag_sertifikat', 1)
                       ->where('format_sertifikat', 'L')
-                      ->orderby('id', 'DESC')
+                      ->orderby('id', 'ASC')
                       ->get();
         $getDataPesan = MasterPesan::select('*')
                      ->where('flag_pesan', 1)
