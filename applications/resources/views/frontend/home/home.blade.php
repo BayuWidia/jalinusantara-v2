@@ -92,10 +92,9 @@
 
 
 <!-- Our Ticket Pricing Table Area Start -->
-<section class="our-ticket-pricing-table-area bg-img bg-gradient-overlay section-padding-100-0 jarallax" style="background-image: url({{url('themeuser/img/bg-img/home4.jpg')}});">
+<!-- <section class="our-ticket-pricing-table-area bg-img bg-gradient-overlay section-padding-100-0 jarallax" style="background-image: url({{url('themeuser/img/bg-img/home4.jpg')}});">
     <div class="container">
         <div class="row">
-            <!-- Heading -->
             <div class="col-12">
                 <div class="section-heading text-center wow fadeInUp" data-wow-delay="300ms">
                     <p>Product</p>
@@ -106,9 +105,7 @@
 
         <div class="row">
             <div class="col-12">
-                <!-- Our Sponsor area -->
                 <div class="our-sponsor-area d-flex flex-wrap">
-                    <!-- Single Sponsor -->
                     @foreach($getProduct as $key)
                     <div class="single-sponsor wow fadeInUp" data-wow-delay="300ms">
                         @if (strpos($key->link_product, 'http') !== false)
@@ -124,7 +121,7 @@
 
         <br>
     </div>
-</section>
+</section> -->
 <!-- Our Ticket Pricing Table Area End -->
 
 <!-- Our Speakings Area Start -->
@@ -135,7 +132,7 @@
             <div class="col-12">
                 <div class="section-heading text-center wow fadeInUp" data-wow-delay="300ms">
                     <p>Our Certificate</p>
-                    <h4>Who’s we are</h4>
+                    <!-- <h4>Who’s we are</h4> -->
                 </div>
             </div>
         </div>

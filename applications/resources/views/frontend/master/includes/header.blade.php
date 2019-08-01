@@ -20,7 +20,7 @@
             <nav class="classy-navbar justify-content-between" id="conferNav">
 
                 <!-- Logo -->
-                <a class="nav-brand" href="{{ route('home') }}"><img style="width:110px;height:70px" src="{{asset('themeuser/img/core-img/logo.png')}}" alt=""></a>
+                <a class="nav-brand" href="{{ route('home') }}"><img style="width:110px;height:70px" src="{{asset('themeuser/img/core-img/logonew.png')}}" alt=""></a>
 
                 <!-- Navbar Toggler -->
                 <div class="classy-navbar-toggler">

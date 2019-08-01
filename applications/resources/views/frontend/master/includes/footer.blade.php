@@ -8,9 +8,9 @@
                 <div class="col-12 col-sm-6 col-lg-6">
                     <div class="single-footer-widget mb-60 wow fadeInUp" data-wow-delay="300ms">
                         <!-- Footer Logo -->
-                        <a href="#" class="footer-logo"><img src="{{asset('themeuser/img/core-img/logo.png')}}" alt=""></a>
-                        <p style="text-transform: capitalize">“There is nothing more time-consuming than worries, and people who profess to believe
-													in God should be ashamed when they are worried about something.” ~MAHATMA GANDHI~</p>
+                        <a href="#" class="footer-logo"><img src="{{asset('themeuser/img/core-img/logonew.png')}}" alt=""></a>
+                        <!-- <p style="text-transform: capitalize">“There is nothing more time-consuming than worries, and people who profess to believe
+													in God should be ashamed when they are worried about something.” ~MAHATMA GANDHI~</p> -->
 
                         <!-- Social Info -->
                         <div class="social-info">

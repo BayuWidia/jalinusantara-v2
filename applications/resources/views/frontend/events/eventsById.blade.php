@@ -90,7 +90,7 @@
 
                 <div class="single-schedule-area wow fadeInUp" data-wow-delay="300ms" id="divParticipans">
                     <!-- Single Schedule Thumb and Info -->
-                    <h3>List Participans</h3>
+                    <h3>List PARTICIPANTS</h3>
                     <hr>
                     <table id="tabelinfo" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
                       <thead>
