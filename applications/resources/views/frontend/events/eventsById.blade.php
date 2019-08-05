@@ -108,7 +108,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        @php $i=1; @endphp
+                        <!-- @php $i=1; @endphp
                           @foreach($getDataParticipans as $key)
                             <tr>
                               <td>{{$i++}}</td>
@@ -122,7 +122,7 @@
                               <td>{{$key->ukuran_baju}}</td>
                               <td>{{$key->bahan_bakar}}</td>
                             </tr>
-                          @endforeach
+                          @endforeach -->
                       </tbody>
                     </table>
                 </div>
