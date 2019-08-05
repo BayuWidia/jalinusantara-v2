@@ -64,7 +64,7 @@
                         @if($getEvents[0]->url_rules!="")
                           <p><i class="zmdi zmdi-file"></i> Download Rules: <a href="{{url('documents/')}}/{{$getEvents[0]->url_rules}}" download><img src="{{url('images/')}}/pdf.png" width="32px" height="32px"/></a></p>
                         @endif
-                        <p><i class="zmdi zmdi-nature-people"></i> Participans : <a href="#" onclick="onClkParticipans()"><img style="margin-top:-2%" src="{{url('images/')}}/participans.png" width="32px" height="32px"/></a></p>
+                        <p><i class="zmdi zmdi-nature-people"></i> Participants : <a href="#" onclick="onClkParticipans()"><img style="margin-top:-2%" src="{{url('images/')}}/participans.png" width="32px" height="32px"/></a></p>
                         @if($getEvents[0]->entrance_fee!="")
                         <p><i class="zmdi zmdi-money-box"></i> Entrance Fee : {{UtilHelper::convertToIdr($getEvents[0]->entrance_fee)}}</p>
                         @endif
